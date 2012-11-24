@@ -2,9 +2,9 @@ parameters:
     database_driver:   pdo_mysql
     database_host:     localhost
     database_port:     ~
-    database_name:     menusach
+    database_name:     symfony
     database_user:     root
-    database_password: menusach
+    database_password: ~
 
     mailer_transport:  smtp
     mailer_host:       localhost
@@ -12,4 +12,4 @@ parameters:
     mailer_password:   ~
 
     locale:            en
-    secret:            4edeb4a2603057db169a78b115807d9540348196
+    secret:            ThisTokenIsNotSoSecretChangeIt

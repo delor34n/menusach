@@ -1,3 +1,7 @@
+men_usach_base:
+    resource: "@MenUSACHBaseBundle/Resources/config/routing.yml"
+    prefix:   /
+
 #andres_test:
 #    resource: "@AndresTestBundle/Resources/config/routing.yml"
 #    prefix:   /
