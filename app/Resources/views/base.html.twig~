@@ -10,7 +10,8 @@
         
         {% javascripts '@MenUSACHBaseBundle/Resources/public/js/*' filter='yui_js' %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
-        
+        <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
         {% endjavascripts %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
@@ -29,5 +30,6 @@
         {% block javascripts %}
 
         {% endblock %}
+        {% include 'BraincraftedBootstrapBundle::_javascripts.html.twig' %}
     </body>
 </html>
