@@ -96,27 +96,4 @@ class Ingrediente
     {
         return $this->ing_categoria;
     }
-
-    /**
-     * Set menu
-     *
-     * @param \MenUSACH\Bundle\BaseBundle\Entity\Menu $menu
-     * @return Ingrediente
-     */
-    public function setMenu(\MenUSACH\Bundle\BaseBundle\Entity\Menu $menu = null)
-    {
-        $this->menu = $menu;
-    
-        return $this;
-    }
-
-    /**
-     * Get menu
-     *
-     * @return \MenUSACH\Bundle\BaseBundle\Entity\Menu 
-     */
-    public function getMenu()
-    {
-        return $this->menu;
-    }
 }
