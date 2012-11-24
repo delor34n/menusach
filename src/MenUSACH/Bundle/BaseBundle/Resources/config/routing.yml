@@ -1,3 +1,7 @@
 men_usach_base_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: MenUSACHBaseBundle:Default:index }
+
+men_usach_create_menu:
+    pattern: /crear/
+    defaults: { _controller:MenUSACHBaseBundle:Menu:create }
