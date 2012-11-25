@@ -5,7 +5,7 @@ namespace MenUSACH\Bundle\BaseBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Menu
+ * MenUSACH\Bundle\BaseBundle\Entity\Menu
  *
  * @ORM\Table()
  * @ORM\Entity
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Menu
 {
     /**
-     * @var integer
+     * @var integer $id
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -22,36 +22,60 @@ class Menu
     private $id;
 
     /**
-     * @var string
+     * @var string $men_nombre
      *
      * @ORM\Column(name="men_nombre", type="string", length=30)
      */
     private $men_nombre;
 
     /**
-     * @var integer
+     * @var integer $men_precio
      *
      * @ORM\Column(name="men_precio", type="integer")
      */
     private $men_precio;
 
     /**
+     * @var boolean $men_activo
+     *
+     * @ORM\Column(name="men_activo", type="boolean")
+     */
+    private $men_activo;
+
+    /**
+     * @var boolean $men_frecuencia
+     *
+     * @ORM\Column(name="men_frecuencia", type="boolean")
+     */
+    private $men_frecuencia;
+
+    /**
+     * @var \DateTime $men_fechain
+     *
+     * @ORM\Column(name="men_fechain", type="date")
+     */
+    private $men_fechain;
+
+
+    /**
      * @ORM\ManyToOne(targetEntity="Local", inversedBy="menus")
      * @ORM\JoinColumn(name="local_id", referencedColumnName="id")
      */
-    protected $local;
+     protected $local;
 
     /**
-     * @ORM\OneToMany(targetEntity="Ingrediente", mappedBy="menu")
+     * @ORM\ManyToMany(targetEntity="Ingrediente", inversedBy="menus")
+     * @ORM\JoinTable(name="MenuIngrediente")
      */
+
     protected $ingredientes;
+
 
     /**
      * Get id
      *
      * @return integer 
      */
-
     public function getId()
     {
         return $this->id;
@@ -104,9 +128,85 @@ class Menu
     }
 
     /**
+     * Set men_activo
+     *
+     * @param boolean $menActivo
+     * @return Menu
+     */
+    public function setMenActivo($menActivo)
+    {
+        $this->men_activo = $menActivo;
+    
+        return $this;
+    }
+
+    /**
+     * Get men_activo
+     *
+     * @return boolean 
+     */
+    public function getMenActivo()
+    {
+        return $this->men_activo;
+    }
+
+    /**
+     * Set men_frecuencia
+     *
+     * @param boolean $menFrecuencia
+     * @return Menu
+     */
+    public function setMenFrecuencia($menFrecuencia)
+    {
+        $this->men_frecuencia = $menFrecuencia;
+    
+        return $this;
+    }
+
+    /**
+     * Get men_frecuencia
+     *
+     * @return boolean 
+     */
+    public function getMenFrecuencia()
+    {
+        return $this->men_frecuencia;
+    }
+
+    /**
+     * Set men_fechain
+     *
+     * @param \DateTime $menFechain
+     * @return Menu
+     */
+    public function setMenFechain($menFechain)
+    {
+        $this->men_fechain = $menFechain;
+    
+        return $this;
+    }
+
+    /**
+     * Get men_fechain
+     *
+     * @return \DateTime 
+     */
+    public function getMenFechain()
+    {
+        return $this->men_fechain;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->ingredientes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
      * Set local
      *
-     * @param \MenUSACH\Bundle\BaseBundle\Entity\Local $local
+     * @param MenUSACH\Bundle\BaseBundle\Entity\Local $local
      * @return Menu
      */
     public function setLocal(\MenUSACH\Bundle\BaseBundle\Entity\Local $local = null)
@@ -119,24 +219,17 @@ class Menu
     /**
      * Get local
      *
-     * @return \MenUSACH\Bundle\BaseBundle\Entity\Local 
+     * @return MenUSACH\Bundle\BaseBundle\Entity\Local 
      */
     public function getLocal()
     {
         return $this->local;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->ingredientes = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
+
     /**
      * Add ingredientes
      *
-     * @param \MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes
+     * @param MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes
      * @return Menu
      */
     public function addIngrediente(\MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes)
@@ -149,7 +242,7 @@ class Menu
     /**
      * Remove ingredientes
      *
-     * @param \MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes
+     * @param MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes
      */
     public function removeIngrediente(\MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes)
     {
@@ -159,7 +252,7 @@ class Menu
     /**
      * Get ingredientes
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\Collection 
      */
     public function getIngredientes()
     {
