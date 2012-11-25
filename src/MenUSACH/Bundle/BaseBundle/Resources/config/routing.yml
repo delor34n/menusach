@@ -3,5 +3,5 @@ men_usach_base_homepage:
     defaults: { _controller: MenUSACHBaseBundle:Default:index }
 
 men_usach_create_menu:
-    pattern: /crear/
+    pattern: /menu/crear/
     defaults: { _controller:MenUSACHBaseBundle:Menu:create }

@@ -1,0 +1,6 @@
+MenUSACH\Bundle\BaseBundle\Entity\Menu:
+  properties:
+    men_nombre:
+      - NotBlank: { message: "Debe ingresar un nombre para el menú" }
+    men_precio:
+      - NotBlank: ~
