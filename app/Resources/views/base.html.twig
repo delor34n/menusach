@@ -10,8 +10,14 @@
         
         {% javascripts '@MenUSACHBaseBundle/Resources/public/js/*' filter='yui_js' %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
-        
         {% endjavascripts %}
+        <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+        <script>
+        $(function() {
+            $( "#menu_form_men_fecha_inicio" ).datepicker();
+            $( "#menu_form_men_fecha_termino" ).datepicker();
+        });
+        </script>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>

@@ -9,7 +9,35 @@
     {{ form_label(form.men_precio, 'Precio') }}
     {{ form_widget(form.men_precio) }}
     {{ form_errors(form.men_precio) }}
+    {{ form_label(form.men_frecuencia, 'Frecuencia') }}
+    {{ form_widget(form.men_frecuencia) }}
+    {{ form_errors(form.men_frecuencia) }}
+    <div class="tab-content">
+        <div class="tab-pane active" id="defaults"></div>
+        <div class="tab-pane" id="options">
+            {{ form_label(form.men_fecha_inicio, 'Fecha inicio:') }}
+            {{ form_widget(form.men_fecha_inicio) }}
+            {{ form_errors(form.men_fecha_inicio) }}
+            {{ form_label(form.men_fecha_termino, 'Fecha término:') }}
+            {{ form_widget(form.men_fecha_termino) }}
+            {{ form_errors(form.men_fecha_termino) }}
+        </div>
+    </div>
     <br />
     <input class="btn" type="submit" />
+    <script>
+    $(document).ready(function(){
+        var clicknum = 0;
+        $("#menu_form_men_frecuencia").click(function(){
+            clicknum++;
+            if(clicknum == 2){
+                if ($(this).val() == 2) {
+                    $('#options label').tab('show');
+                }
+                clicknum = 0;
+            }
+        });
+    });
+    </script>
 </form>
 {% endblock %}

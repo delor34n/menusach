@@ -13,7 +13,10 @@ class MenuController extends Controller
     public function newAction(Request $request)
     {   
         $menu = new Menu();
-        $form = $this->createForm(new MenuType(), $menu);
+        $form = $this->get('form.factory')->create(new MenuType());
+        #$form = $this->createForm(new MenuType(), $menu);
+        $menu->setMenActivo(TRUE);
+        
         
         if ($request->getMethod() == 'POST')
         {

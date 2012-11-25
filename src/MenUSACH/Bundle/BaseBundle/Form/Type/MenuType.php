@@ -11,8 +11,19 @@ class MenuType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('men_nombre', 'text');
-        $builder->add('men_precio', 'number', array(
-            'invalid_message' => "The passwords don't match!"
+        $builder->add('men_precio', 'number');
+        $builder->add('men_frecuencia', 'choice', array(
+            'choices' => array('0' => 'Permanente', '1' => 'Día fijo',
+                '2' => 'Intervalo'),
+            'required' => true
+        ));
+        $builder->add('men_fecha_inicio', 'date', array(
+            'widget' => 'single_text',
+            'format' => 'dd-MM-yyyy'
+        ));
+        $builder->add('men_fecha_termino', 'date', array(
+            'widget' => 'single_text',
+            'format' => 'dd-MM-yyyy'
         ));
     }
     
