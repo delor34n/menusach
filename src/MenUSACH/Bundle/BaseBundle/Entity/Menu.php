@@ -41,9 +41,12 @@ class Menu
      */
     protected $local;
 
+
     /**
-     * @ORM\OneToMany(targetEntity="Ingrediente", mappedBy="menu")
+     * @ORM\ManyToMany(targetEntity="Ingrediente", inversedBy="menus")
+     * @ORM\JoinTable(name="MenuIngrediente")
      */
+
     protected $ingredientes;
 
     /**
@@ -136,7 +139,7 @@ class Menu
     /**
      * Add ingredientes
      *
-     * @param \MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes
+     * @param MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes
      * @return Menu
      */
     public function addIngrediente(\MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes)
@@ -149,7 +152,7 @@ class Menu
     /**
      * Remove ingredientes
      *
-     * @param \MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes
+     * @param MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes
      */
     public function removeIngrediente(\MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes)
     {
@@ -159,7 +162,7 @@ class Menu
     /**
      * Get ingredientes
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\Collection 
      */
     public function getIngredientes()
     {
