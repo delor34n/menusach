@@ -10,12 +10,25 @@ use MenUSACH\Bundle\BaseBundle\Form\Type\MenuType;
 
 class MenuController extends Controller
 {
-    public function newAction(Request $request)
+    public function indexAction()
+    {   
+        $menus = $this->getDoctrine()
+            ->getRepository('MenUSACHBaseBundle:Menu')
+            ->findAll();
+        
+        if(!$menus)
+        {
+            throw $this->createNotFoundException("No hay menús registrados");
+        }
+        
+        return $this->render('MenUSACHBaseBundle:Menu:read_all.html.twig',
+                array('menus' => $menus));
+    }
+    
+    public function createAction(Request $request)
     {   
         $menu = new Menu();
-        $form = $this->createForm(new MenuType(), $menu);
-        #$form = $this->createForm(new MenuType(), $menu);
-        
+        $form = $this->createForm(new MenuType(), $menu);        
         
         if ($request->getMethod() == 'POST')
         {
@@ -32,9 +45,20 @@ class MenuController extends Controller
             }
         }
         
-        return $this->render('MenUSACHBaseBundle:Menu:new.html.twig', array(
+        return $this->render('MenUSACHBaseBundle:Menu:create.html.twig', array(
             'form' => $form->createView()
         ));
+        
+    }
+    
+    public function updateAction(Request $request)
+    {   
+        $menu = $this->getDoctrine()
+            ->getRepository('MenUSACHBaseBundle:Menu')
+            ->find($id);
+        
+        return $this->render('MenUSACHBaseBundle:Menu:update.html.twig',
+                array('menu' => $menu));
         
     }
 }

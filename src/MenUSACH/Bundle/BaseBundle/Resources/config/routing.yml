@@ -1,7 +1,15 @@
 men_usach_base_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: MenUSACHBaseBundle:Default:index }
+    
+men_usach_read_all_menu:
+    pattern: /menu/
+    defaults: { _controller:MenUSACHBaseBundle:Menu:index }
 
 men_usach_create_menu:
     pattern: /menu/crear/
-    defaults: { _controller:MenUSACHBaseBundle:Menu:new }
+    defaults: { _controller:MenUSACHBaseBundle:Menu:create }
+    
+men_usach_update_menu:
+    pattern: /menu/editar/{id}
+    defaults: { _controller:MenUSACHBaseBundle:Menu:update }

@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<table class="table">
+    <caption>Menús disponibles</caption>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Tipo</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Término</th>
+            <th>Modificar</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for menu in menus %}
+            {% if menu.menActivo == 1 %}
+                <td>{{ menu.menNombre }}</td>
+                <td>${{ menu.menPrecio }}</td>
+                <td>{% if menu.menActivo == 1 %}
+                        Activo
+                    {% endif %}
+                </td>
+                <td>{% if menu.menFechaInicio != NULL %}
+                        {{ menu.menFechaInicio|date('d-m-Y') }}
+                    {% endif %}
+                </td>
+                <td>{% if menu.menFechaTermino != NULL %}
+                        {{ menu.menFechaTermino|date('d-m-Y') }}
+                    {% endif %}
+                </td>
+                <td><a class="btn btn-link" href="{{ path('men_usach_update_menu', { 'id': menu.id }) }}">DotA</a></td>
+            </tr>
+            {% else %}
+            {% endif %} 
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

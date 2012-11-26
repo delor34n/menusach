@@ -3,13 +3,13 @@
 {% block body %}
 <form class="form-horizontal" action="{{ path('men_usach_create_menu') }}"
       method="post" {{ form_enctype(form) }}>
-    <legend>Ingrese datos del menú</legend>
+    <legend>Edite los datos del menú</legend>
     <div class="control-group">
         <div class="control-label">
             {{ form_label(form.men_nombre) }}
         </div>
         <div class="controls">
-            {{ form_widget(form.men_nombre) }}
+            {{ form_widget(form.men_nombre, 'attr' => ) }}
         </div>
         {{ form_errors(form.men_nombre) }}
     </div>
@@ -28,7 +28,7 @@
         </div>
         <div class="controls">
             {{ form_widget(form.men_frecuencia) }}
-            <span class="help-inline">
+            <span class="help-block">
                 Ingrese la periodicidad del menú que venderá.
             </span>
         </div>
@@ -65,7 +65,7 @@
     </div>
     {{ form_rest(form) }}
     <div class="controls">
-        <input class="btn" type="submit" value="Crear"/>
+        <input class="btn btn-primary" type="submit" value="Guardar cambios"/>
     </div>
     <script type="text/javascript">
     $('#control_div_1').hide();
