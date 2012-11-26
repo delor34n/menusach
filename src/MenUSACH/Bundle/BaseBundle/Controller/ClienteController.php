@@ -93,7 +93,7 @@ class ClienteController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('cliente_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('cliente', array('id' => $entity->getId())));
         }
 
         return array(
@@ -153,7 +153,7 @@ class ClienteController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('cliente_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('cliente', array('id' => $id)));
         }
 
         return array(
@@ -167,25 +167,18 @@ class ClienteController extends Controller
      * Deletes a Cliente entity.
      *
      * @Route("/{id}/delete", name="cliente_delete")
-     * @Method("POST")
      */
     public function deleteAction(Request $request, $id)
     {
-        $form = $this->createDeleteForm($id);
-        $form->bind($request);
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('MenUSACHBaseBundle:Cliente')->find($id);
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('MenUSACHBaseBundle:Cliente')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Cliente entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Cliente entity.');
         }
 
+        $em->remove($entity);
+        $em->flush();
         return $this->redirect($this->generateUrl('cliente'));
     }
 

@@ -1,32 +1,27 @@
-<h1>Local list</h1>
+{% extends '::base.html.twig' %}
 
-<table class="records_list">
+{% block body %}
+<table class="table">
+    <caption><h1>Locales ingresados</h1></caption>
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Loc_nombre</th>
-            <th>Loc_ubicacion</th>
-            <th>Loc_ranking</th>
-            <th>Actions</th>
+            <th>Nombre</th>
+            <th>Ubicación</th>
+            <th>Ránking</th>
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('local_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.locnombre }}</td>
             <td>{{ entity.locubicacion }}</td>
             <td>{{ entity.locranking }}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('local_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('local_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-            </td>
+            <td><a class="btn btn-link" href="{{
+                path('menu_edit', { 'id': entity.id }) }}">
+                    {{ '.icon-edit Editar'|parse_icons }}</a></td>
+            <td><a class="btn btn-link" href="{{
+                path('menu_delete', { 'id': entity.id }) }}">
+                    {{ '.icon-remove Eliminar'|parse_icons }}</a></td>
         </tr>
     {% endfor %}
     </tbody>
@@ -35,7 +30,8 @@
 <ul>
     <li>
         <a href="{{ path('local_new') }}">
-            Create a new entry
+            Crear nuevo local
         </a>
     </li>
 </ul>
+{% endblock %}
