@@ -11,7 +11,7 @@ class MenuType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('men_nombre', 'text' , array(
-            'label' => 'Nombre',
+            'label' => 'Nombre:',
             'attr' => array(
                 'class' => 'span3',
                 'placeholder' => 'Nombre'
@@ -19,7 +19,7 @@ class MenuType extends AbstractType
             'required' => true
             ));
         $builder->add('men_precio', 'number', array(
-            'label' => 'Precio',
+            'label' => 'Precio:',
             'attr' => array(
                 'prepend_input' => '$',
                 'class' => 'span2',
@@ -28,7 +28,7 @@ class MenuType extends AbstractType
             'required' => true
         ));
         $builder->add('men_frecuencia', 'choice', array(
-            'label' => 'Frecuencia',
+            'label' => 'Frecuencia:',
             'choices' => array('0' => 'Permanente', '1' => 'Día fijo',
                 '2' => 'Intervalo'),
             'attr' => array(
@@ -40,13 +40,12 @@ class MenuType extends AbstractType
             'widget' => 'single_text',
             'format' => 'MM/dd/yyyy',
             'attr' => array(
-                'class' => 'span3',
-                'placeholder' => 'Nombre'
+                'class' => 'span3'
             ),
             'required' => false
         ));
         $builder->add('men_fecha_termino', 'date', array(
-            'label' => 'Fecha término',
+            'label' => 'Fecha término:',
             'widget' => 'single_text',
             'format' => 'MM/dd/yyyy',
             'attr' => array(
