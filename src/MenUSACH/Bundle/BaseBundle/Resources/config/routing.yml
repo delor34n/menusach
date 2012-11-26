@@ -1,31 +1,4 @@
-men_usach_read_all_menu:
-    pattern: /menu/
-    defaults: { _controller:MenUSACHBaseBundle:Menu:index }
-
-men_usach_create_menu:
-    pattern: /menu/crear/
-    defaults: { _controller:MenUSACHBaseBundle:Menu:create }
-
-men_usach_update_menu:
-    pattern: /menu/editar/{id}
-    defaults: { _controller:MenUSACHBaseBundle:Menu:update }
-
-men_usach_delete_menu:
-    pattern: /menu/borrar/{id}
-    defaults: { _controller:MenUSACHBaseBundle:Menu:delete }
-
-local_usach_read:
-    pattern: /admin/local/
-    defaults: { _controller:MenUSACHBaseBundle:Local:index }
-
-local_usach_create:
-    pattern: /admin/local/crear/
-    defaults: { _controller:MenUSACHBaseBundle:Local:create }
-
-local_usach_update:
-    pattern: /admin/local/editar/{id}
-    defaults: { _controller:MenUSACHBaseBundle:Local:update }
-
-local_usach_delete:
-    pattern: /admin/local/borrar/{id}
-    defaults: { _controller:MenUSACHBaseBundle:Local:delete }
+MenUSACHAnnotations:
+    resource: "@MenUSACHBaseBundle/Controller/"
+    prefix: /
+    type: annotation

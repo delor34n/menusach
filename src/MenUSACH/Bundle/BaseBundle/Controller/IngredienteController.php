@@ -7,27 +7,27 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use MenUSACH\Bundle\BaseBundle\Entity\Menu;
-use MenUSACH\Bundle\BaseBundle\Form\MenuType;
+use MenUSACH\Bundle\BaseBundle\Entity\Ingrediente;
+use MenUSACH\Bundle\BaseBundle\Form\IngredienteType;
 
 /**
- * Menu controller.
+ * Ingrediente controller.
  *
- * @Route("/menu")
+ * @Route("/ingrediente")
  */
-class MenuController extends Controller
+class IngredienteController extends Controller
 {
     /**
-     * Lists all Menu entities.
+     * Lists all Ingrediente entities.
      *
-     * @Route("/", name="menu")
+     * @Route("/", name="ingrediente")
      * @Template()
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('MenUSACHBaseBundle:Menu')->findAll();
+        $entities = $em->getRepository('MenUSACHBaseBundle:Ingrediente')->findAll();
 
         return array(
             'entities' => $entities,
@@ -35,19 +35,19 @@ class MenuController extends Controller
     }
 
     /**
-     * Finds and displays a Menu entity.
+     * Finds and displays a Ingrediente entity.
      *
-     * @Route("/{id}/show", name="menu_show")
+     * @Route("/{id}/show", name="ingrediente_show")
      * @Template()
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MenUSACHBaseBundle:Menu')->find($id);
+        $entity = $em->getRepository('MenUSACHBaseBundle:Ingrediente')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Menu entity.');
+            throw $this->createNotFoundException('Unable to find Ingrediente entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -59,15 +59,15 @@ class MenuController extends Controller
     }
 
     /**
-     * Displays a form to create a new Menu entity.
+     * Displays a form to create a new Ingrediente entity.
      *
-     * @Route("/new", name="menu_new")
+     * @Route("/new", name="ingrediente_new")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new Menu();
-        $form   = $this->createForm(new MenuType(), $entity);
+        $entity = new Ingrediente();
+        $form   = $this->createForm(new IngredienteType(), $entity);
 
         return array(
             'entity' => $entity,
@@ -76,16 +76,16 @@ class MenuController extends Controller
     }
 
     /**
-     * Creates a new Menu entity.
+     * Creates a new Ingrediente entity.
      *
-     * @Route("/create", name="menu_create")
+     * @Route("/create", name="ingrediente_create")
      * @Method("POST")
-     * @Template("MenUSACHBaseBundle:Menu:new.html.twig")
+     * @Template("MenUSACHBaseBundle:Ingrediente:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity  = new Menu();
-        $form = $this->createForm(new MenuType(), $entity);
+        $entity  = new Ingrediente();
+        $form = $this->createForm(new IngredienteType(), $entity);
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -93,7 +93,7 @@ class MenuController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('menu_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('ingrediente_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -103,22 +103,22 @@ class MenuController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Menu entity.
+     * Displays a form to edit an existing Ingrediente entity.
      *
-     * @Route("/{id}/edit", name="menu_edit")
+     * @Route("/{id}/edit", name="ingrediente_edit")
      * @Template()
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MenUSACHBaseBundle:Menu')->find($id);
+        $entity = $em->getRepository('MenUSACHBaseBundle:Ingrediente')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Menu entity.');
+            throw $this->createNotFoundException('Unable to find Ingrediente entity.');
         }
 
-        $editForm = $this->createForm(new MenuType(), $entity);
+        $editForm = $this->createForm(new IngredienteType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
@@ -129,31 +129,31 @@ class MenuController extends Controller
     }
 
     /**
-     * Edits an existing Menu entity.
+     * Edits an existing Ingrediente entity.
      *
-     * @Route("/{id}/update", name="menu_update")
+     * @Route("/{id}/update", name="ingrediente_update")
      * @Method("POST")
-     * @Template("MenUSACHBaseBundle:Menu:edit.html.twig")
+     * @Template("MenUSACHBaseBundle:Ingrediente:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MenUSACHBaseBundle:Menu')->find($id);
+        $entity = $em->getRepository('MenUSACHBaseBundle:Ingrediente')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Menu entity.');
+            throw $this->createNotFoundException('Unable to find Ingrediente entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new MenuType(), $entity);
+        $editForm = $this->createForm(new IngredienteType(), $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('menu_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('ingrediente_edit', array('id' => $id)));
         }
 
         return array(
@@ -164,9 +164,9 @@ class MenuController extends Controller
     }
 
     /**
-     * Deletes a Menu entity.
+     * Deletes a Ingrediente entity.
      *
-     * @Route("/{id}/delete", name="menu_delete")
+     * @Route("/{id}/delete", name="ingrediente_delete")
      * @Method("POST")
      */
     public function deleteAction(Request $request, $id)
@@ -176,17 +176,17 @@ class MenuController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('MenUSACHBaseBundle:Menu')->find($id);
+            $entity = $em->getRepository('MenUSACHBaseBundle:Ingrediente')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Menu entity.');
+                throw $this->createNotFoundException('Unable to find Ingrediente entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('menu'));
+        return $this->redirect($this->generateUrl('ingrediente'));
     }
 
     private function createDeleteForm($id)

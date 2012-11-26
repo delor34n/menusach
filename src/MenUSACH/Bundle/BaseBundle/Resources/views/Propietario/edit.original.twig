@@ -1,81 +1,90 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-<form class="form-horizontal" action="{{ path('men_usach_update_menu',
-{ 'id': menu.id }) }}"
-      method="post" {{ form_enctype(form) }}>
-    <legend>Edite los datos del menú</legend>
+<form class="form-horizontal" action="{{ path('propietario_edit', { 'id': entity.id }) }}"
+      method="post" {{ form_enctype(edit_form) }}>
+    <legend>Editar Propietario</legend>
     <div class="control-group">
         <div class="control-label">
-            {{ form_label(form.men_nombre) }}
+            {{ form_label(form.perNombre) }}
         </div>
         <div class="controls">
-            {{ form_widget(form.men_nombre) }}
+            {{ form_widget(form.perNombre) }}
             <span class="help-block">
-                {{ form_errors(form.men_nombre) }}
-            </span>
-        </div>
-            
-    </div>
-    <div class="control-group">
-        <div class="control-label">
-            {{ form_label(form.men_precio) }}
-        </div>
-        <div class="controls">
-            {{ form_widget(form.men_precio) }}
-            <span class="help-block">
-                {{ form_errors(form.men_precio) }}
+                {{ form_errors(form.perNombre) }}
             </span>
         </div>
     </div>
     <div class="control-group">
         <div class="control-label">
-            {{ form_label(form.men_frecuencia) }}
+            {{ form_label(form.per_apellido_paterno) }}
         </div>
         <div class="controls">
-            {{ form_widget(form.men_frecuencia) }}
+            {{ form_widget(form.per_apellido_paterno) }}
             <span class="help-block">
-                Ingrese la periodicidad del menú que venderá.
+                {{ form_errors(form.per_apellido_paterno) }}
             </span>
         </div>
-        {{ form_errors(form.men_frecuencia) }}
     </div>
-    <div class="control-group" id="control_div_1">
-        <div id="options_1">
-            <div class="control-label">
-                {{ form_label(form.men_fecha_inicio, 'Fecha de venta:') }}
-            </div>
+	<div class="control-group">
+        <div class="control-label">
+            {{ form_label(form.per_apellido_materno) }}
         </div>
-        <div id="options_2">
-            <div class="control-label">
-                {{ form_label(form.men_fecha_inicio, 'Fecha inicio:') }}
-            </div>
-        </div>
-        <div id="options_3">
-            <div class="controls">
-                {{ form_widget(form.men_fecha_inicio) }}
-                <span class="help-block">
-                    {{ form_errors(form.men_nombre) }}
-                </span>
-            </div>
+        <div class="controls">
+            {{ form_widget(form.per_apellido_materno) }}
+            <span class="help-block">
+                {{ form_errors(form.per_apellido_materno) }}
+            </span>
         </div>
     </div>
-    <div class="control-group" id="control_div_2">
-        <div id="options_4">
-            <div class="control-label">
-                {{ form_label(form.men_fecha_termino) }}
-            </div>
-            <div class="controls">
-                {{ form_widget(form.men_fecha_termino) }}
-                <span class="help-block">
-                    {{ form_errors(form.men_nombre) }}
-                </span>
-            </div>
+	<div class="control-group">
+        <div class="control-label">
+            {{ form_label(form.per_usuario) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(form.per_usuario) }}
+            <span class="help-block">
+                {{ form_errors(form.per_usuario) }}
+            </span>
         </div>
     </div>
+	<div class="control-group">
+        <div class="control-label">
+            {{ form_label(form.per_password) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(form.per_password) }}
+            <span class="help-block">
+                {{ form_errors(form.per_password) }}
+            </span>
+        </div>
+    </div>
+	<div class="control-group">
+        <div class="control-label">
+            {{ form_label(form.per_email) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(form.per_email) }}
+            <span class="help-block">
+                {{ form_errors(form.per_email) }}
+            </span>
+        </div>
+    </div>
+	<div class="control-group">
+        <div class="control-label">
+            {{ form_label(form.pro_fono) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(form.pro_fono) }}
+            <span class="help-block">
+                {{ form_errors(form.pro_fono) }}
+            </span>
+        </div>
+    </div>
+
     {{ form_rest(form) }}
     <div class="controls">
-        <input class="btn btn-primary" type="submit" value="Guardar cambios"/>
+        <input class="btn btn-primary" type="submit" value="Crear"/>
     </div>
     <script type="text/javascript">
     $('#control_div_1').hide();

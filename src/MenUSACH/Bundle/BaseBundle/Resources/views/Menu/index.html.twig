@@ -1,0 +1,47 @@
+<h1>Menu list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Men_nombre</th>
+            <th>Men_precio</th>
+            <th>Men_activo</th>
+            <th>Men_frecuencia</th>
+            <th>Men_fecha_inicio</th>
+            <th>Men_fecha_termino</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('menu_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.mennombre }}</td>
+            <td>{{ entity.menprecio }}</td>
+            <td>{{ entity.menactivo }}</td>
+            <td>{{ entity.menfrecuencia }}</td>
+            <td>{% if entity.menfechainicio %}{{ entity.menfechainicio|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if entity.menfechatermino %}{{ entity.menfechatermino|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('menu_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('menu_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('menu_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

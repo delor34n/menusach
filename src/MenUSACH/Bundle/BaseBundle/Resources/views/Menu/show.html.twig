@@ -1,0 +1,53 @@
+<h1>Menu</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Men_nombre</th>
+            <td>{{ entity.mennombre }}</td>
+        </tr>
+        <tr>
+            <th>Men_precio</th>
+            <td>{{ entity.menprecio }}</td>
+        </tr>
+        <tr>
+            <th>Men_activo</th>
+            <td>{{ entity.menactivo }}</td>
+        </tr>
+        <tr>
+            <th>Men_frecuencia</th>
+            <td>{{ entity.menfrecuencia }}</td>
+        </tr>
+        <tr>
+            <th>Men_fecha_inicio</th>
+            <td>{{ entity.menfechainicio|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Men_fecha_termino</th>
+            <td>{{ entity.menfechatermino|date('Y-m-d H:i:s') }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('menu') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('menu_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('menu_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

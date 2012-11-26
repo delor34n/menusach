@@ -1,0 +1,53 @@
+<h1>Cliente</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Per_nombre</th>
+            <td>{{ entity.pernombre }}</td>
+        </tr>
+        <tr>
+            <th>Per_apellido_paterno</th>
+            <td>{{ entity.perapellidopaterno }}</td>
+        </tr>
+        <tr>
+            <th>Per_apellido_materno</th>
+            <td>{{ entity.perapellidomaterno }}</td>
+        </tr>
+        <tr>
+            <th>Per_usuario</th>
+            <td>{{ entity.perusuario }}</td>
+        </tr>
+        <tr>
+            <th>Per_password</th>
+            <td>{{ entity.perpassword }}</td>
+        </tr>
+        <tr>
+            <th>Per_email</th>
+            <td>{{ entity.peremail }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('cliente') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('cliente_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('cliente_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

@@ -1,0 +1,41 @@
+<h1>Local</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Loc_nombre</th>
+            <td>{{ entity.locnombre }}</td>
+        </tr>
+        <tr>
+            <th>Loc_ubicacion</th>
+            <td>{{ entity.locubicacion }}</td>
+        </tr>
+        <tr>
+            <th>Loc_ranking</th>
+            <td>{{ entity.locranking }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('local') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('local_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('local_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

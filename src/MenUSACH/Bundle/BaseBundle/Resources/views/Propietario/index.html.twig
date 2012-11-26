@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<table class="table">
+    <caption><h1>Propietarios ingresados</h1></caption>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Nombre de Usuario</th>
+            <th>Password</th>
+            <th>E-mail</th>
+            <th>Fono</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entity in entities %}
+                <td>{{ entity.pernombre }}</td>
+                <td>{{ entity.perapellidopaterno }}</td>
+                <td>{{ entity.perapellidomaterno }}</td>
+                <td>{{ entity.perusuario }}</td>
+                <td>{{ entity.perpassword }}</td>
+                <td>{{ entity.peremail }}</td>
+                <td>{{ entity.profono }}</td>
+                <td><a class="btn btn-link" href="{{
+                    path('propietario_edit', { 'id': entity.id }) }}">
+                        {{ '.icon-edit Editar'|parse_icons }}</a></td>
+                <td><a class="btn btn-link" href="{{
+                    path('propietario_delete', { 'id': entity.id }) }}">
+                        {{ '.icon-remove Eliminar'|parse_icons }}</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+<li>
+<a href="{{ path('propietario_new') }}">
+Crear nuevo propietario
+</a>
+</li>
+</ul>
+{% endblock %}
