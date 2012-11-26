@@ -2,33 +2,71 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}MenUSACH - Tu comida a tiempo{% endblock %}</title>
+
         {% stylesheets '@MenUSACHBaseBundle/Resources/public/less/*' filter='less,?yui_css' %}
-    	<!--<link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}" />-->
+
+        <!-- Bootstrap CSS -->
         {% include 'BraincraftedBootstrapBundle::_stylesheets.html.twig' %}
         {% endstylesheets %}
-        
+
         {% javascripts '@MenUSACHBaseBundle/Resources/public/js/*' filter='yui_js' %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
-        
+
         {% endjavascripts %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
-        {% block body %}
-        <h1>h1 Heading</h1>
-        <h2>h2 Heading</h2>
-        <h3>h3 Heading</h3>
-        <h4>h4 Heading</h4>
-        <h5>h5 Heading</h5>
-        <h6>h6 Heading</h6>
-        {% endblock %}
-        {% block footer %}
-        {% endblock %}
-        
-        {% block javascripts %}
 
-        {% endblock %}
+    <body>
+    <div id="wrap">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="."><img title="Inicio" src="/menusach/web/bundles/braincraftedbootstrap/img/logo.png"></img></a>
+          <div class="nav-collapse collapse">
+            <ul class="nav nav-tabs" id="miMenu">
+              <li class="active"><a href="#inicio" data-toggle="tab">Inicio</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    <div id="content">
+		<div class="container">
+			<div class="tab-content">
+				{% block body %}
+				<div class="tab-pane active" id="inicio">
+					<div class="hero-unit">
+						<h2>MenUSACH</h2>
+						</br>
+						<p>MenUSACH is da best.</p>
+					</div> <!-- hero-unit -->
+				</div> <!-- tab-pane active -->
+		      		{% endblock %}
+			</div> <!-- tab-content -->
+       		</div> <!-- container -->
+	</div> <!-- content -->
+	<div id="push"></div>
+</div><!-- wrap -->
+
+<div id="footer">
+	<div class="container">
+		<div id="contFooter" class="container">
+			<p id="leftFooter" class="muted">Proyecto MenUSACH<br />Desarrollo de Software II<br /> Licenciatura en Ciencia de la Computación</p>
+			<img id="logoFooter" src="/menusach/web/bundles/braincraftedbootstrap/img/usach.png" alt="ul" />
+			<p id="rightFooter" class="muted credit">Departamento de Matemática y Ciencia de la Computación<br />
+			Facultad de Ciencia<br />
+			Universidad de Santiago de Chile</p>
+		</div><!-- contFooter -->
+	</div><!-- container -->
+</div><!-- footer -->
+
+        <!-- Bootstrap JS -->
         {% include 'BraincraftedBootstrapBundle::_javascripts.html.twig' %}
     </body>
 </html>
