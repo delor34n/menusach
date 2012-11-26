@@ -37,10 +37,7 @@ class Menu
      * @var integer $men_precio
      *
      * @ORM\Column(name="men_precio", type="integer")
-     * @Assert\Type(
-     *  type="integer",
-     *  message="El valor {{ value }} no es un valor entero válido."
-     * )
+     *
      */
     private $men_precio;
 

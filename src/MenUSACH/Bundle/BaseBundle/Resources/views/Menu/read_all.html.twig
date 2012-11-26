@@ -2,7 +2,7 @@
 
 {% block body %}
 <table class="table">
-    <caption>Menús disponibles</caption>
+    <caption><h1>Menús disponibles</h1></caption>
     <thead>
         <tr>
             <th>Nombre</th>
@@ -10,7 +10,6 @@
             <th>Tipo</th>
             <th>Fecha Inicio</th>
             <th>Fecha Término</th>
-            <th>Modificar</th>
         </tr>
     </thead>
     <tbody>
@@ -30,11 +29,19 @@
                         {{ menu.menFechaTermino|date('d-m-Y') }}
                     {% endif %}
                 </td>
-                <td><a class="btn btn-link" href="{{ path('men_usach_update_menu', { 'id': menu.id }) }}">DotA</a></td>
+                <td><a class="btn btn-link" href="{{
+                    path('men_usach_update_menu', { 'id': menu.id }) }}">
+                        {{ '.icon-edit Editar'|parse_icons }}</a></td>
+                <td><a class="btn btn-link" href="{{
+                    path('men_usach_delete_menu', { 'id': menu.id }) }}">
+                        {{ '.icon-remove Eliminar'|parse_icons }}</a></td>
             </tr>
             {% else %}
             {% endif %} 
         {% endfor %}
     </tbody>
 </table>
+<script type="text/javascript">
+    $('#myModal').modal(options)
+</script>
 {% endblock %}

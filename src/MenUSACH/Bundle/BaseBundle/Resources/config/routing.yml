@@ -3,7 +3,7 @@ men_usach_base_homepage:
     defaults: { _controller: MenUSACHBaseBundle:Default:index }
     
 men_usach_read_all_menu:
-    pattern: /menu/
+    pattern: /
     defaults: { _controller:MenUSACHBaseBundle:Menu:index }
 
 men_usach_create_menu:
@@ -13,3 +13,7 @@ men_usach_create_menu:
 men_usach_update_menu:
     pattern: /menu/editar/{id}
     defaults: { _controller:MenUSACHBaseBundle:Menu:update }
+    
+men_usach_delete_menu:
+    pattern: /menu/borrar/{id}
+    defaults: { _controller:MenUSACHBaseBundle:Menu:delete }

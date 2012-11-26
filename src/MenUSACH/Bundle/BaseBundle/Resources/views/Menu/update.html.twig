@@ -1,7 +1,8 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-<form class="form-horizontal" action="{{ path('men_usach_create_menu') }}"
+<form class="form-horizontal" action="{{ path('men_usach_update_menu',
+{ 'id': menu.id }) }}"
       method="post" {{ form_enctype(form) }}>
     <legend>Edite los datos del menú</legend>
     <div class="control-group">
@@ -9,9 +10,12 @@
             {{ form_label(form.men_nombre) }}
         </div>
         <div class="controls">
-            {{ form_widget(form.men_nombre, 'attr' => ) }}
+            {{ form_widget(form.men_nombre) }}
+            <span class="help-block">
+                {{ form_errors(form.men_nombre) }}
+            </span>
         </div>
-        {{ form_errors(form.men_nombre) }}
+            
     </div>
     <div class="control-group">
         <div class="control-label">
@@ -19,8 +23,10 @@
         </div>
         <div class="controls">
             {{ form_widget(form.men_precio) }}
+            <span class="help-block">
+                {{ form_errors(form.men_precio) }}
+            </span>
         </div>
-        {{ form_errors(form.men_precio) }}
     </div>
     <div class="control-group">
         <div class="control-label">
@@ -48,8 +54,10 @@
         <div id="options_3">
             <div class="controls">
                 {{ form_widget(form.men_fecha_inicio) }}
+                <span class="help-block">
+                    {{ form_errors(form.men_nombre) }}
+                </span>
             </div>
-            {{ form_errors(form.men_fecha_inicio) }}
         </div>
     </div>
     <div class="control-group" id="control_div_2">
@@ -59,8 +67,10 @@
             </div>
             <div class="controls">
                 {{ form_widget(form.men_fecha_termino) }}
+                <span class="help-block">
+                    {{ form_errors(form.men_nombre) }}
+                </span>
             </div>
-            {{ form_errors(form.men_fecha_termino) }}
         </div>
     </div>
     {{ form_rest(form) }}

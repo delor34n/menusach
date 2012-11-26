@@ -10,8 +10,10 @@
         </div>
         <div class="controls">
             {{ form_widget(form.men_nombre) }}
+            <span class="help-block">
+                {{ form_errors(form.men_nombre) }}
+            </span>
         </div>
-        {{ form_errors(form.men_nombre) }}
     </div>
     <div class="control-group">
         <div class="control-label">
@@ -19,8 +21,10 @@
         </div>
         <div class="controls">
             {{ form_widget(form.men_precio) }}
+            <span class="help-block">
+                {{ form_errors(form.men_precio) }}
+            </span>
         </div>
-        {{ form_errors(form.men_precio) }}
     </div>
     <div class="control-group">
         <div class="control-label">
