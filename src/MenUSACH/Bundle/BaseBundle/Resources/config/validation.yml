@@ -1,8 +1,0 @@
-MenUSACH\BaseBundle\Entity\Menu:
-  properties:
-    men_nombre:
-      - NotBlank: ~
-    men_precio:
-      - NotBlank: ~
-    men_frecuencia:
-      - NotBlanck: ~

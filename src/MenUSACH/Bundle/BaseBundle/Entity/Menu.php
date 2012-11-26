@@ -3,6 +3,7 @@
 namespace MenUSACH\Bundle\BaseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * MenUSACH\Bundle\BaseBundle\Entity\Menu
@@ -25,6 +26,10 @@ class Menu
      * @var string $men_nombre
      *
      * @ORM\Column(name="men_nombre", type="string", length=30)
+     * @Assert\Type(
+     *  type="string",
+     *  message="El valor {{ value }} no es un valor string válido."
+     * )
      */
     private $men_nombre;
 
@@ -32,6 +37,10 @@ class Menu
      * @var integer $men_precio
      *
      * @ORM\Column(name="men_precio", type="integer")
+     * @Assert\Type(
+     *  type="integer",
+     *  message="El valor {{ value }} no es un valor entero válido."
+     * )
      */
     private $men_precio;
 
@@ -52,14 +61,14 @@ class Menu
     /**
      * @var \DateTime $men_fecha_inicio
      *
-     * @ORM\Column(name="men_fecha_inicio", type="date")
+     * @ORM\Column(name="men_fecha_inicio", type="date", nullable=true)
      */
     private $men_fecha_inicio;
         
     /**
      * @var \DateTime $men_fecha_termino
      *
-     * @ORM\Column(name="men_fecha_termino", type="date")
+     * @ORM\Column(name="men_fecha_termino", type="date", nullable=true)
      */
     private $men_fecha_termino;
 
