@@ -1,0 +1,10 @@
+{% extends '::base.html.twig' %}
+{% block MenuRol %}
+<li><a href="{{ path('ClienteMenUSACH') }}"> Cliente</a></li>
+<li><a href="{{ path('PropietarioMenUSACH') }}">Propietario</a></li>
+<li><a href="{{ path('IngredienteMenUSACH') }}">Ingrediente</a></li>
+<li><a href="{{ path('LocalMenUSACH') }}">Local</a></li>
+{% endblock %}
+{% block titulo %}
+<h2>Panel de Administración MenUSACH</h2>
+{% endblock %}

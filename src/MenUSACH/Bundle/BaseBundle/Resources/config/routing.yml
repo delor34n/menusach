@@ -2,3 +2,35 @@ MenUSACHAnnotations:
     resource: "@MenUSACHBaseBundle/Controller/"
     prefix: /
     type: annotation
+
+IndexMenUSACH:
+    pattern: /
+    defaults: { _controller: MenUSACHBaseBundle:Default:index}
+
+AdminMenUSACH:
+    pattern: /admin
+    defaults: { _controller: MenUSACHBaseBundle:Admin:index}
+
+PropMenUSACH:
+    pattern: /prop/
+    defaults: { _controller: MenUSACHBaseBundle:Prop:index}
+
+ClienteMenUSACH:
+    pattern: /admin/cliente
+    defaults: { _controller: MenUSACHBaseBundle:Cliente:index}
+
+PropietarioMenUSACH:
+    pattern: /admin/propietario
+    defaults: { _controller: MenUSACHBaseBundle:Propietario:index}
+
+IngredienteMenUSACH:
+    pattern: /admin/ingrediente
+    defaults: { _controller: MenUSACHBaseBundle:Ingrediente:index}
+
+LocalMenUSACH:
+    pattern: /admin/local
+    defaults: { _controller: MenUSACHBaseBundle:Local:index}
+
+MenuMenUSACH:
+    pattern: /prop/menu
+    defaults: { _controller: MenUSACHBaseBundle:Menu:index}

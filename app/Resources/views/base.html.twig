@@ -35,7 +35,9 @@
           <a class="brand" href="."><img title="Inicio" src="/menusach/web/bundles/braincraftedbootstrap/img/logo.png"></img></a>
           <div class="nav-collapse collapse">
             <ul class="nav nav-tabs" id="miMenu">
-              <li class="active"><a href="#inicio" data-toggle="tab">Inicio</a></li>
+            	<li class="active"><a href="#inicio" data-toggle="tab">Inicio</a></li>
+				{% block MenuRol %}
+				{% endblock %}
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -47,9 +49,11 @@
 				{% block body %}
 				<div class="tab-pane active" id="inicio">
 					<div class="hero-unit">
+						{% block titulo %}
 						<h2>MenUSACH</h2>
+						{% endblock %}
+						<h4><i>Tu comida a tiempo</i></h4>
 						</br>
-						<p>MenUSACH is da best.</p>
 					</div> <!-- hero-unit -->
 				</div> <!-- tab-pane active -->
 		      		{% endblock %}
