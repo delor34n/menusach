@@ -24,6 +24,13 @@ class Local
     /**
      * @var string
      *
+     * @ORM\Column(name="loc_nombre", type="string", length=30)
+     */
+    private $loc_nombre;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="loc_ubicacion", type="string", length=30)
      */
     private $loc_ubicacion;
@@ -163,5 +170,28 @@ class Local
     public function getPropietario()
     {
         return $this->propietario;
+    }
+
+    /**
+     * Set loc_nombre
+     *
+     * @param string $locNombre
+     * @return Local
+     */
+    public function setLocNombre($locNombre)
+    {
+        $this->loc_nombre = $locNombre;
+    
+        return $this;
+    }
+
+    /**
+     * Get loc_nombre
+     *
+     * @return string 
+     */
+    public function getLocNombre()
+    {
+        return $this->loc_nombre;
     }
 }

@@ -1,0 +1,38 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<form class="form-horizontal" action="{{ path('local_usach_create') }}"
+      method="post" {{ form_enctype(form) }}>
+
+    <legend>Ingrese datos del Local</legend>
+
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(form.loc_nombre) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(form.loc_nombre) }}
+            <span class="help-block">
+                {{ form_errors(form.loc_nombre) }}
+            </span>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(form.loc_ubicacion) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(form.loc_ubicacion) }}
+            <span class="help-block">
+                {{ form_errors(form.loc_ubicacion) }}
+            </span>
+        </div>
+    </div>
+    {{ form_rest(form) }}
+    <div class="controls">
+        <input class="btn btn-primary" type="submit" value="Crear"/>
+    </div>
+</form>
+{% endblock %}
