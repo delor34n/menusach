@@ -21,7 +21,7 @@ class LocalType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'MenUSACH\Bundle\BaseBundle\Entity\Local'
+            'data_class' => NULL
         ));
     }
 

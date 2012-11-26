@@ -66,7 +66,10 @@ class LocalController extends Controller
      */
     public function newAction()
     {
-        $entity = new Local();
+        $entity = $this->getDoctrine()->getEntityManager()
+                ->getRepository('MenUSACHBaseBundle:Local')
+                ->findAll();
+        
         $form   = $this->createForm(new LocalType(), $entity);
 
         return array(

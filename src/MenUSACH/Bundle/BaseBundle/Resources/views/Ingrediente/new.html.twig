@@ -1,6 +1,9 @@
-<h1>Ingrediente creation</h1>
+{% extends '::base.html.twig' %}
 
-<form action="{{ path('ingrediente_create') }}" method="post" {{ form_enctype(form) }}>
+{% block body %}
+<form class="form-horizontal" action="{{ path('ingrediente_create') }}"
+      method="post" {{ form_enctype(form) }}>
+    <legend>Crear nuevo Ingrediente</legend>
     {{ form_widget(form) }}
     <p>
         <button type="submit">Create</button>
@@ -10,7 +13,8 @@
 <ul class="record_actions">
     <li>
         <a href="{{ path('ingrediente') }}">
-            Back to the list
+            Volver a la lista de ingredientes
         </a>
     </li>
 </ul>
+{% endblock %}
