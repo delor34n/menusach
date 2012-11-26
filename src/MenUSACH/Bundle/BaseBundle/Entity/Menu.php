@@ -3,6 +3,7 @@
 namespace MenUSACH\Bundle\BaseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * MenUSACH\Bundle\BaseBundle\Entity\Menu
@@ -25,6 +26,10 @@ class Menu
      * @var string $men_nombre
      *
      * @ORM\Column(name="men_nombre", type="string", length=30)
+     * @Assert\Type(
+     *  type="string",
+     *  message="El valor {{ value }} no es un valor string válido."
+     * )
      */
     private $men_nombre;
 
@@ -32,6 +37,7 @@ class Menu
      * @var integer $men_precio
      *
      * @ORM\Column(name="men_precio", type="integer")
+     *
      */
     private $men_precio;
 
@@ -43,19 +49,25 @@ class Menu
     private $men_activo;
 
     /**
-     * @var boolean $men_frecuencia
+     * @var integer $men_frecuencia
      *
-     * @ORM\Column(name="men_frecuencia", type="boolean")
+     * @ORM\Column(name="men_frecuencia", type="integer")
      */
     private $men_frecuencia;
-
+    
     /**
-     * @var \DateTime $men_fechain
+     * @var \DateTime $men_fecha_inicio
      *
-     * @ORM\Column(name="men_fechain", type="date")
+     * @ORM\Column(name="men_fecha_inicio", type="date", nullable=true)
      */
-    private $men_fechain;
-
+    private $men_fecha_inicio;
+        
+    /**
+     * @var \DateTime $men_fecha_termino
+     *
+     * @ORM\Column(name="men_fecha_termino", type="date", nullable=true)
+     */
+    private $men_fecha_termino;
 
     /**
      * @ORM\ManyToOne(targetEntity="Local", inversedBy="menus")
@@ -80,7 +92,7 @@ class Menu
     {
         return $this->id;
     }
-
+ 
     /**
      * Set men_nombre
      *
@@ -257,5 +269,51 @@ class Menu
     public function getIngredientes()
     {
         return $this->ingredientes;
+    }
+
+    /**
+     * Set men_fecha_inicio
+     *
+     * @param \DateTime $menFechaInicio
+     * @return Menu
+     */
+    public function setMenFechaInicio($menFechaInicio)
+    {
+        $this->men_fecha_inicio = $menFechaInicio;
+    
+        return $this;
+    }
+
+    /**
+     * Get men_fecha_inicio
+     *
+     * @return \DateTime 
+     */
+    public function getMenFechaInicio()
+    {
+        return $this->men_fecha_inicio;
+    }
+
+    /**
+     * Set men_fecha_termino
+     *
+     * @param \DateTime $menFechaTermino
+     * @return Menu
+     */
+    public function setMenFechaTermino($menFechaTermino)
+    {
+        $this->men_fecha_termino = $menFechaTermino;
+    
+        return $this;
+    }
+
+    /**
+     * Get men_fecha_termino
+     *
+     * @return \DateTime 
+     */
+    public function getMenFechaTermino()
+    {
+        return $this->men_fecha_termino;
     }
 }

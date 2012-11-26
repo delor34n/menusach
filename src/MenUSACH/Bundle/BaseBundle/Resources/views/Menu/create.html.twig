@@ -1,0 +1,118 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<form class="form-horizontal" action="{{ path('men_usach_create_menu') }}"
+      method="post" {{ form_enctype(form) }}>
+    <legend>Ingrese datos del menú</legend>
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(form.men_nombre) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(form.men_nombre) }}
+            <span class="help-block">
+                {{ form_errors(form.men_nombre) }}
+            </span>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(form.men_precio) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(form.men_precio) }}
+            <span class="help-block">
+                {{ form_errors(form.men_precio) }}
+            </span>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(form.men_frecuencia) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(form.men_frecuencia) }}
+            <span class="help-block">
+                Ingrese la periodicidad del menú que venderá.
+            </span>
+        </div>
+        {{ form_errors(form.men_frecuencia) }}
+    </div>
+    <div class="control-group" id="control_div_1">
+        <div id="options_1">
+            <div class="control-label">
+                {{ form_label(form.men_fecha_inicio, 'Fecha de venta:') }}
+            </div>
+        </div>
+        <div id="options_2">
+            <div class="control-label">
+                {{ form_label(form.men_fecha_inicio, 'Fecha inicio:') }}
+            </div>
+        </div>
+        <div id="options_3">
+            <div class="controls">
+                {{ form_widget(form.men_fecha_inicio) }}
+            </div>
+            {{ form_errors(form.men_fecha_inicio) }}
+        </div>
+    </div>
+    <div class="control-group" id="control_div_2">
+        <div id="options_4">
+            <div class="control-label">
+                {{ form_label(form.men_fecha_termino) }}
+            </div>
+            <div class="controls">
+                {{ form_widget(form.men_fecha_termino) }}
+            </div>
+            {{ form_errors(form.men_fecha_termino) }}
+        </div>
+    </div>
+    {{ form_rest(form) }}
+    <div class="controls">
+        <input class="btn btn-primary" type="submit" value="Crear"/>
+    </div>
+    <script type="text/javascript">
+    $('#control_div_1').hide();
+    $('#control_div_2').hide();
+    $('#options_1').hide();
+    $('#options_2').hide();
+    $('#options_3').hide();
+    $('#options_4').hide();
+    $(document).ready(function(){
+        var clicknum = 0;
+        $("#menu_form_men_frecuencia").click(function(){
+            clicknum++;
+            if(clicknum == 2){
+                if ($(this).val() == 0) {
+                    $('#options_1').slideUp();
+                    $('#options_2').slideUp();
+                    $('#options_3').slideUp();
+                    $('#options_4').slideUp();
+                    $('#control_div_1').slideUp();
+                    $('#control_div_2').slideUp();
+                }
+                if ($(this).val() == 1) {
+                    $('#options_2').slideUp();
+                    $('#options_4').slideUp();
+                    $('#control_div_2').slideUp();
+                    $('#options_1').slideDown();
+                    $('#options_3').slideDown();
+                    $('#control_div_1').slideDown();
+                    
+                }
+                if ($(this).val() == 2) {
+                    $('#options_1').slideUp();
+                    $('#options_2').slideDown();
+                    $('#options_3').slideDown();
+                    $('#options_4').slideDown();
+                    $('#control_div_1').slideDown();
+                    $('#control_div_2').slideDown();
+                }
+
+                clicknum = 0;
+            }
+        });
+    });
+    </script>
+</form>
+{% endblock %}
