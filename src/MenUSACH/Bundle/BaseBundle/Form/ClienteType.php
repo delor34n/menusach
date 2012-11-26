@@ -11,12 +11,54 @@ class ClienteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('per_nombre')
-            ->add('per_apellido_paterno')
-            ->add('per_apellido_materno')
-            ->add('per_usuario')
-            ->add('per_password')
-            ->add('per_email')
+            ->add('per_nombre', 'text', array(
+                    'label' => 'Nombre',
+                    'attr' => array(
+                            'class' => 'span3',
+                            'placeholder' => 'Nombre'
+                    ),
+                    'required' => true
+            ))
+            ->add('per_apellido_paterno', 'text', array(
+				'label' => 'Apellido Paterno',
+				'attr' => array(
+					'class' => 'span3',
+					'placeholder' => 'Apellido Paterno'
+				),
+				'required' => true
+			))
+            ->add('per_apellido_materno', 'text', array(
+				'label' => 'Apellido Materno',
+				'attr' => array(
+					'class' => 'span3',
+					'placeholder' => 'Apellido Materno'
+				),
+				'required' => true
+			))
+            ->add('per_usuario', 'text', array(
+				'label' => 'Usuario',
+				'attr' => array(
+					'class' => 'span3',
+					'placeholder' => 'Usuario'
+				),
+				'required' => true
+			))
+            ->add('per_password', 'text', array(
+				'label' => 'Password',
+				'attr' => array(
+					'class' => 'span3',
+					'placeholder' => 'Password'
+				),
+				'required' => true
+			))
+            ->add('per_email', 'text', array(
+				'label' => 'Email',
+				'attr' => array(
+					'class' => 'span3',
+					'placeholder' => 'Email'
+				),
+				'required' => true
+                        ))
         ;
     }
 

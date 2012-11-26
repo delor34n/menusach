@@ -11,14 +11,14 @@ class PropietarioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-			->add('per_nombre', 'text', array(
-				'label' => 'Nombre',
-				'attr' => array(
-					'class' => 'span3',
-					'placeholder' => 'Nombre'
-				),
-				'required' => true
-			))
+            ->add('per_nombre', 'text', array(
+                    'label' => 'Nombre',
+                    'attr' => array(
+                            'class' => 'span3',
+                            'placeholder' => 'Nombre'
+                    ),
+                    'required' => true
+            ))
             ->add('per_apellido_paterno', 'text', array(
 				'label' => 'Apellido Paterno',
 				'attr' => array(
