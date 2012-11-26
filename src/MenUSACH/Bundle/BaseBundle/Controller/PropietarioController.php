@@ -170,11 +170,11 @@ class PropietarioController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
-       $em = $this->getDoctrine()->getManager();
-       $entity = $em->getRepository('MenUSACHBaseBundle:Propietario')->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('MenUSACHBaseBundle:Propietario')->find($id);
 
-       if (!$entity) {
-           throw $this->createNotFoundException('Unable to find Propietario entity.');
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Propietario entity.');
         }
 
         $em->remove($entity);
