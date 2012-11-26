@@ -1,16 +1,86 @@
-<h1>Cliente creation</h1>
+{% extends '::base.html.twig' %}
 
-<form action="{{ path('cliente_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-    <p>
-        <button type="submit">Create</button>
-    </p>
+{% block body %}
+<form class="form-horizontal" action="{{ path('cliente_create') }}"
+      method="post" {{ form_enctype(form) }}>
+    <legend>Crear nuevo Cliente</legend>
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(form.per_nombre) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(form.per_nombre) }}
+            <span class="help-block">
+                {{ form_errors(form.per_nombre) }}
+            </span>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(form.per_apellido_paterno) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(form.per_apellido_paterno) }}
+            <span class="help-block">
+                {{ form_errors(form.per_apellido_paterno) }}
+            </span>
+        </div>
+    </div>
+	<div class="control-group">
+        <div class="control-label">
+            {{ form_label(form.per_apellido_materno) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(form.per_apellido_materno) }}
+            <span class="help-block">
+                {{ form_errors(form.per_apellido_materno) }}
+            </span>
+        </div>
+    </div>
+	<div class="control-group">
+        <div class="control-label">
+            {{ form_label(form.per_usuario) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(form.per_usuario) }}
+            <span class="help-block">
+                {{ form_errors(form.per_usuario) }}
+            </span>
+        </div>
+    </div>
+	<div class="control-group">
+        <div class="control-label">
+            {{ form_label(form.per_password) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(form.per_password) }}
+            <span class="help-block">
+                {{ form_errors(form.per_password) }}
+            </span>
+        </div>
+    </div>
+	<div class="control-group">
+        <div class="control-label">
+            {{ form_label(form.per_email) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(form.per_email) }}
+            <span class="help-block">
+                {{ form_errors(form.per_email) }}
+            </span>
+        </div>
+    </div>
+    {{ form_rest(form) }}
+    <div class="controls">
+        <input class="btn btn-primary" type="submit" value="Crear"/>
+    </div>
 </form>
 
 <ul class="record_actions">
     <li>
         <a href="{{ path('cliente') }}">
-            Back to the list
+            Volver a la lista de clientes
         </a>
     </li>
 </ul>
+{% endblock %}

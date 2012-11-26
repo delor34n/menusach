@@ -10,16 +10,49 @@ class MenuType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('men_nombre')
-            ->add('men_precio')
-            ->add('men_activo')
-            ->add('men_frecuencia')
-            ->add('men_fecha_inicio')
-            ->add('men_fecha_termino')
-            ->add('local')
-            ->add('ingredientes')
-        ;
+        $builder->add('men_nombre', 'text' , array(
+            'label' => 'Nombre:',
+            'attr' => array(
+                'class' => 'span3',
+                'placeholder' => 'Nombre'
+            ),
+            'required' => true
+            ));
+        $builder->add('men_precio', 'number', array(
+            'label' => 'Precio:',
+            'attr' => array(
+                'prepend_input' => '$',
+                'class' => 'span2',
+                'placeholder' => 'Precio'
+            ),
+            'required' => true
+        ));
+        $builder->add('men_frecuencia', 'choice', array(
+            'label' => 'Frecuencia:',
+            'choices' => array('0' => 'Permanente', '1' => 'Día fijo',
+                '2' => 'Intervalo'),
+            'attr' => array(
+                'class' => 'span3'
+            ),
+            'required' => true
+        ));
+        $builder->add('men_fecha_inicio', 'date', array(
+            'widget' => 'single_text',
+            'format' => 'MM/dd/yyyy',
+            'attr' => array(
+                'class' => 'span3'
+            ),
+            'required' => false
+        ));
+        $builder->add('men_fecha_termino', 'date', array(
+            'label' => 'Fecha término:',
+            'widget' => 'single_text',
+            'format' => 'MM/dd/yyyy',
+            'attr' => array(
+                'class' => 'span3'
+            ),
+            'required' => false
+        ));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

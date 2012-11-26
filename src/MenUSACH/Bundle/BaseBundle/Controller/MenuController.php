@@ -89,11 +89,12 @@ class MenuController extends Controller
         $form->bind($request);
 
         if ($form->isValid()) {
+            $entity->setMenActivo(TRUE);
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('menu_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('menu', array('id' => $entity->getId())));
         }
 
         return array(
@@ -153,7 +154,7 @@ class MenuController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('menu_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('menu'));
         }
 
         return array(
