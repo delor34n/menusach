@@ -38,9 +38,10 @@ MenuMenUSACH:
 login:
     pattern: /login
     defaults: { _controller: MenUSACHBaseBundle:Security:login }
-   
+
 login_check:
     pattern: /login_check
-    
+
 user_logout:
     pattern: /logout
+    defaults: { _controller: MenUSACHBaseBundle:Security:logout }

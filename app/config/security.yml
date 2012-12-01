@@ -20,14 +20,18 @@ security:
         anonymous: ~
       login_check: { form_login: true }
       secured_area:
+
         pattern: ^/admin
         security: true
+
         form_login:
           login_path: /login
           check_path: /login_check
+
         logout:
-          path: /logout
-          target: /
+          path: user_logout
+          target: IndexMenUSACH
+
         anonymous: ~
 #          success_handler: authentication_handler
     access_control:

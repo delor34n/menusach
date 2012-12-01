@@ -24,12 +24,13 @@ class SecurityController extends Controller
             'last_username' => $session->get(SecurityContext::LAST_USERNAME),
             'error'         => $error,
         ));
+   }
+
+    public function logoutAction()
+    {
+        $this->get("request")->getSession()->invalidate();
+        $this->get("security.context")->setToken(null); 
+        $this->get("session")->setFlash('message.success', true);
+        return $this->redirect($this->generateUrl('IndexMenUSACH'));
     }
-//    public function logoutAction()
-//    {
-//        $this->get("request")->getSession()->invalidate();
-//        $this->get("security.context")->setToken(null); 
-//        $this->get("session")->setFlash('message.success', true);
-//        return new RedirectResponse($this->generateUrl('/prop'));
-//    }
 }
