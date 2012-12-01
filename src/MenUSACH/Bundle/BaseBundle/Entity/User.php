@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * MenUSACH\Bundle\BaseBundle\Entity\User
  *
  * @ORM\Table(name="menusach_users")
- * @ORM\Entity(repositoryClass="MenUSACH\Bundle\BaseBundle\Entity\UserRepository")
+ * @ORM\Entity()
  */
 class User implements UserInterface
 {
