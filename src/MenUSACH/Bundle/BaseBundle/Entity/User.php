@@ -24,7 +24,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=25, unique=true)
      */
     private $username;
-
+    
     /**
      * @ORM\Column(type="string", length=32)
      */
