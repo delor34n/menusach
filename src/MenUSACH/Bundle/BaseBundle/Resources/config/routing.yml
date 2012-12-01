@@ -34,3 +34,13 @@ LocalMenUSACH:
 MenuMenUSACH:
     pattern: /prop/menu
     defaults: { _controller: MenUSACHBaseBundle:Menu:index}
+
+login:
+    pattern: /login
+    defaults: { _controller: MenUSACHBaseBundle:Security:login }
+   
+login_check:
+    pattern: /login_check
+    
+logout:
+    pattern: /logout
