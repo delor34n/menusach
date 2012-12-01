@@ -65,11 +65,3 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
-
-#knp_menu:
-#    twig:
-#        template: "BraincraftedBootstrapBundle:Menu:menu.html.twig"
-
-#toa_twitter_bootstrap:
-#    template: "ToaTwitterBootstrapBundle::layout.html.twig"
-#    block: "content"
