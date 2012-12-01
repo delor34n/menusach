@@ -12,7 +12,6 @@
         {% javascripts '@MenUSACHBaseBundle/Resources/public/js/*' filter='yui_js' %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
-        <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
         <script>
         $(function() {
             $( "#menusach_bundle_basebundle_menutype_men_fecha_inicio" ).datepicker();
@@ -32,7 +31,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="."><img title="Inicio" src="/menusach/web/bundles/braincraftedbootstrap/img/logo.png"></img></a>
+          <a class="brand" href="."><img title="Inicio" src="{{ asset('bundles/menusachbase/img/logo.png') }}"></img></a>
           <div class="nav-collapse collapse">
             <ul class="nav nav-tabs" id="miMenu">
             	<li class="active"><a href="#inicio" data-toggle="tab">Inicio</a></li>
@@ -67,7 +66,7 @@
 	<div class="container">
 		<div id="contFooter" class="container">
 			<p id="leftFooter" class="muted">Proyecto MenUSACH<br />Desarrollo de Software II<br /> Licenciatura en Ciencia de la Computación</p>
-			<img id="logoFooter" src="/menusach/web/bundles/braincraftedbootstrap/img/usach.png" alt="ul" />
+			<img id="logoFooter" src="{{ asset('bundles/menusachbase/img/usach.png') }}" alt="ul" />
 			<p id="rightFooter" class="muted credit">Departamento de Matemática y Ciencia de la Computación<br />
 			Facultad de Ciencia<br />
 			Universidad de Santiago de Chile</p>
