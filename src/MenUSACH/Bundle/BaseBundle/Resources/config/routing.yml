@@ -34,9 +34,19 @@ LocalMenUSACH:
 MenuMenUSACH:
     pattern: /prop/menu
     defaults: { _controller: MenUSACHBaseBundle:Menu:index}
-    
+
 ContactoMenUSACH:
     pattern: /prop/contacto
     defaults: { _controller: MenUSACHBaseBundle:Contacto:index}
     requirements:
         _method:  GET|POST
+login:
+    pattern: /login
+    defaults: { _controller: MenUSACHBaseBundle:Security:login }
+
+login_check:
+    pattern: /login_check
+
+user_logout:
+    pattern: /logout
+    defaults: { _controller: MenUSACHBaseBundle:Security:logout }

@@ -1,6 +1,4 @@
 <?php
-
-// src/Acme/SecurityBundle/Controller/SecurityController.php;
 namespace MenUSACH\Bundle\BaseBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -13,23 +11,25 @@ class SecurityController extends Controller
         $request = $this->getRequest();
         $session = $request->getSession();
 
-        // get the login error if there is one
+        // obtiene el error de inicio de sesión si lo hay
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
-            $error = $request->attributes->get(
-                SecurityContext::AUTHENTICATION_ERROR
-            );
+            $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
         } else {
             $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
             $session->remove(SecurityContext::AUTHENTICATION_ERROR);
         }
+        return $this->render('MenUSACHBaseBundle:Security:login.html.twig', array(
+            // el último nombre de usuario ingresado por el usuario
+            'last_username' => $session->get(SecurityContext::LAST_USERNAME),
+            'error'         => $error,
+        ));
+   }
 
-        return $this->render(
-            'MenUSACHBaseBundle:Security:login.html.twig',
-            array(
-                // last username entered by the user
-                'last_username' => $session->get(SecurityContext::LAST_USERNAME),
-                'error'         => $error,
-            )
-        );
+    public function logoutAction()
+    {
+        $this->get("request")->getSession()->invalidate();
+        $this->get("security.context")->setToken(null); 
+        $this->get("session")->setFlash('message.success', true);
+        return $this->redirect($this->generateUrl('IndexMenUSACH'));
     }
 }
