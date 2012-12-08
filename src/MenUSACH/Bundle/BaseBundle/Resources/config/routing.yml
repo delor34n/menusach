@@ -34,3 +34,9 @@ LocalMenUSACH:
 MenuMenUSACH:
     pattern: /prop/menu
     defaults: { _controller: MenUSACHBaseBundle:Menu:index}
+    
+ContactoMenUSACH:
+    pattern: /prop/contacto
+    defaults: { _controller: MenUSACHBaseBundle:Contacto:index}
+    requirements:
+        _method:  GET|POST
