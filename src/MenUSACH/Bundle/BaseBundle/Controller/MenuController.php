@@ -89,12 +89,11 @@ class MenuController extends Controller
         $form->bind($request);
 
         if ($form->isValid()) {
-            $entity->setMenActivo(TRUE);
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('menu', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('menu_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -154,7 +153,7 @@ class MenuController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('menu'));
+            return $this->redirect($this->generateUrl('menu_edit', array('id' => $id)));
         }
 
         return array(
@@ -168,18 +167,24 @@ class MenuController extends Controller
      * Deletes a Menu entity.
      *
      * @Route("/{id}/delete", name="menu_delete")
+     * @Method("POST")
      */
     public function deleteAction(Request $request, $id)
     {
-        $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('MenUSACHBaseBundle:Menu')->find($id);
+        $form = $this->createDeleteForm($id);
+        $form->bind($request);
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Menú entity.');
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $entity = $em->getRepository('MenUSACHBaseBundle:Menu')->find($id);
+
+            if (!$entity) {
+                throw $this->createNotFoundException('Unable to find Menu entity.');
+            }
+
+            $em->remove($entity);
+            $em->flush();
         }
-
-        $em->remove($entity);
-        $em->flush();
 
         return $this->redirect($this->generateUrl('menu'));
     }

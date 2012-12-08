@@ -36,11 +36,6 @@ class Ingrediente
     private $ing_categoria;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Menu", mappedBy="ingredientes")
-     */
-    protected $menus;
-
-    /**
      * Get id
      *
      * @return integer 
@@ -94,68 +89,5 @@ class Ingrediente
     public function getIngCategoria()
     {
         return $this->ing_categoria;
-    }
-
-    /**
-     * Set menu
-     *
-     * @param \MenUSACH\Bundle\BaseBundle\Entity\Menu $menu
-     * @return Ingrediente
-     */
-    public function setMenu(\MenUSACH\Bundle\BaseBundle\Entity\Menu $menu = null)
-    {
-        $this->menu = $menu;
-    
-        return $this;
-    }
-
-    /**
-     * Get menu
-     *
-     * @return \MenUSACH\Bundle\BaseBundle\Entity\Menu 
-     */
-    public function getMenu()
-    {
-        return $this->menu;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->menus = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
-    /**
-     * Add menus
-     *
-     * @param MenUSACH\Bundle\BaseBundle\Entity\Menu $menus
-     * @return Ingrediente
-     */
-    public function addMenu(\MenUSACH\Bundle\BaseBundle\Entity\Menu $menus)
-    {
-        $this->menus[] = $menus;
-    
-        return $this;
-    }
-
-    /**
-     * Remove menus
-     *
-     * @param MenUSACH\Bundle\BaseBundle\Entity\Menu $menus
-     */
-    public function removeMenu(\MenUSACH\Bundle\BaseBundle\Entity\Menu $menus)
-    {
-        $this->menus->removeElement($menus);
-    }
-
-    /**
-     * Get menus
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getMenus()
-    {
-        return $this->menus;
     }
 }

@@ -1,65 +1,16 @@
-{% extends '::base.html.twig' %}
+<h1>Local creation</h1>
 
-{% block body %}
-<form class="form-horizontal" action="{{ path('local_create') }}"
-      method="post" {{ form_enctype(form) }}>
-    <legend>Crear nuevo Local</legend>
-    <div class="control-group">
-        <div class="control-label">
-            {{ form_label(form.loc_nombre) }}
-        </div>
-        <div class="controls">
-            {{ form_widget(form.loc_nombre) }}
-            <span class="help-block">
-                {{ form_errors(form.loc_nombre) }}
-            </span>
-        </div>
-    </div>
-    <div class="control-group">
-        <div class="control-label">
-            {{ form_label(form.loc_ubicacion) }}
-        </div>
-        <div class="controls">
-            {{ form_widget(form.loc_ubicacion) }}
-            <span class="help-block">
-                {{ form_errors(form.loc_ubicacion) }}
-            </span>
-        </div>
-    </div>
-	<div class="control-group">
-        <div class="control-label">
-            {{ form_label(form.loc_ranking) }}
-        </div>
-        <div class="controls">
-            {{ form_widget(form.loc_ranking) }}
-            <span class="help-block">
-                {{ form_errors(form.loc_ranking) }}
-            </span>
-        </div>
-    </div>
-	<div class="control-group">
-        <div class="control-label">
-            {{ form_label(form.propietario) }}
-        </div>
-        <div class="controls">
-            {{ form_widget(form.propietario) }}
-            <span class="help-block">
-                {{ form_errors(form.propietario) }}
-            </span>
-        </div>
-    </div>
-    
-    {{ form_rest(form) }}
-    <div class="controls">
-        <input class="btn btn-primary" type="submit" value="Crear"/>
-    </div>
+<form action="{{ path('local_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit">Create</button>
+    </p>
 </form>
 
 <ul class="record_actions">
     <li>
         <a href="{{ path('local') }}">
-            Volver a la lista de locales
+            Back to the list
         </a>
     </li>
 </ul>
-{% endblock %}

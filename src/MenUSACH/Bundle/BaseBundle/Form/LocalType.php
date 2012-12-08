@@ -14,14 +14,15 @@ class LocalType extends AbstractType
             ->add('loc_nombre')
             ->add('loc_ubicacion')
             ->add('loc_ranking')
-            ->add('propietario')
-        ;
+            ->add('propietario',
+                  'entity', array('class' => 'MenUSACH\Bundle\BaseBundle\Entity\Propietario',
+                  'property' => 'nombreCompleto'));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => NULL
+            'data_class' => 'MenUSACH\Bundle\BaseBundle\Entity\Local'
         ));
     }
 

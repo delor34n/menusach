@@ -13,7 +13,6 @@ class IngredienteType extends AbstractType
         $builder
             ->add('ing_nombre')
             ->add('ing_categoria')
-            ->add('menus')
         ;
     }
 

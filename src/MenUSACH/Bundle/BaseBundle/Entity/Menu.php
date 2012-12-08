@@ -54,14 +54,14 @@ class Menu
      * @ORM\Column(name="men_frecuencia", type="integer")
      */
     private $men_frecuencia;
-    
+
     /**
      * @var \DateTime $men_fecha_inicio
      *
      * @ORM\Column(name="men_fecha_inicio", type="date", nullable=true)
      */
     private $men_fecha_inicio;
-        
+
     /**
      * @var \DateTime $men_fecha_termino
      *
@@ -76,13 +76,22 @@ class Menu
      protected $local;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Ingrediente", inversedBy="menus")
-     * @ORM\JoinTable(name="MenuIngrediente")
+     * @ORM\ManyToMany(targetEntity="Ingrediente")
+	 * @ORM\JoinTable(name="MenuIngrediente",
+	 * joinColumns={@ORM\JoinColumn(name="menu_id", referencedColumnName="id")},
+	 * inverseJoinColumns={@ORM\JoinColumn(name="ingrediente_id", referencedColumnName="id")}
+	 * )
      */
 
     protected $ingredientes;
-
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->ingredientes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -92,7 +101,7 @@ class Menu
     {
         return $this->id;
     }
- 
+
     /**
      * Set men_nombre
      *
@@ -165,7 +174,7 @@ class Menu
     /**
      * Set men_frecuencia
      *
-     * @param boolean $menFrecuencia
+     * @param integer $menFrecuencia
      * @return Menu
      */
     public function setMenFrecuencia($menFrecuencia)
@@ -178,97 +187,11 @@ class Menu
     /**
      * Get men_frecuencia
      *
-     * @return boolean 
+     * @return integer 
      */
     public function getMenFrecuencia()
     {
         return $this->men_frecuencia;
-    }
-
-    /**
-     * Set men_fechain
-     *
-     * @param \DateTime $menFechain
-     * @return Menu
-     */
-    public function setMenFechain($menFechain)
-    {
-        $this->men_fechain = $menFechain;
-    
-        return $this;
-    }
-
-    /**
-     * Get men_fechain
-     *
-     * @return \DateTime 
-     */
-    public function getMenFechain()
-    {
-        return $this->men_fechain;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->ingredientes = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
-    /**
-     * Set local
-     *
-     * @param MenUSACH\Bundle\BaseBundle\Entity\Local $local
-     * @return Menu
-     */
-    public function setLocal(\MenUSACH\Bundle\BaseBundle\Entity\Local $local = null)
-    {
-        $this->local = $local;
-    
-        return $this;
-    }
-
-    /**
-     * Get local
-     *
-     * @return MenUSACH\Bundle\BaseBundle\Entity\Local 
-     */
-    public function getLocal()
-    {
-        return $this->local;
-    }
-
-    /**
-     * Add ingredientes
-     *
-     * @param MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes
-     * @return Menu
-     */
-    public function addIngrediente(\MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes)
-    {
-        $this->ingredientes[] = $ingredientes;
-    
-        return $this;
-    }
-
-    /**
-     * Remove ingredientes
-     *
-     * @param MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes
-     */
-    public function removeIngrediente(\MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes)
-    {
-        $this->ingredientes->removeElement($ingredientes);
-    }
-
-    /**
-     * Get ingredientes
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getIngredientes()
-    {
-        return $this->ingredientes;
     }
 
     /**
@@ -315,5 +238,61 @@ class Menu
     public function getMenFechaTermino()
     {
         return $this->men_fecha_termino;
+    }
+
+    /**
+     * Set local
+     *
+     * @param \MenUSACH\Bundle\BaseBundle\Entity\Local $local
+     * @return Menu
+     */
+    public function setLocal(\MenUSACH\Bundle\BaseBundle\Entity\Local $local = null)
+    {
+        $this->local = $local;
+    
+        return $this;
+    }
+
+    /**
+     * Get local
+     *
+     * @return \MenUSACH\Bundle\BaseBundle\Entity\Local 
+     */
+    public function getLocal()
+    {
+        return $this->local;
+    }
+
+    /**
+     * Add ingredientes
+     *
+     * @param \MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes
+     * @return Menu
+     */
+    public function addIngrediente(\MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes)
+    {
+        $this->ingredientes[] = $ingredientes;
+    
+        return $this;
+    }
+
+    /**
+     * Remove ingredientes
+     *
+     * @param \MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes
+     */
+    public function removeIngrediente(\MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes)
+    {
+        $this->ingredientes->removeElement($ingredientes);
+    }
+
+    /**
+     * Get ingredientes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIngredientes()
+    {
+        return $this->ingredientes;
     }
 }
