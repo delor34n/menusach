@@ -1,5 +1,7 @@
 {% extends 'MenUSACHBaseBundle:Prop:index.html.twig' %}
 
+{% block body %}
+
 <form action="{{ path('menu_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
     <p>
@@ -14,3 +16,5 @@
         </a>
     </li>
 </ul>
+
+{% endblock %}

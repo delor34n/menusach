@@ -5,7 +5,7 @@ MenUSACHAnnotations:
 
 IndexMenUSACH:
     pattern: /
-    defaults: { _controller: MenUSACHBaseBundle:Ver:index}
+    defaults: { _controller: MenUSACHBaseBundle:Default:index}
 
 AdminMenUSACH:
     pattern: /admin
@@ -45,10 +45,10 @@ LoginAdmin:
 
 login_check:
     pattern: /prop/login_check
-    
+
 login_check_admin:
     pattern: /admin/login_check
-    
+
 user_logout:
     pattern: /prop/logout
     defaults: { _controller: MenUSACHBaseBundle:Security:logout }
