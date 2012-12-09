@@ -13,7 +13,6 @@ class LocalType extends AbstractType
         $builder
             ->add('loc_nombre')
             ->add('loc_ubicacion')
-            ->add('loc_ranking')
             ->add('propietario',
                   'entity', array('class' => 'MenUSACH\Bundle\BaseBundle\Entity\Propietario',
                   'property' => 'nombreCompleto'));

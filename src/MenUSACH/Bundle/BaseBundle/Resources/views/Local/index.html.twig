@@ -8,7 +8,6 @@
             <th>Nombre</th>
             <th>Ubicacion</th>
             <th>Ranking</th>
-            <th>Propietario</th>
         </tr>
     </thead>
     <tbody>
@@ -17,7 +16,6 @@
             <td>{{ entity.locnombre }}</td>
             <td>{{ entity.locubicacion }}</td>
             <td>{{ entity.locranking }}</td>
-            <td>{{ entity.  }}</td>
             <td><a class="btn btn-link" href="{{
                 path('local_edit', { 'id': entity.id }) }}">
                     {{ '.icon-edit Editar'|parse_icons }}</a></td>

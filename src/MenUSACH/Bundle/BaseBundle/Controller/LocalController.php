@@ -90,10 +90,13 @@ class LocalController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            $entity->setLocRanking(0);
+
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('local_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('local'));
         }
 
         return array(
@@ -149,12 +152,12 @@ class LocalController extends Controller
         $editForm = $this->createForm(new LocalType(), $entity);
         $editForm->bind($request);
 
-        if ($editForm->isValid()) {
+//        if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('local_edit', array('id' => $id)));
-        }
+            return $this->redirect($this->generateUrl('local'));
+//        }
 
         return array(
             'entity'      => $entity,
@@ -167,14 +170,14 @@ class LocalController extends Controller
      * Deletes a Local entity.
      *
      * @Route("/{id}/delete", name="local_delete")
-     * @Method("POST")
+     * @Method("GET")
      */
     public function deleteAction(Request $request, $id)
     {
         $form = $this->createDeleteForm($id);
         $form->bind($request);
 
-        if ($form->isValid()) {
+//        if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('MenUSACHBaseBundle:Local')->find($id);
 
@@ -184,7 +187,7 @@ class LocalController extends Controller
 
             $em->remove($entity);
             $em->flush();
-        }
+//        }
 
         return $this->redirect($this->generateUrl('local'));
     }
