@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<table class="table">
+    <caption><h1>Menús ingresados</h1></caption>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        {% if entity.menactivo == TRUE %}
+        <tr>
+            <td>{{ entity.mennombre }}</td>
+            <td>{{ entity.menprecio }}</td>
+        </tr>
+        {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
