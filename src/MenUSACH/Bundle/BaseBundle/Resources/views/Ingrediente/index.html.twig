@@ -1,30 +1,25 @@
-<h1>Ingrediente list</h1>
+{% extends '::base.html.twig' %}
 
-<table class="records_list">
+{% block body %}
+<table class="table">
+    <caption><h1>Ingredientes ingresados</h1></caption>
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Ing_nombre</th>
-            <th>Ing_categoria</th>
-            <th>Actions</th>
+            <th>Nombre</th>
+            <th>Categoria</th>
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('ingrediente_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.ingnombre }}</td>
             <td>{{ entity.ingcategoria }}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('ingrediente_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('ingrediente_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-            </td>
+            <td><a class="btn btn-link" href="{{
+                path('ingrediente_edit', { 'id': entity.id }) }}">
+                    {{ '.icon-edit Editar'|parse_icons }}</a></td>
+            <td><a class="btn btn-link" href="{{
+                path('ingrediente_delete', { 'id': entity.id }) }}">
+                    {{ '.icon-remove Eliminar'|parse_icons }}</a></td>
         </tr>
     {% endfor %}
     </tbody>
@@ -33,7 +28,8 @@
 <ul>
     <li>
         <a href="{{ path('ingrediente_new') }}">
-            Create a new entry
+            Crear nuevo ingrediente
         </a>
     </li>
 </ul>
+{% endblock %}

@@ -6,8 +6,8 @@
     <thead>
         <tr>
             <th>Nombre</th>
-            <th>Ubicación</th>
-            <th>Ránking</th>
+            <th>Ubicacion</th>
+            <th>Ranking</th>
         </tr>
     </thead>
     <tbody>
@@ -17,10 +17,10 @@
             <td>{{ entity.locubicacion }}</td>
             <td>{{ entity.locranking }}</td>
             <td><a class="btn btn-link" href="{{
-                path('menu_edit', { 'id': entity.id }) }}">
+                path('local_edit', { 'id': entity.id }) }}">
                     {{ '.icon-edit Editar'|parse_icons }}</a></td>
             <td><a class="btn btn-link" href="{{
-                path('menu_delete', { 'id': entity.id }) }}">
+                path('local_delete', { 'id': entity.id }) }}">
                     {{ '.icon-remove Eliminar'|parse_icons }}</a></td>
         </tr>
     {% endfor %}

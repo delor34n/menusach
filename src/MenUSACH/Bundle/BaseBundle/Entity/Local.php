@@ -52,7 +52,14 @@ class Local
      * @ORM\JoinColumn(name="propietario_id", referencedColumnName="id")
      */
     protected $propietario;
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->menus = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -61,6 +68,29 @@ class Local
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set loc_nombre
+     *
+     * @param string $locNombre
+     * @return Local
+     */
+    public function setLocNombre($locNombre)
+    {
+        $this->loc_nombre = $locNombre;
+    
+        return $this;
+    }
+
+    /**
+     * Get loc_nombre
+     *
+     * @return string 
+     */
+    public function getLocNombre()
+    {
+        return $this->loc_nombre;
     }
 
     /**
@@ -108,14 +138,7 @@ class Local
     {
         return $this->loc_ranking;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->menus = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
+
     /**
      * Add menus
      *
@@ -170,28 +193,5 @@ class Local
     public function getPropietario()
     {
         return $this->propietario;
-    }
-
-    /**
-     * Set loc_nombre
-     *
-     * @param string $locNombre
-     * @return Local
-     */
-    public function setLocNombre($locNombre)
-    {
-        $this->loc_nombre = $locNombre;
-    
-        return $this;
-    }
-
-    /**
-     * Get loc_nombre
-     *
-     * @return string 
-     */
-    public function getLocNombre()
-    {
-        return $this->loc_nombre;
     }
 }

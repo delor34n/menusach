@@ -87,4 +87,8 @@ class Propietario extends \MenUSACH\Bundle\BaseBundle\Entity\Persona
     {
         return $this->locales;
     }
+
+    public function getNombreCompleto() {
+        return $this->getPerNombre() . " " . $this->getPerApellidoPaterno() . " " . $this->getPerApellidoMaterno();
+    }
 }
