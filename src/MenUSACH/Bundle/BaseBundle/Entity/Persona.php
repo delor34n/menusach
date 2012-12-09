@@ -3,6 +3,7 @@
 namespace MenUSACH\Bundle\BaseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+//use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Persona
@@ -13,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorColumn(name="per_tipo", type="integer")
  * @ORM\DiscriminatorMap({"1" = "Propietario", "2" = "Cliente", "3" = "Administrador"})
  */
-class Persona
+class Persona //implements UserInterface
 {
     /**
      * @var integer
@@ -48,26 +49,30 @@ class Persona
     /**
      * @var string
      *
-     * @ORM\Column(name="per_usuario", type="string", length=15)
+     * @ORM\Column(name="username", type="string", length=15)
      */
-    private $per_usuario;
+    private $username;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="per_password", type="string", length=30)
+     * @ORM\Column(name="password", type="string", length=255)
      */
-    private $per_password;
-
+    private $password;
+        
     /**
      * @var string
      *
      * @ORM\Column(name="per_email", type="string", length=30)
      */
     private $per_email;
-
-
-    /**
+        
+    public function __construct()
+    {
+        $this->persona_roles = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+        
+     /**
      * Get id
      *
      * @return integer 
@@ -137,62 +142,6 @@ class Persona
     }
 
     /**
-     * Get per_apellido_materno
-     *
-     * @return string 
-     */
-    public function getPerApellidoMaterno()
-    {
-        return $this->per_apellido_materno;
-    }
-
-    /**
-     * Set per_usuario
-     *
-     * @param string $perUsuario
-     * @return Persona
-     */
-    public function setPerUsuario($perUsuario)
-    {
-        $this->per_usuario = $perUsuario;
-    
-        return $this;
-    }
-
-    /**
-     * Get per_usuario
-     *
-     * @return string 
-     */
-    public function getPerUsuario()
-    {
-        return $this->per_usuario;
-    }
-
-    /**
-     * Set per_password
-     *
-     * @param string $perPassword
-     * @return Persona
-     */
-    public function setPerPassword($perPassword)
-    {
-        $this->per_password = $perPassword;
-    
-        return $this;
-    }
-
-    /**
-     * Get per_password
-     *
-     * @return string 
-     */
-    public function getPerPassword()
-    {
-        return $this->per_password;
-    }
-
-    /**
      * Set per_email
      *
      * @param string $perEmail
@@ -213,5 +162,59 @@ class Persona
     public function getPerEmail()
     {
         return $this->per_email;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
+
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+    
+    /**
+     * Get password
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }   
+
+    /**
+     * Get per_apellido_materno
+     *
+     * @return string 
+     */
+    public function getPerApellidoMaterno()
+    {
+        return $this->per_apellido_materno;
+    }
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     * @return Persona
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    
+        return $this;
     }
 }

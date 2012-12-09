@@ -1,4 +1,4 @@
-<h1>Propietario list</h1>
+<h1>Persona list</h1>
 
 <table class="records_list">
     <thead>
@@ -7,31 +7,33 @@
             <th>Per_nombre</th>
             <th>Per_apellido_paterno</th>
             <th>Per_apellido_materno</th>
-            <th>Per_usuario</th>
-            <th>Per_password</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Salt</th>
             <th>Per_email</th>
-            <th>Pro_fono</th>
+            <th>Isactive</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('propietario_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td><a href="{{ path('admin_persona_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.pernombre }}</td>
             <td>{{ entity.perapellidopaterno }}</td>
             <td>{{ entity.perapellidomaterno }}</td>
-            <td>{{ entity.perusuario }}</td>
-            <td>{{ entity.perpassword }}</td>
+            <td>{{ entity.username }}</td>
+            <td>{{ entity.password }}</td>
+            <td>{{ entity.salt }}</td>
             <td>{{ entity.peremail }}</td>
-            <td>{{ entity.profono }}</td>
+            <td>{{ entity.isActive }}</td>
             <td>
                 <ul>
                     <li>
-                        <a href="{{ path('propietario_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('admin_persona_show', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('propietario_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('admin_persona_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
             </td>
@@ -42,7 +44,7 @@
 
 <ul>
     <li>
-        <a href="{{ path('propietario_new') }}">
+        <a href="{{ path('admin_persona_new') }}">
             Create a new entry
         </a>
     </li>

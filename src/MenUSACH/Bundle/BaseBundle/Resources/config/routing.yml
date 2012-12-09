@@ -12,7 +12,7 @@ AdminMenUSACH:
     defaults: { _controller: MenUSACHBaseBundle:Admin:index}
 
 PropMenUSACH:
-    pattern: /prop/
+    pattern: /prop
     defaults: { _controller: MenUSACHBaseBundle:Prop:index}
 
 ClienteMenUSACH:
@@ -35,18 +35,20 @@ MenuMenUSACH:
     pattern: /prop/menu
     defaults: { _controller: MenUSACHBaseBundle:Menu:index}
 
-ContactoMenUSACH:
-    pattern: /prop/contacto
-    defaults: { _controller: MenUSACHBaseBundle:Contacto:index}
-    requirements:
-        _method:  GET|POST
-login:
-    pattern: /login
+LoginProp:
+    pattern: /prop/login
     defaults: { _controller: MenUSACHBaseBundle:Security:login }
 
-login_check:
-    pattern: /login_check
+LoginAdmin:
+    pattern: /admin/login
+    defaults: { _controller: MenUSACHBaseBundle:Security:adminlogin }
 
+login_check:
+    pattern: /prop/login_check
+    
+login_check_admin:
+    pattern: /admin/login_check
+    
 user_logout:
-    pattern: /logout
+    pattern: /prop/logout
     defaults: { _controller: MenUSACHBaseBundle:Security:logout }

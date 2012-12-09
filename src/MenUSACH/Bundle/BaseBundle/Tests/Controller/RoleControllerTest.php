@@ -4,7 +4,7 @@ namespace MenUSACH\Bundle\BaseBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class PropietarioControllerTest extends WebTestCase
+class RoleControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()
@@ -13,13 +13,13 @@ class PropietarioControllerTest extends WebTestCase
         $client = static::createClient();
 
         // Create a new entry in the database
-        $crawler = $client->request('GET', '/admin/prop/');
+        $crawler = $client->request('GET', '/admin/role/');
         $this->assertTrue(200 === $client->getResponse()->getStatusCode());
         $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'menusach_bundle_basebundle_propietariotype[field_name]'  => 'Test',
+            'menusach_bundle_basebundle_roletype[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -33,7 +33,7 @@ class PropietarioControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Edit')->form(array(
-            'menusach_bundle_basebundle_propietariotype[field_name]'  => 'Foo',
+            'menusach_bundle_basebundle_roletype[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 

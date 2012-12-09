@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class PropietarioType extends AbstractType
+class PersonaType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -16,23 +16,22 @@ class PropietarioType extends AbstractType
             ->add('per_apellido_materno')
             ->add('username')
             ->add('password')
-            ->add('per_email')
-            ->add('pro_fono')
             //->add('salt')
+            ->add('per_email')
             ->add('isActive')
-            ->add('propietario_roles')
+            ->add('persona_roles')
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'MenUSACH\Bundle\BaseBundle\Entity\Propietario'
+            'data_class' => 'MenUSACH\Bundle\BaseBundle\Entity\Persona'
         ));
     }
 
     public function getName()
     {
-        return 'menusach_bundle_basebundle_propietariotype';
+        return 'menusach_bundle_basebundle_personatype';
     }
 }

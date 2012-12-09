@@ -1,4 +1,4 @@
-<h1>Menu creation</h1>
+{% extends 'MenUSACHBaseBundle:Prop:index.html.twig' %}
 
 <form action="{{ path('menu_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
