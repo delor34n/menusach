@@ -90,7 +90,7 @@ class PropietarioController extends Controller
 
         if ($form->isValid()) {
             $this->setSecurePassword($entity);
-            $em = $this->getDoctrine()->getManager();
+            $em = $this->getDoctrine()->getManager();        
             $em->persist($entity);
             $em->flush();
 

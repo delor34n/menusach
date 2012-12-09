@@ -13,7 +13,7 @@ use MenUSACH\Bundle\BaseBundle\Form\MenuType;
 /**
  * Menu controller.
  *
- * @Route("/menu")
+ * @Route("/prop/menu")
  */
 class MenuController extends Controller
 {

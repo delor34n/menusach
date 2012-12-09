@@ -1,4 +1,3 @@
-# proyecto/app/config/security.yml
 security:
     encoders:
         MenUSACH\Bundle\BaseBundle\Entity\Persona:

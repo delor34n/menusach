@@ -145,14 +145,14 @@ class Propietario extends \MenUSACH\Bundle\BaseBundle\Entity\Persona implements 
      * @return Doctrine\Common\Collections\Collection
      */
     public function getRoles()
-{
+    {
     $roles = array();
     foreach ($this->propietario_roles as $role) {
         $roles[] = $role->getRole();
     }
 
     return $roles;
-}
+    }
     /*
     public function getRoles()
     {
