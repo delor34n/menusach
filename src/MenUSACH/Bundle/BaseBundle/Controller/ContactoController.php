@@ -18,7 +18,7 @@ class ContactoController extends Controller
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
-            
+
             if ($form->isValid()) {
 
                 $message = \Swift_Message::newInstance()
@@ -37,7 +37,6 @@ class ContactoController extends Controller
 
         return $this->render('MenUSACHBaseBundle:Contacto:index.html.twig', array(
         'form' => $form->createView()
-        
     ));
     }
 }
