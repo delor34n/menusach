@@ -1,4 +1,4 @@
-<h1>Propietario</h1>
+<h1>Persona</h1>
 
 <table class="record_properties">
     <tbody>
@@ -27,16 +27,12 @@
             <td>{{ entity.password }}</td>
         </tr>
         <tr>
-            <th>Per_email</th>
-            <td>{{ entity.peremail }}</td>
-        </tr>
-        <tr>
-            <th>Pro_fono</th>
-            <td>{{ entity.profono }}</td>
-        </tr>
-        <tr>
             <th>Salt</th>
             <td>{{ entity.salt }}</td>
+        </tr>
+        <tr>
+            <th>Per_email</th>
+            <td>{{ entity.peremail }}</td>
         </tr>
         <tr>
             <th>Isactive</th>
@@ -47,17 +43,17 @@
 
 <ul class="record_actions">
     <li>
-        <a href="{{ path('admin_prop') }}">
+        <a href="{{ path('admin_persona') }}">
             Back to the list
         </a>
     </li>
     <li>
-        <a href="{{ path('admin_prop_edit', { 'id': entity.id }) }}">
+        <a href="{{ path('admin_persona_edit', { 'id': entity.id }) }}">
             Edit
         </a>
     </li>
     <li>
-        <form action="{{ path('admin_prop_delete', { 'id': entity.id }) }}" method="post">
+        <form action="{{ path('admin_persona_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
             <button type="submit">Delete</button>
         </form>

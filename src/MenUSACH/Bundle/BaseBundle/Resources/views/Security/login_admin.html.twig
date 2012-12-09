@@ -4,12 +4,12 @@
 
 {% block body %}
 {% block titulo %}
-<h2>Control de Acceso Propietarios</h2>
+<h2>Control de Acceso Administrador</h2>
 {% endblock %}
 {% if error %}
     <div class="alert alert-error"> Usuario o Password inválidos</div>
 {% endif %}
-<form action="{{ path('login_check') }}" method="post">
+<form action="{{ path('login_check_admin') }}" method="post">
     <label for="username">Username:</label>
     <input type="text" id="username" name="_username" value="{{ last_username }}" />
     <label for="password">Password:</label>
@@ -17,7 +17,7 @@
     {#
        En el INPUT de tipo "hidden" se redirige a la ubicación que corresponde. 
     #}
-        <input type="hidden" name="_target_path" value="/prop" />
+        <input type="hidden" name="_target_path" value="/admin" />
     <button class="btn btn-primary" type="submit">login</button>
 </form>
 {% endblock %}

@@ -10,5 +10,5 @@ class AdminController extends Controller
 	public function indexAction()
 	{
 		return $this->render('MenUSACHBaseBundle:Admin:index.html.twig');
-	}
+	}        
 }

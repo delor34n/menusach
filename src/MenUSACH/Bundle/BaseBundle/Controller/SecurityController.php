@@ -25,6 +25,26 @@ class SecurityController extends Controller
             'error'         => $error,
         ));
    }
+   
+       public function adminloginAction()
+    {
+        $request = $this->getRequest();
+        $session = $request->getSession();
+
+        // obtiene el error de inicio de sesión si lo hay
+        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
+            $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
+        } else {
+            $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
+            $session->remove(SecurityContext::AUTHENTICATION_ERROR);
+        }
+
+        return $this->render('MenUSACHBaseBundle:Security:login_admin.html.twig', array(
+            // el último nombre de usuario ingresado por el usuario
+            'last_username' => $session->get(SecurityContext::LAST_USERNAME),
+            'error'         => $error,
+        ));
+   }
 
     public function logoutAction()
     {
@@ -33,4 +53,7 @@ class SecurityController extends Controller
         $this->get("session")->setFlash('message.success', true);
         return $this->redirect($this->generateUrl('IndexMenUSACH'));
     }
+    
+
+        
 }

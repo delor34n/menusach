@@ -7,27 +7,27 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use MenUSACH\Bundle\BaseBundle\Entity\Propietario;
-use MenUSACH\Bundle\BaseBundle\Form\PropietarioType;
+use MenUSACH\Bundle\BaseBundle\Entity\Role;
+use MenUSACH\Bundle\BaseBundle\Form\RoleType;
 
 /**
- * Propietario controller.
+ * Role controller.
  *
- * @Route("/admin/prop")
+ * @Route("/admin/role")
  */
-class PropietarioController extends Controller
+class RoleController extends Controller
 {
     /**
-     * Lists all Propietario entities.
+     * Lists all Role entities.
      *
-     * @Route("/", name="admin_prop")
+     * @Route("/", name="admin_role")
      * @Template()
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('MenUSACHBaseBundle:Propietario')->findAll();
+        $entities = $em->getRepository('MenUSACHBaseBundle:Role')->findAll();
 
         return array(
             'entities' => $entities,
@@ -35,19 +35,19 @@ class PropietarioController extends Controller
     }
 
     /**
-     * Finds and displays a Propietario entity.
+     * Finds and displays a Role entity.
      *
-     * @Route("/{id}/show", name="admin_prop_show")
+     * @Route("/{id}/show", name="admin_role_show")
      * @Template()
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MenUSACHBaseBundle:Propietario')->find($id);
+        $entity = $em->getRepository('MenUSACHBaseBundle:Role')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Propietario entity.');
+            throw $this->createNotFoundException('Unable to find Role entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -59,15 +59,15 @@ class PropietarioController extends Controller
     }
 
     /**
-     * Displays a form to create a new Propietario entity.
+     * Displays a form to create a new Role entity.
      *
-     * @Route("/new", name="admin_prop_new")
+     * @Route("/new", name="admin_role_new")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new Propietario();
-        $form   = $this->createForm(new PropietarioType(), $entity);
+        $entity = new Role();
+        $form   = $this->createForm(new RoleType(), $entity);
 
         return array(
             'entity' => $entity,
@@ -76,25 +76,24 @@ class PropietarioController extends Controller
     }
 
     /**
-     * Creates a new Propietario entity.
+     * Creates a new Role entity.
      *
-     * @Route("/create", name="admin_prop_create")
+     * @Route("/create", name="admin_role_create")
      * @Method("POST")
-     * @Template("MenUSACHBaseBundle:Propietario:new.html.twig")
+     * @Template("MenUSACHBaseBundle:Role:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity  = new Propietario();
-        $form = $this->createForm(new PropietarioType(), $entity);
+        $entity  = new Role();
+        $form = $this->createForm(new RoleType(), $entity);
         $form->bind($request);
 
         if ($form->isValid()) {
-            $this->setSecurePassword($entity);
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_prop_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('admin_role_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -104,22 +103,22 @@ class PropietarioController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Propietario entity.
+     * Displays a form to edit an existing Role entity.
      *
-     * @Route("/{id}/edit", name="admin_prop_edit")
+     * @Route("/{id}/edit", name="admin_role_edit")
      * @Template()
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MenUSACHBaseBundle:Propietario')->find($id);
+        $entity = $em->getRepository('MenUSACHBaseBundle:Role')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Propietario entity.');
+            throw $this->createNotFoundException('Unable to find Role entity.');
         }
 
-        $editForm = $this->createForm(new PropietarioType(), $entity);
+        $editForm = $this->createForm(new RoleType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
@@ -130,35 +129,31 @@ class PropietarioController extends Controller
     }
 
     /**
-     * Edits an existing Propietario entity.
+     * Edits an existing Role entity.
      *
-     * @Route("/{id}/update", name="admin_prop_update")
+     * @Route("/{id}/update", name="admin_role_update")
      * @Method("POST")
-     * @Template("MenUSACHBaseBundle:Propietario:edit.html.twig")
+     * @Template("MenUSACHBaseBundle:Role:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MenUSACHBaseBundle:Propietario')->find($id);
+        $entity = $em->getRepository('MenUSACHBaseBundle:Role')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Propietario entity.');
+            throw $this->createNotFoundException('Unable to find Role entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new PropietarioType(), $entity);
-        $current_pass = $entity->getPassword();
+        $editForm = $this->createForm(new RoleType(), $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
-            if ($current_pass != $entity->getPassword()) {
-                $this->setSecurePassword($entity);
-            }
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_prop_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('admin_role_edit', array('id' => $id)));
         }
 
         return array(
@@ -169,9 +164,9 @@ class PropietarioController extends Controller
     }
 
     /**
-     * Deletes a Propietario entity.
+     * Deletes a Role entity.
      *
-     * @Route("/{id}/delete", name="admin_prop_delete")
+     * @Route("/{id}/delete", name="admin_role_delete")
      * @Method("POST")
      */
     public function deleteAction(Request $request, $id)
@@ -181,17 +176,17 @@ class PropietarioController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('MenUSACHBaseBundle:Propietario')->find($id);
+            $entity = $em->getRepository('MenUSACHBaseBundle:Role')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Propietario entity.');
+                throw $this->createNotFoundException('Unable to find Role entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('admin_prop'));
+        return $this->redirect($this->generateUrl('admin_role'));
     }
 
     private function createDeleteForm($id)
@@ -200,13 +195,5 @@ class PropietarioController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
-    }
-    
-    private function setSecurePassword(&$entity) 
-    {   
-        $entity->setSalt(md5(time()));
-	$encoder = new \Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder('sha512', true, 10);
-	$password = $encoder->encodePassword($entity->getPassword(), $entity->getSalt());
-	$entity->setPassword($password);
     }
 }
