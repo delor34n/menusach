@@ -65,4 +65,49 @@ class Categoria
     {
         return $this->cat_des;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->ingredientes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add ingredientes
+     *
+     * @param \MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes
+     * @return Categoria
+     */
+    public function addIngrediente(\MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes)
+    {
+        $this->ingredientes[] = $ingredientes;
+    
+        return $this;
+    }
+
+    /**
+     * Remove ingredientes
+     *
+     * @param \MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes
+     */
+    public function removeIngrediente(\MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes)
+    {
+        $this->ingredientes->removeElement($ingredientes);
+    }
+
+    /**
+     * Get ingredientes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIngredientes()
+    {
+        return $this->ingredientes;
+    }
+
+    public function __toString()
+    {
+        return strval($this->id);
+    }
 }

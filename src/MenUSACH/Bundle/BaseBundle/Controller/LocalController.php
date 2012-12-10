@@ -27,7 +27,12 @@ class LocalController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('MenUSACHBaseBundle:Local')->findAll();
+        #$entities = $em->getRepository('MenUSACHBaseBundle:Local')->findAll();
+	$query = $em->createQuery(
+            'SELECT l.id, l.loc_nombre, l.loc_ubicacion, l.loc_ranking, p.per_nombre, p.per_apellido_paterno, p.per_apellido_materno FROM MenUSACHBaseBundle:Local l, MenUSACHBaseBundle:Propietario p WHERE l.propietario = p.id'
+        );
+
+	$entities = $query->getResult();
 
         return array(
             'entities' => $entities,
@@ -48,7 +53,7 @@ class LocalController extends Controller
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Local entity.');
-        }
+       }
 
         $deleteForm = $this->createDeleteForm($id);
 
