@@ -30,15 +30,8 @@ class MenuType extends AbstractType
             'attr' => array(
                 'class' => 'span3'
             )));
-        $builder->add('men_fecha_inicio', 'date', array(
+        $builder->add('men_fecha', 'date', array(
             'label' => 'Fecha inicio:',
-            'widget' => 'single_text',
-            'format' => 'MM/dd/yyyy',
-            'attr' => array(
-                'class' => 'span3'
-            )));
-        $builder->add('men_fecha_termino', 'date', array(
-            'label' => 'Fecha término:',
             'widget' => 'single_text',
             'format' => 'MM/dd/yyyy',
             'attr' => array(

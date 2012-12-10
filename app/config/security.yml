@@ -14,7 +14,7 @@ security:
         in_memory:
             memory:
                 users:
-                    admin: { password: menusach, roles: [ 'ROLE ADMIN' ] }
+                    admin: { password: menusach, roles: [ 'ROLE_ADMIN' ] }
 
         user_db:
             entity: { class: MenUSACH\Bundle\BaseBundle\Entity\Persona, property: username }
@@ -55,3 +55,5 @@ security:
       - { path: ^/prop/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/admin/login_check, role: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/admin/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/admin, role: ROLE_ADMIN }
+      - { path: ^/prop, role: ROLE_PROP }
