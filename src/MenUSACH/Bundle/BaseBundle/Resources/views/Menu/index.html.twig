@@ -6,7 +6,8 @@
         <tr>
             <th>Nombre</th>
             <th>Precio</th>
-            <th>Activo?</th>
+            <th>Ubicación</th>
+            <th>Estado</th>
             <th>Frecuencia</th>
             <th>Fecha</th>
         </tr>
@@ -14,11 +15,12 @@
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td>{{ entity.mennombre }}</td>
-            <td>${{ entity.menprecio }}</td>
-            <td>{% if entity.menactivo == 1 %} Si {% else %} No {% endif %}</td>
-            <td>{% if entity.menfrecuencia == 1 %} Especifica {% else %} Permanente {% endif %}</td>
-            <td>{% if entity.menfecha %}{{ entity.menfecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.men_nombre }}</td>
+            <td>${{ entity.men_precio }}</td>
+            <td>{{ entity.loc_ubicacion }}</td>
+            <td>{% if entity.men_activo == 1 %} Si {% else %} No {% endif %}</td>
+            <td>{% if entity.men_frecuencia == 1 %} Especifica {% else %} Permanente {% endif %}</td>
+            <td>{% if entity.men_fecha %}{{ entity.men_fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td><a class="btn btn-link" href="{{
                 path('menu_edit', { 'id': entity.id }) }}">
                     {{ '.icon-edit Editar'|parse_icons }}</a></td>
