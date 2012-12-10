@@ -7,27 +7,27 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use MenUSACH\Bundle\BaseBundle\Entity\Role;
-use MenUSACH\Bundle\BaseBundle\Form\RoleType;
+use MenUSACH\Bundle\BaseBundle\Entity\Categoria;
+use MenUSACH\Bundle\BaseBundle\Form\CategoriaType;
 
 /**
- * Role controller.
+ * Categoria controller.
  *
- * @Route("/admin/rol")
+ * @Route("/categoria")
  */
-class RoleController extends Controller
+class CategoriaController extends Controller
 {
     /**
-     * Lists all Role entities.
+     * Lists all Categoria entities.
      *
-     * @Route("/", name="admin_role")
+     * @Route("/", name="categoria")
      * @Template()
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('MenUSACHBaseBundle:Role')->findAll();
+        $entities = $em->getRepository('MenUSACHBaseBundle:Categoria')->findAll();
 
         return array(
             'entities' => $entities,
@@ -35,19 +35,19 @@ class RoleController extends Controller
     }
 
     /**
-     * Finds and displays a Role entity.
+     * Finds and displays a Categoria entity.
      *
-     * @Route("/{id}/show", name="admin_role_show")
+     * @Route("/{id}/show", name="categoria_show")
      * @Template()
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MenUSACHBaseBundle:Role')->find($id);
+        $entity = $em->getRepository('MenUSACHBaseBundle:Categoria')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Role entity.');
+            throw $this->createNotFoundException('Unable to find Categoria entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -59,15 +59,15 @@ class RoleController extends Controller
     }
 
     /**
-     * Displays a form to create a new Role entity.
+     * Displays a form to create a new Categoria entity.
      *
-     * @Route("/new", name="admin_role_new")
+     * @Route("/new", name="categoria_new")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new Role();
-        $form   = $this->createForm(new RoleType(), $entity);
+        $entity = new Categoria();
+        $form   = $this->createForm(new CategoriaType(), $entity);
 
         return array(
             'entity' => $entity,
@@ -76,16 +76,16 @@ class RoleController extends Controller
     }
 
     /**
-     * Creates a new Role entity.
+     * Creates a new Categoria entity.
      *
-     * @Route("/create", name="admin_role_create")
+     * @Route("/create", name="categoria_create")
      * @Method("POST")
-     * @Template("MenUSACHBaseBundle:Role:new.html.twig")
+     * @Template("MenUSACHBaseBundle:Categoria:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity  = new Role();
-        $form = $this->createForm(new RoleType(), $entity);
+        $entity  = new Categoria();
+        $form = $this->createForm(new CategoriaType(), $entity);
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -93,7 +93,7 @@ class RoleController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_role_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('categoria_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -103,22 +103,22 @@ class RoleController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Role entity.
+     * Displays a form to edit an existing Categoria entity.
      *
-     * @Route("/{id}/edit", name="admin_role_edit")
+     * @Route("/{id}/edit", name="categoria_edit")
      * @Template()
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MenUSACHBaseBundle:Role')->find($id);
+        $entity = $em->getRepository('MenUSACHBaseBundle:Categoria')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Role entity.');
+            throw $this->createNotFoundException('Unable to find Categoria entity.');
         }
 
-        $editForm = $this->createForm(new RoleType(), $entity);
+        $editForm = $this->createForm(new CategoriaType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
@@ -129,31 +129,31 @@ class RoleController extends Controller
     }
 
     /**
-     * Edits an existing Role entity.
+     * Edits an existing Categoria entity.
      *
-     * @Route("/{id}/update", name="admin_role_update")
+     * @Route("/{id}/update", name="categoria_update")
      * @Method("POST")
-     * @Template("MenUSACHBaseBundle:Role:edit.html.twig")
+     * @Template("MenUSACHBaseBundle:Categoria:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MenUSACHBaseBundle:Role')->find($id);
+        $entity = $em->getRepository('MenUSACHBaseBundle:Categoria')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Role entity.');
+            throw $this->createNotFoundException('Unable to find Categoria entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new RoleType(), $entity);
+        $editForm = $this->createForm(new CategoriaType(), $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_role_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('categoria_edit', array('id' => $id)));
         }
 
         return array(
@@ -164,9 +164,9 @@ class RoleController extends Controller
     }
 
     /**
-     * Deletes a Role entity.
+     * Deletes a Categoria entity.
      *
-     * @Route("/{id}/delete", name="admin_role_delete")
+     * @Route("/{id}/delete", name="categoria_delete")
      * @Method("POST")
      */
     public function deleteAction(Request $request, $id)
@@ -176,17 +176,17 @@ class RoleController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('MenUSACHBaseBundle:Role')->find($id);
+            $entity = $em->getRepository('MenUSACHBaseBundle:Categoria')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Role entity.');
+                throw $this->createNotFoundException('Unable to find Categoria entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('admin_role'));
+        return $this->redirect($this->generateUrl('categoria'));
     }
 
     private function createDeleteForm($id)

@@ -6,27 +6,24 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class IngredienteType extends AbstractType
+class CategoriaType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('ing_nombre')
-            ->add('ing_categoria',
-                  'entity', array('class' => 'MenUSACH\Bundle\BaseBundle\Entity\Categoria',
-                  'property' => 'cat_des'))
+            ->add('cat_des')
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'MenUSACH\Bundle\BaseBundle\Entity\Ingrediente'
+            'data_class' => 'MenUSACH\Bundle\BaseBundle\Entity\Categoria'
         ));
     }
 
     public function getName()
     {
-        return 'menusach_bundle_basebundle_ingredientetype';
+        return 'menusach_bundle_basebundle_categoriatype';
     }
 }

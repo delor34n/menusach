@@ -1,79 +1,22 @@
 {% extends 'MenUSACHBaseBundle:Admin:index.html.twig' %}
 
 {% block body %}
-<form class="form-horizontal" action="{{ path('menu_create') }}"
+<form class="form-horizontal" action="{{ path('menu_create') }}" 
       method="post" {{ form_enctype(form) }}>
-    <legend>Crear nuevo Local</legend>
-    <div class="control-group">
-        <div class="control-label">
-            {{ form_label(form.men_nombre) }}
+    <legend>Crear nuevo Menú</legend>
+    {% for element in form %}
+        {% if form_label(element) != form_label(form._token) %}
+        <div class="control-group">
+            <div class="control-label">
+                {{ form_label(element) }}
+            </div>
+            <div class="controls">
+                {{ form_widget(element) }}
+                <span class="help-block">{{ form_errors(element) }}</span>
+            </div>
         </div>
-        <div class="controls">
-            {{ form_widget(form.men_nombre) }}
-            <span class="help-block">
-                {{ form_errors(form.men_nombre) }}
-            </span>
-        </div>
-    </div>
-    <div class="control-group">
-        <div class="control-label">
-            {{ form_label(form.men_precio) }}
-        </div>
-        <div class="controls">
-            {{ form_widget(form.men_precio) }}
-            <span class="help-block">
-                {{ form_errors(form.men_precio) }}
-            </span>
-        </div>
-    </div>
-
-    <div class="control-group">
-        <div class="control-label">
-            {{ form_label(form.men_frecuencia) }}
-        </div>
-        <div class="controls">
-            {{ form_widget(form.men_frecuencia) }}
-            <span class="help-block">
-                {{ form_errors(form.men_frecuencia) }}
-            </span>
-        </div>
-    </div>
-
-    <div class="control-group">
-        <div class="control-label">
-            {{ form_label(form.men_fecha) }}
-        </div>
-        <div class="controls">
-            {{ form_widget(form.men_fecha) }}
-            <span class="help-block">
-                {{ form_errors(form.men_fecha) }}
-            </span>
-        </div>
-    </div>
-    <div class="control-group">
-        <div class="control-label">
-            {{ form_label(form.local) }}
-        </div>
-        <div class="controls">
-            {{ form_widget(form.local) }}
-            <span class="help-block">
-                {{ form_errors(form.local) }}
-            </span>
-        </div>
-    </div>
-
-    <div class="control-group">
-        <div class="control-label">
-            {{ form_label(form.ingredientes) }}
-        </div>
-        <div class="controls">
-            {{ form_widget(form.ingredientes) }}
-            <span class="help-block">
-                {{ form_errors(form.ingredientes) }}
-            </span>
-        </div>
-    </div>
-
+        {% endif %}
+    {% endfor %}
     <div class="controls">
         <input class="btn btn-primary" type="submit" value="Crear"/>
     </div>
@@ -85,5 +28,5 @@
             Volver a la lista de menus
         </a>
     </li>
-</ul>
+</ul>  
 {% endblock %}

@@ -12,8 +12,8 @@
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td>{{ entity.ingnombre }}</td>
-            <td>{{ entity.ingcategoria }}</td>
+            <td>{{ entity.ing_nombre }}</td>
+            <td>{{ entity.cat_des }}</td>
             <td><a class="btn btn-link" href="{{
                 path('ingrediente_edit', { 'id': entity.id }) }}">
                     {{ '.icon-edit Editar'|parse_icons }}</a></td>

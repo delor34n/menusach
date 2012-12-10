@@ -94,7 +94,7 @@ class PropietarioController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_prop_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('admin_prop'));
         }
 
         return array(
@@ -158,7 +158,7 @@ class PropietarioController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_prop_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('admin_prop'));
         }
 
         return array(
@@ -172,14 +172,13 @@ class PropietarioController extends Controller
      * Deletes a Propietario entity.
      *
      * @Route("/{id}/delete", name="admin_prop_delete")
-     * @Method("POST")
      */
     public function deleteAction(Request $request, $id)
     {
         $form = $this->createDeleteForm($id);
         $form->bind($request);
 
-        if ($form->isValid()) {
+        //if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('MenUSACHBaseBundle:Propietario')->find($id);
 
@@ -189,7 +188,7 @@ class PropietarioController extends Controller
 
             $em->remove($entity);
             $em->flush();
-        }
+        //}
 
         return $this->redirect($this->generateUrl('admin_prop'));
     }
@@ -205,8 +204,8 @@ class PropietarioController extends Controller
     private function setSecurePassword(&$entity) 
     {   
         $entity->setSalt(md5(time()));
-	$encoder = new \Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder('sha512', true, 10);
-	$password = $encoder->encodePassword($entity->getPassword(), $entity->getSalt());
-	$entity->setPassword($password);
+    	$encoder = new \Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder('sha512', true, 10);
+    	$password = $encoder->encodePassword($entity->getPassword(), $entity->getSalt());
+    	$entity->setPassword($password);
     }
 }

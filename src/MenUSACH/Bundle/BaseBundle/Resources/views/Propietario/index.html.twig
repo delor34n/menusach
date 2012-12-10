@@ -1,44 +1,41 @@
-<h1>Propietario list</h1>
+{% extends 'MenUSACHBaseBundle:Admin:index.html.twig' %}
 
-<table class="records_list">
+{% block body%}
+{% block titulo %}
+<h2>Administración de Propietarios</h2>
+{% endblock %}
+<table class="table">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Per_nombre</th>
-            <th>Per_apellido_paterno</th>
-            <th>Per_apellido_materno</th>
+            <th>Nombre</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
             <th>Username</th>
-            <th>Password</th>
-            <th>Per_email</th>
-            <th>Pro_fono</th>
-            <th>Salt</th>
-            <th>Isactive</th>
-            <th>Actions</th>
+            <th>Email</th>
+            <th>Fono  Contacto</th>
+            <th>Actividad</th>
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('admin_prop_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.pernombre }}</td>
             <td>{{ entity.perapellidopaterno }}</td>
             <td>{{ entity.perapellidomaterno }}</td>
             <td>{{ entity.username }}</td>
-            <td>{{ entity.password }}</td>
             <td>{{ entity.peremail }}</td>
             <td>{{ entity.profono }}</td>
-            <td>{{ entity.salt }}</td>
-            <td>{{ entity.isActive }}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('admin_prop_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('admin_prop_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-            </td>
+            {% if entity.isActive == 1 %}
+                <td>Activo</td>
+            {% else %}
+                <td>Inactivo</td>
+            {% endif %}
+            <td><a class="btn btn-link" href="{{
+                path('admin_prop_edit', { 'id': entity.id }) }}">
+                    {{ '.icon-edit Editar'|parse_icons }}</a></td>
+            <td><a class="btn btn-link" href="{{
+                path('admin_prop_delete', { 'id': entity.id }) }}">
+                    {{ '.icon-remove Eliminar'|parse_icons }}</a></td>
         </tr>
     {% endfor %}
     </tbody>
@@ -46,8 +43,7 @@
 
 <ul>
     <li>
-        <a href="{{ path('admin_prop_new') }}">
-            Create a new entry
-        </a>
+        <a href="{{ path('admin_prop_new') }}">Crear un nuevo Propietario</a>
     </li>
 </ul>
+{% endblock %}
