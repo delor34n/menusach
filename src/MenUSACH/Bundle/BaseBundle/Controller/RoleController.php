@@ -13,7 +13,7 @@ use MenUSACH\Bundle\BaseBundle\Form\RoleType;
 /**
  * Role controller.
  *
- * @Route("/admin/role")
+ * @Route("/admin/rol")
  */
 class RoleController extends Controller
 {
