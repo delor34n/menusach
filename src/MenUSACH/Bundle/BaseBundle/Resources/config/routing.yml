@@ -5,7 +5,7 @@ MenUSACHAnnotations:
 
 IndexMenUSACH:
     pattern: /
-    defaults: { _controller: MenUSACHBaseBundle:Ver:index}
+    defaults: { _controller: MenUSACHBaseBundle:Default:index}
 
 AdminMenUSACH:
     pattern: /admin
