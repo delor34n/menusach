@@ -1,19 +1,21 @@
-<h1>Propietario list</h1>
+{% extends 'MenUSACHBaseBundle:Admin:index.html.twig' %}
 
+{% block titulo %}
+<h2>Administración de Propietarios</h2>
+{% endblock %}
+{% block body%}
 <table class="records_list">
     <thead>
         <tr>
             <th>Id</th>
-            <th>Per_nombre</th>
-            <th>Per_apellido_paterno</th>
-            <th>Per_apellido_materno</th>
+            <th>Nombre</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
             <th>Username</th>
-            <th>Password</th>
-            <th>Per_email</th>
-            <th>Pro_fono</th>
-            <th>Salt</th>
-            <th>Isactive</th>
-            <th>Actions</th>
+            <th>Email</th>
+            <th>Fono  Contacto</th>
+            <th>Actividad</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -24,18 +26,20 @@
             <td>{{ entity.perapellidopaterno }}</td>
             <td>{{ entity.perapellidomaterno }}</td>
             <td>{{ entity.username }}</td>
-            <td>{{ entity.password }}</td>
             <td>{{ entity.peremail }}</td>
             <td>{{ entity.profono }}</td>
-            <td>{{ entity.salt }}</td>
-            <td>{{ entity.isActive }}</td>
+            {% if entity.isActive == 1 %}
+                <td>Activo</td>
+            {% else %}
+                <td>Inactivo</td>
+            {% endif %}
             <td>
                 <ul>
                     <li>
-                        <a href="{{ path('admin_prop_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('admin_prop_show', { 'id': entity.id }) }}">Ver</a>
                     </li>
                     <li>
-                        <a href="{{ path('admin_prop_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('admin_prop_edit', { 'id': entity.id }) }}">Editar</a>
                     </li>
                 </ul>
             </td>
@@ -51,3 +55,4 @@
         </a>
     </li>
 </ul>
+{% endblock %}

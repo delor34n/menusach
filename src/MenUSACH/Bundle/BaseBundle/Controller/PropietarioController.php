@@ -205,8 +205,8 @@ class PropietarioController extends Controller
     private function setSecurePassword(&$entity) 
     {   
         $entity->setSalt(md5(time()));
-	$encoder = new \Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder('sha512', true, 10);
-	$password = $encoder->encodePassword($entity->getPassword(), $entity->getSalt());
-	$entity->setPassword($password);
+    	$encoder = new \Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder('sha512', true, 10);
+    	$password = $encoder->encodePassword($entity->getPassword(), $entity->getSalt());
+    	$entity->setPassword($password);
     }
 }
