@@ -7,14 +7,16 @@
         <tr>
             <th>Nombre</th>
             <th>Precio</th>
+            <th>Ubicación</th>
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
-        {% if entity.menactivo == TRUE %}
+        {% if entity.men_activo == TRUE %}
         <tr>
-            <td>{{ entity.mennombre }}</td>
-            <td>{{ entity.menprecio }}</td>
+            <td>{{ entity.men_nombre }}</td>
+            <td>{{ entity.men_precio }}</td>
+            <td>{{ entity.loc_ubicacion }}</td>
         </tr>
         {% endif %}
     {% endfor %}

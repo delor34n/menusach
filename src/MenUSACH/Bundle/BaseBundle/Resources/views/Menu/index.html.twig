@@ -18,8 +18,8 @@
             <td>{{ entity.men_nombre }}</td>
             <td>${{ entity.men_precio }}</td>
             <td>{{ entity.loc_ubicacion }}</td>
-            <td>{% if entity.men_activo == 1 %} Si {% else %} No {% endif %}</td>
-            <td>{% if entity.men_frecuencia == 1 %} Especifica {% else %} Permanente {% endif %}</td>
+            <td>{% if entity.men_activo == 1 %} Vigente {% else %} No vigente {% endif %}</td>
+            <td>{% if entity.men_frecuencia == 1 %} Específica {% else %} Permanente {% endif %}</td>
             <td>{% if entity.men_fecha %}{{ entity.men_fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td><a class="btn btn-link" href="{{
                 path('menu_edit', { 'id': entity.id }) }}">
@@ -35,7 +35,7 @@
 <ul>
     <li>
         <a href="{{ path('menu_new') }}">
-            Crear un nuevo menu
+            Crear un nuevo menú
         </a>
     </li>
 </ul>

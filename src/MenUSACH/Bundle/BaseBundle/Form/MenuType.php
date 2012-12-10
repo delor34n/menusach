@@ -37,14 +37,18 @@ class MenuType extends AbstractType
             'attr' => array(
                 'class' => 'span3'
             )));
-        $builder->add('local', 'entity',
-                    array('class'=>'MenUSACH\Bundle\BaseBundle\Entity\Local',
-                        'property'=>'loc_nombre'));
-        $builder->add('ingredientes','entity',
-                    array('class'=>'MenUSACH\Bundle\BaseBundle\Entity\Ingrediente',
-                        'property'=>'ing_nombre',
-                        'expanded' => true,
-                        'multiple' => true));
+        $builder->add('local', 'entity', array(
+            'label' => 'Local:',
+            'class'=>'MenUSACH\Bundle\BaseBundle\Entity\Local',
+            'property'=>'loc_nombre',
+            ));
+        $builder->add('ingredientes','entity', array(
+            'label' => 'Ingredientes:',
+            'class'=>'MenUSACH\Bundle\BaseBundle\Entity\Ingrediente',
+            'property'=>'ing_nombre',
+            'expanded' => true,
+            'multiple' => true
+            ));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
