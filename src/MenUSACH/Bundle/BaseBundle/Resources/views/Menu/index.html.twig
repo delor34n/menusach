@@ -6,7 +6,7 @@
         <tr>
             <th>Nombre</th>
             <th>Precio</th>
-            <th>Activo?</th>
+            <th>Activo</th>
             <th>Frecuencia</th>
             <th>Fecha</th>
         </tr>
@@ -24,7 +24,7 @@
                     {{ '.icon-edit Editar'|parse_icons }}</a></td>
             <td><a class="btn btn-link" href="{{
                 path('menu_delete', { 'id': entity.id }) }}">
-                    {{ '.icon-remove Eliminar'|parse_icons }}</a></td>
+                    {{ '.icon-off Activar/Desactivar'|parse_icons }}</a></td>
         </tr>
     {% endfor %}
     </tbody>

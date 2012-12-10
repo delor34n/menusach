@@ -59,7 +59,7 @@ class Menu
     /**
      * @var \DateTime $men_fecha
      *
-     * @ORM\Column(name="men_fecha", type="date", nullable=true)
+     * @ORM\Column(name="men_fecha", type="date")
      */
     private $men_fecha;
 
