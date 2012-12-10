@@ -43,6 +43,18 @@
         </div>
     </div>
 
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(edit_form.tiposdepago) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(edit_form.tiposdepago) }}
+            <span class="help-block">
+                {{ form_errors(edit_form.tiposdepago) }}
+            </span>
+        </div>
+    </div>
+
     <div class="controls">
         <input class="btn btn-primary" type="submit" value="Guardar cambios"/>
     </div>

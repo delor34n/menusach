@@ -26,7 +26,8 @@
             </span>
         </div>
     </div>
-	<div class="control-group">
+
+    <div class="control-group">
         <div class="control-label">
             {{ form_label(form.propietario) }}
         </div>
@@ -34,6 +35,18 @@
             {{ form_widget(form.propietario) }}
             <span class="help-block">
                 {{ form_errors(form.propietario) }}
+            </span>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(form.tiposdepago) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(form.tiposdepago) }}
+            <span class="help-block">
+                {{ form_errors(form.tiposdepago) }}
             </span>
         </div>
     </div>
