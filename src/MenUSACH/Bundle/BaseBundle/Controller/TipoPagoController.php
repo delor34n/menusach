@@ -7,27 +7,27 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use MenUSACH\Bundle\BaseBundle\Entity\Role;
-use MenUSACH\Bundle\BaseBundle\Form\RoleType;
+use MenUSACH\Bundle\BaseBundle\Entity\TipoPago;
+use MenUSACH\Bundle\BaseBundle\Form\TipoPagoType;
 
 /**
- * Role controller.
+ * TipoPago controller.
  *
- * @Route("/admin/rol")
+ * @Route("/tipopago")
  */
-class RoleController extends Controller
+class TipoPagoController extends Controller
 {
     /**
-     * Lists all Role entities.
+     * Lists all TipoPago entities.
      *
-     * @Route("/", name="admin_role")
+     * @Route("/", name="tipopago")
      * @Template()
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('MenUSACHBaseBundle:Role')->findAll();
+        $entities = $em->getRepository('MenUSACHBaseBundle:TipoPago')->findAll();
 
         return array(
             'entities' => $entities,
@@ -35,19 +35,19 @@ class RoleController extends Controller
     }
 
     /**
-     * Finds and displays a Role entity.
+     * Finds and displays a TipoPago entity.
      *
-     * @Route("/{id}/show", name="admin_role_show")
+     * @Route("/{id}/show", name="tipopago_show")
      * @Template()
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MenUSACHBaseBundle:Role')->find($id);
+        $entity = $em->getRepository('MenUSACHBaseBundle:TipoPago')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Role entity.');
+            throw $this->createNotFoundException('Unable to find TipoPago entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -59,15 +59,15 @@ class RoleController extends Controller
     }
 
     /**
-     * Displays a form to create a new Role entity.
+     * Displays a form to create a new TipoPago entity.
      *
-     * @Route("/new", name="admin_role_new")
+     * @Route("/new", name="tipopago_new")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new Role();
-        $form   = $this->createForm(new RoleType(), $entity);
+        $entity = new TipoPago();
+        $form   = $this->createForm(new TipoPagoType(), $entity);
 
         return array(
             'entity' => $entity,
@@ -76,25 +76,25 @@ class RoleController extends Controller
     }
 
     /**
-     * Creates a new Role entity.
+     * Creates a new TipoPago entity.
      *
-     * @Route("/create", name="admin_role_create")
+     * @Route("/create", name="tipopago_create")
      * @Method("POST")
-     * @Template("MenUSACHBaseBundle:Role:new.html.twig")
+     * @Template("MenUSACHBaseBundle:TipoPago:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity  = new Role();
-        $form = $this->createForm(new RoleType(), $entity);
+        $entity  = new TipoPago();
+        $form = $this->createForm(new TipoPagoType(), $entity);
         $form->bind($request);
 
-        if ($form->isValid()) {
+//        if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_role_show', array('id' => $entity->getId())));
-        }
+            return $this->redirect($this->generateUrl('tipopago'));
+ //       }
 
         return array(
             'entity' => $entity,
@@ -103,22 +103,22 @@ class RoleController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Role entity.
+     * Displays a form to edit an existing TipoPago entity.
      *
-     * @Route("/{id}/edit", name="admin_role_edit")
+     * @Route("/{id}/edit", name="tipopago_edit")
      * @Template()
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MenUSACHBaseBundle:Role')->find($id);
+        $entity = $em->getRepository('MenUSACHBaseBundle:TipoPago')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Role entity.');
+            throw $this->createNotFoundException('Unable to find TipoPago entity.');
         }
 
-        $editForm = $this->createForm(new RoleType(), $entity);
+        $editForm = $this->createForm(new TipoPagoType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
@@ -129,32 +129,32 @@ class RoleController extends Controller
     }
 
     /**
-     * Edits an existing Role entity.
+     * Edits an existing TipoPago entity.
      *
-     * @Route("/{id}/update", name="admin_role_update")
+     * @Route("/{id}/update", name="tipopago_update")
      * @Method("POST")
-     * @Template("MenUSACHBaseBundle:Role:edit.html.twig")
+     * @Template("MenUSACHBaseBundle:TipoPago:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MenUSACHBaseBundle:Role')->find($id);
+        $entity = $em->getRepository('MenUSACHBaseBundle:TipoPago')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Role entity.');
+            throw $this->createNotFoundException('Unable to find TipoPago entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new RoleType(), $entity);
+        $editForm = $this->createForm(new TipoPagoType(), $entity);
         $editForm->bind($request);
 
-        if ($editForm->isValid()) {
+    //    if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_role_edit', array('id' => $id)));
-        }
+            return $this->redirect($this->generateUrl('tipopago'));
+     //   }
 
         return array(
             'entity'      => $entity,
@@ -164,29 +164,29 @@ class RoleController extends Controller
     }
 
     /**
-     * Deletes a Role entity.
+     * Deletes a TipoPago entity.
      *
-     * @Route("/{id}/delete", name="admin_role_delete")
-     * @Method("POST")
+     * @Route("/{id}/delete", name="tipopago_delete")
+     * @Method("GET")
      */
     public function deleteAction(Request $request, $id)
     {
         $form = $this->createDeleteForm($id);
         $form->bind($request);
 
-        if ($form->isValid()) {
+//        if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('MenUSACHBaseBundle:Role')->find($id);
+            $entity = $em->getRepository('MenUSACHBaseBundle:TipoPago')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Role entity.');
+                throw $this->createNotFoundException('Unable to find TipoPago entity.');
             }
 
             $em->remove($entity);
             $em->flush();
-        }
+ //       }
 
-        return $this->redirect($this->generateUrl('admin_role'));
+        return $this->redirect($this->generateUrl('tipopago'));
     }
 
     private function createDeleteForm($id)

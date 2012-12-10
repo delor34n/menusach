@@ -1,0 +1,33 @@
+{% extends 'MenUSACHBaseBundle:Admin:index.html.twig' %}
+
+{% block body %}
+<table class="table">
+    <caption><h1>Tipos de Pago ingresados</h1></caption>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>{{ entity.tpdescripcion }}</td>
+            <td><a class="btn btn-link" href="{{
+                path('tipopago_edit', { 'id': entity.id }) }}">
+                    {{ '.icon-edit Editar'|parse_icons }}</a></td>
+            <td><a class="btn btn-link" href="{{
+                path('tipopago_delete', { 'id': entity.id }) }}">
+                    {{ '.icon-remove Eliminar'|parse_icons }}</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('tipopago_new') }}">
+            Crear nuevo tipo de pago
+        </a>
+    </li>
+</ul>
+{% endblock %}

@@ -1,18 +1,31 @@
-{% extends 'MenUSACHBaseBundle:Prop:index.html.twig' %}
+{% extends 'MenUSACHBaseBundle:Admin:index.html.twig' %}
 
 {% block body %}
-
-<form action="{{ path('menu_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-    <p>
-        <button type="submit">Create</button>
-    </p>
+<form class="form-horizontal" action="{{ path('menu_create') }}" 
+      method="post" {{ form_enctype(form) }}>
+    <legend>Crear nuevo Menú</legend>
+    {% for element in form %}
+        {% if form_label(element) != form_label(form._token) %}
+        <div class="control-group">
+            <div class="control-label">
+                {{ form_label(element) }}
+            </div>
+            <div class="controls">
+                {{ form_widget(element) }}
+                <span class="help-block">{{ form_errors(element) }}</span>
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+    <div class="controls">
+        <input class="btn btn-primary" type="submit" value="Crear"/>
+    </div>
 </form>
 
 <ul class="record_actions">
     <li>
         <a href="{{ path('menu') }}">
-            Back to the list
+            Volver a la lista de menus
         </a>
     </li>
 </ul>  

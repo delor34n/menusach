@@ -15,7 +15,12 @@ class LocalType extends AbstractType
             ->add('loc_ubicacion')
             ->add('propietario',
                   'entity', array('class' => 'MenUSACH\Bundle\BaseBundle\Entity\Propietario',
-                  'property' => 'nombreCompleto'));
+                  'property' => 'nombreCompleto'))
+            ->add('tiposdepago',
+                  'entity', array('class' => 'MenUSACH\Bundle\BaseBundle\Entity\TipoPago',
+                  'property' => 'tp_descripcion',
+                  'expanded' => true ,
+                  'multiple' => true ));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

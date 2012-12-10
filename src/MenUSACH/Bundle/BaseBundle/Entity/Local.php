@@ -52,6 +52,16 @@ class Local
      * @ORM\JoinColumn(name="propietario_id", referencedColumnName="id")
      */
     protected $propietario;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="TipoPago")
+	 * @ORM\JoinTable(name="PagoLocal",
+	 * joinColumns={@ORM\JoinColumn(name="local_id", referencedColumnName="id")},
+	 * inverseJoinColumns={@ORM\JoinColumn(name="tipopago_id", referencedColumnName="id")}
+	 * )
+     */
+	protected $tiposdepago;
+
     /**
      * Constructor
      */
@@ -193,5 +203,38 @@ class Local
     public function getPropietario()
     {
         return $this->propietario;
+    }
+
+    /**
+     * Add tiposdepago
+     *
+     * @param \MenUSACH\Bundle\BaseBundle\Entity\TipoPago $tiposdepago
+     * @return Local
+     */
+    public function addTiposdepago(\MenUSACH\Bundle\BaseBundle\Entity\TipoPago $tiposdepago)
+    {
+        $this->tiposdepago[] = $tiposdepago;
+    
+        return $this;
+    }
+
+    /**
+     * Remove tiposdepago
+     *
+     * @param \MenUSACH\Bundle\BaseBundle\Entity\TipoPago $tiposdepago
+     */
+    public function removeTiposdepago(\MenUSACH\Bundle\BaseBundle\Entity\TipoPago $tiposdepago)
+    {
+        $this->tiposdepago->removeElement($tiposdepago);
+    }
+
+    /**
+     * Get tiposdepago
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTiposdepago()
+    {
+        return $this->tiposdepago;
     }
 }

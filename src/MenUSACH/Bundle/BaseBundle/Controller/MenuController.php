@@ -88,13 +88,14 @@ class MenuController extends Controller
         $form = $this->createForm(new MenuType(), $entity);
         $form->bind($request);
 
-        if ($form->isValid()) {
+//        if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $entity->setMenActivo(TRUE);
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('menu_show', array('id' => $entity->getId())));
-        }
+            return $this->redirect($this->generateUrl('menu'));
+ //       }
 
         return array(
             'entity' => $entity,
@@ -149,12 +150,12 @@ class MenuController extends Controller
         $editForm = $this->createForm(new MenuType(), $entity);
         $editForm->bind($request);
 
-        if ($editForm->isValid()) {
+//        if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('menu_edit', array('id' => $id)));
-        }
+            return $this->redirect($this->generateUrl('menu'));
+//       }
 
         return array(
             'entity'      => $entity,
@@ -167,14 +168,14 @@ class MenuController extends Controller
      * Deletes a Menu entity.
      *
      * @Route("/{id}/delete", name="menu_delete")
-     * @Method("POST")
+     * @Method("GET")
      */
     public function deleteAction(Request $request, $id)
     {
         $form = $this->createDeleteForm($id);
         $form->bind($request);
 
-        if ($form->isValid()) {
+//        if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('MenUSACHBaseBundle:Menu')->find($id);
 
@@ -184,7 +185,7 @@ class MenuController extends Controller
 
             $em->remove($entity);
             $em->flush();
-        }
+ //       }
 
         return $this->redirect($this->generateUrl('menu'));
     }
