@@ -25,18 +25,20 @@ class MenuType extends AbstractType
             )));
         $builder->add('men_frecuencia', 'choice', array(
             'label' => 'Frecuencia:',
-            'choices' => array('0' => 'Permanente', '1' => 'Día fijo',
-                '2' => 'Intervalo'),
+            'choices' => array('0' => 'Permanente', '1' => 'Día fijo'),
             'attr' => array(
                 'class' => 'span3'
             )));
         $builder->add('men_fecha', 'date', array(
-            'label' => 'Fecha inicio:',
             'widget' => 'single_text',
+            'label' => 'Fecha:',
+            //'widget' => 'single_text',
             'format' => 'MM/dd/yyyy',
             'attr' => array(
                 'class' => 'span3'
-            )));
+                ),
+            'required' => false
+            ));
         $builder->add('local', 'entity', array(
             'label' => 'Local:',
             'class'=>'MenUSACH\Bundle\BaseBundle\Entity\Local',
