@@ -11,15 +11,39 @@ class MenuType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('men_nombre', 'text' , array(
-            'label' => 'Nombre',
+            'label' => 'Nombre:',
             'attr' => array(
                 'class' => 'span3',
                 'placeholder' => 'Nombre'
             )));
-        $builder->add('men_precio');
-        $builder->add('men_frecuencia');
-        $builder->add('men_fecha_inicio');
-        $builder->add('men_fecha_termino');
+        $builder->add('men_precio', 'number', array(
+            'label' => 'Precio:',
+            'attr' => array(
+                'prepend_input' => '$',
+                'class' => 'span2',
+                'placeholder' => 'Precio',
+            )));
+        $builder->add('men_frecuencia', 'choice', array(
+            'label' => 'Frecuencia:',
+            'choices' => array('0' => 'Permanente', '1' => 'Día fijo',
+                '2' => 'Intervalo'),
+            'attr' => array(
+                'class' => 'span3'
+            )));
+        $builder->add('men_fecha_inicio', 'date', array(
+            'label' => 'Fecha inicio:',
+            'widget' => 'single_text',
+            'format' => 'MM/dd/yyyy',
+            'attr' => array(
+                'class' => 'span3'
+            )));
+        $builder->add('men_fecha_termino', 'date', array(
+            'label' => 'Fecha término:',
+            'widget' => 'single_text',
+            'format' => 'MM/dd/yyyy',
+            'attr' => array(
+                'class' => 'span3'
+            )));
         $builder->add('local', 'entity',
                     array('class'=>'MenUSACH\Bundle\BaseBundle\Entity\Local',
                         'property'=>'loc_nombre'));
