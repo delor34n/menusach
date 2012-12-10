@@ -42,7 +42,9 @@ class MenuType extends AbstractType
                         'property'=>'loc_nombre'));
         $builder->add('ingredientes','entity',
                     array('class'=>'MenUSACH\Bundle\BaseBundle\Entity\Ingrediente',
-                        'property'=>'ing_nombre'));
+                        'property'=>'ing_nombre',
+                        'expanded' => true,
+                        'multiple' => true));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
