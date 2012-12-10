@@ -5,19 +5,16 @@
 {% endblock %}
 {% block body%}
 
-
-<form action="{{ path('admin_prop_create') }}" method="post" {{ form_enctype(form) }}>
+<form class="form-horizontal" action="{{ path('admin_prop_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
     <p>
-        <button type="submit">Crear</button>
+        <button  class="btn btn-primary" type="submit">Crear</button>
     </p>
 </form>
 
 <ul class="record_actions">
     <li>
-        <a href="{{ path('admin_prop') }}">
-            Volver
-        </a>
+        <a href="{{ path('admin_prop') }}">Volver</a>
     </li>
 </ul>
 {% endblock %}

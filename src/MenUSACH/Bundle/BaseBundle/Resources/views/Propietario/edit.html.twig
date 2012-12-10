@@ -4,10 +4,10 @@
 {% block titulo %}
 <h2>Actualizar Propietario</h2>
 {% endblock %}
-<form action="{{ path('admin_prop_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+<form class="form-horizontal" action="{{ path('admin_prop_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
     {{ form_widget(edit_form) }}
     <p>
-        <button     type="submit">Actualizar</button>
+        <button  class="btn btn-primary" type="submit">Actualizar</button>
     </p>
 </form>
 
@@ -15,11 +15,6 @@
     <li>
         <a href="{{ path('admin_prop') }}">Volver</a>
     </li>
-    <li>
-        <form action="{{ path('admin_prop_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Eliminar</button>
-        </form>
-    </li>
 </ul>
+    
 {% endblock %}
