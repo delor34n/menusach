@@ -1,22 +1,90 @@
-{% extends 'MenUSACHBaseBundle:Prop:index.html.twig' %}
+{% extends 'MenUSACHBaseBundle:Admin:index.html.twig' %}
 
-<form action="{{ path('menu_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-    {{ form_widget(edit_form) }}
-    <p>
-        <button type="submit">Edit</button>
-    </p>
-</form>
+{% block body %}
+<form class="form-horizontal" action="{{ path('menu_update' , { 'id': entity.id }) }}"
+      method="post" {{ form_enctype(edit_form) }}>
+    <legend>Editar Menu</legend>
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(edit_form.men_nombre) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(edit_form.men_nombre) }}
+            <span class="help-block">
+                {{ form_errors(edit_form.men_nombre) }}
+            </span>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(edit_form.men_precio) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(edit_form.men_precio) }}
+            <span class="help-block">
+                {{ form_errors(edit_form.men_precio) }}
+            </span>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(edit_form.men_frecuencia) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(edit_form.men_frecuencia) }}
+            <span class="help-block">
+                {{ form_errors(edit_form.men_frecuencia) }}
+            </span>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(edit_form.men_fecha) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(edit_form.men_fecha) }}
+            <span class="help-block">
+                {{ form_errors(edit_form.men_fecha) }}
+            </span>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(edit_form.local) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(edit_form.local) }}
+            <span class="help-block">
+                {{ form_errors(edit_form.local) }}
+            </span>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(edit_form.ingredientes) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(edit_form.ingredientes) }}
+            <span class="help-block">
+                {{ form_errors(edit_form.ingredientes) }}
+            </span>
+        </div>
+    </div>
+
+    <div class="controls">
+        <input class="btn btn-primary" type="submit" value="Guardar Cambios"/>
+    </div>
+</edit_form>
 
 <ul class="record_actions">
     <li>
         <a href="{{ path('menu') }}">
-            Back to the list
+            Volver a la lista de menus
         </a>
     </li>
-    <li>
-        <form action="{{ path('menu_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
 </ul>
+{% endblock %}

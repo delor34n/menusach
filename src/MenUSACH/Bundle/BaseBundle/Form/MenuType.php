@@ -13,12 +13,10 @@ class MenuType extends AbstractType
         $builder
             ->add('men_nombre')
             ->add('men_precio')
-            ->add('men_activo')
             ->add('men_frecuencia')
-            ->add('men_fecha_inicio')
-            ->add('men_fecha_termino')
+            ->add('men_fecha')
             ->add('local', 'entity', array('class'=>'MenUSACH\Bundle\BaseBundle\Entity\Local', 'property'=>'loc_nombre'))
-            ->add('ingredientes','entity',array('class'=>'MenUSACH\Bundle\BaseBundle\Entity\Ingrediente', 'property'=>'ing_nombre'));
+            ->add('ingredientes','entity',array('class'=>'MenUSACH\Bundle\BaseBundle\Entity\Ingrediente', 'property'=>'ing_nombre', 'expanded' => true, 'multiple' => true));
         ;
     }
 

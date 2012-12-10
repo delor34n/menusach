@@ -51,23 +51,17 @@ class Menu
     /**
      * @var integer $men_frecuencia
      *
-     * @ORM\Column(name="men_frecuencia", type="integer")
+     * @ORM\Column(name="men_frecuencia", type="boolean")
+     * La frecuencia con 0 sera un dia y con 1 sera una fecha en especifico
      */
     private $men_frecuencia;
 
     /**
-     * @var \DateTime $men_fecha_inicio
+     * @var \DateTime $men_fecha
      *
-     * @ORM\Column(name="men_fecha_inicio", type="date", nullable=true)
+     * @ORM\Column(name="men_fecha", type="date", nullable=true)
      */
-    private $men_fecha_inicio;
-
-    /**
-     * @var \DateTime $men_fecha_termino
-     *
-     * @ORM\Column(name="men_fecha_termino", type="date", nullable=true)
-     */
-    private $men_fecha_termino;
+    private $men_fecha;
 
     /**
      * @ORM\ManyToOne(targetEntity="Local", inversedBy="menus")
@@ -294,5 +288,28 @@ class Menu
     public function getIngredientes()
     {
         return $this->ingredientes;
+    }
+
+    /**
+     * Set men_fecha
+     *
+     * @param \DateTime $menFecha
+     * @return Menu
+     */
+    public function setMenFecha($menFecha)
+    {
+        $this->men_fecha = $menFecha;
+    
+        return $this;
+    }
+
+    /**
+     * Get men_fecha
+     *
+     * @return \DateTime 
+     */
+    public function getMenFecha()
+    {
+        return $this->men_fecha;
     }
 }
