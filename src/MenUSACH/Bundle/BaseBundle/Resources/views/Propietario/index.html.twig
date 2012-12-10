@@ -1,13 +1,12 @@
 {% extends 'MenUSACHBaseBundle:Admin:index.html.twig' %}
 
+{% block body%}
 {% block titulo %}
 <h2>Administración de Propietarios</h2>
 {% endblock %}
-{% block body%}
-<table class="records_list">
+<table class="table">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Nombre</th>
             <th>Apellido Paterno</th>
             <th>Apellido Materno</th>
@@ -15,13 +14,11 @@
             <th>Email</th>
             <th>Fono  Contacto</th>
             <th>Actividad</th>
-            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('admin_prop_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.pernombre }}</td>
             <td>{{ entity.perapellidopaterno }}</td>
             <td>{{ entity.perapellidomaterno }}</td>
@@ -33,16 +30,12 @@
             {% else %}
                 <td>Inactivo</td>
             {% endif %}
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('admin_prop_show', { 'id': entity.id }) }}">Ver</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('admin_prop_edit', { 'id': entity.id }) }}">Editar</a>
-                    </li>
-                </ul>
-            </td>
+            <td><a class="btn btn-link" href="{{
+                path('admin_prop_edit', { 'id': entity.id }) }}">
+                    {{ '.icon-edit Editar'|parse_icons }}</a></td>
+            <td><a class="btn btn-link" href="{{
+                path('admin_prop_delete', { 'id': entity.id }) }}">
+                    {{ '.icon-remove Eliminar'|parse_icons }}</a></td>
         </tr>
     {% endfor %}
     </tbody>
@@ -50,9 +43,7 @@
 
 <ul>
     <li>
-        <a href="{{ path('admin_prop_new') }}">
-            Create a new entry
-        </a>
+        <a href="{{ path('admin_prop_new') }}">Crear un nuevo Propietario</a>
     </li>
 </ul>
 {% endblock %}
