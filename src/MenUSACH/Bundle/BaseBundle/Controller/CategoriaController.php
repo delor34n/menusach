@@ -13,7 +13,7 @@ use MenUSACH\Bundle\BaseBundle\Form\CategoriaType;
 /**
  * Categoria controller.
  *
- * @Route("/categoria")
+ * @Route("/admin/categoria")
  */
 class CategoriaController extends Controller
 {

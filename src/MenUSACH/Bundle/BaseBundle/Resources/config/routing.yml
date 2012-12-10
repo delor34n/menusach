@@ -11,6 +11,9 @@ AdminMenUSACH:
     pattern: /admin/
     defaults: { _controller: MenUSACHBaseBundle:Admin:index}
 
+CategoriaMenUSACH:
+    pattern: /admin/categoria
+
 PropMenUSACH:
     pattern: /prop/
     defaults: { _controller: MenUSACHBaseBundle:Prop:index}
