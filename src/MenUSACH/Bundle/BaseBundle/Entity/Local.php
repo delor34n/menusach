@@ -52,6 +52,16 @@ class Local
      * @ORM\JoinColumn(name="propietario_id", referencedColumnName="id")
      */
     protected $propietario;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="TipoPago")
+	 * @ORM\JoinTable(name="PagoLocal",
+	 * joinColumns={@ORM\JoinColumn(name="local_id", referencedColumnName="id")},
+	 * inverseJoinColumns={@ORM\JoinColumn(name="tipopago_id", referencedColumnName="id")}
+	 * )
+     */
+	protected $tiposdepago;
+
     /**
      * Constructor
      */

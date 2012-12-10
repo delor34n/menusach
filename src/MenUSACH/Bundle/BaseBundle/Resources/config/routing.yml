@@ -31,6 +31,10 @@ LocalMenUSACH:
     pattern: /admin/local
     defaults: { _controller: MenUSACHBaseBundle:Local:index}
 
+PagoMenUSACH:
+    pattern: /admin/tipopago
+    defaults: { _controller: MenUSACHBaseBundle:TipoPago:index}
+
 MenuMenUSACH:
     pattern: /prop/menu
     defaults: { _controller: MenUSACHBaseBundle:Menu:index}
