@@ -10,9 +10,9 @@ class CategoriaType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('cat_des')
-        ;
+        $builder->add('cat_des', 'text', array(
+            'label' => 'Nombre de categoría'
+	));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
