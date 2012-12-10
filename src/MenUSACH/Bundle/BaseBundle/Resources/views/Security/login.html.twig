@@ -1,23 +1,37 @@
 {# src/MenUSACH/Bundle/BaseBundle/Resources/views/Security/login.html.twig #}
 
-{% extends '::base.html.twig' %}
+{% extends 'MenUSACHBaseBundle:Default:index.html.twig' %}
 
 {% block body %}
-{% block titulo %}
-<h2>Control de Acceso Propietarios</h2>
-{% endblock %}
 {% if error %}
     <div class="alert alert-error"> Usuario o Password inválidos</div>
 {% endif %}
-<form action="{{ path('login_check') }}" method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" />
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="_password" />
-    {#
-       En el INPUT de tipo "hidden" se redirige a la ubicación que corresponde. 
-    #}
-        <input type="hidden" name="_target_path" value="/prop" />
-    <button class="btn btn-primary" type="submit">login</button>
-</form>
+    <form class="form-horizontal" action="{{ path('login_check') }}" method="post">
+        <legend>Acceder como Propietario</legend>
+        <div class="control-group">
+            <div class="control-label">
+                <label for="username">Usuario:</label>
+            </div>
+            <div class="controls">
+                <input type="text" id="username" name="_username"
+                       value="{{ last_username }}" />
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="control-label">
+                <label for="password">Contraseña:</label>
+            </div>
+            <div class="controls">
+                <input type="password" id="password" name="_password" />
+            </div>
+        </div>
+        {#
+           En el INPUT de tipo "hidden" se redirige a la ubicación que corresponde. 
+        #}
+        <div class="controls">
+            <input type="hidden" name="_target_path" value="/prop" />
+            <button class="btn btn-primary" type="submit">Ingresar</button>
+        </div>
+        
+    </form>
 {% endblock %}

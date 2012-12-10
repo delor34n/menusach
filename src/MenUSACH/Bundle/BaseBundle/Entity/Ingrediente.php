@@ -35,6 +35,13 @@ class Ingrediente
      */
     private $ing_categoria;
 
+     /**
+     * @ORM\ManyToOne(targetEntity="Categoria", inversedBy="Ingredientes")
+     * @ORM\JoinColumn(name="categoria_id", referencedColumnName="id")
+     */
+
+     private $categorias; 
+
     /**
      * Get id
      *
@@ -89,5 +96,28 @@ class Ingrediente
     public function getIngCategoria()
     {
         return $this->ing_categoria;
+    }
+
+    /**
+     * Set categorias
+     *
+     * @param \MenUSACH\Bundle\BaseBundle\Entity\Categoria $categorias
+     * @return Ingrediente
+     */
+    public function setCategorias(\MenUSACH\Bundle\BaseBundle\Entity\Categoria $categorias = null)
+    {
+        $this->categorias = $categorias;
+    
+        return $this;
+    }
+
+    /**
+     * Get categorias
+     *
+     * @return \MenUSACH\Bundle\BaseBundle\Entity\Categoria 
+     */
+    public function getCategorias()
+    {
+        return $this->categorias;
     }
 }

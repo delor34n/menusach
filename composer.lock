@@ -383,6 +383,7 @@
             "require": {
                 "php": ">=5.2.4"
             },
+            "time": "2012-11-17 22:31:58",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -410,8 +411,7 @@
             "keywords": [
                 "sql",
                 "highlight"
-            ],
-            "time": "2012-11-17 22:31:58"
+            ]
         },
         {
             "name": "jms/aop-bundle",
@@ -708,7 +708,7 @@
                     "Knp\\Menu\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -765,7 +765,7 @@
                     "Knp\\Bundle\\MenuBundle": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -836,7 +836,7 @@
                     "src/functions.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -943,7 +943,7 @@
                     "Sensio\\Bundle\\DistributionBundle": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1044,7 +1044,7 @@
                     "Sensio\\Bundle\\GeneratorBundle": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1137,6 +1137,7 @@
             "suggest": {
                 "symfony/twig-bundle": ">=2.1.0,<2.3-dev"
             },
+            "time": "2012-11-07 10:47:48",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -1165,8 +1166,7 @@
                 "assets",
                 "compression",
                 "minification"
-            ],
-            "time": "2012-11-07 10:47:48"
+            ]
         },
         {
             "name": "symfony/monolog-bundle",

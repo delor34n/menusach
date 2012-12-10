@@ -27,7 +27,12 @@ class IngredienteController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('MenUSACHBaseBundle:Ingrediente')->findAll();
+        #$entities = $em->getRepository('MenUSACHBaseBundle:Ingrediente')->findAll();
+	$query = $em->createQuery(
+	    'SELECT i.id, i.ing_nombre, c.cat_des FROM MenUSACHBaseBundle:Ingrediente i, MenUSACHBaseBundle:Categoria c WHERE i.ing_categoria = c.id'
+	);
+
+	$entities = $query->getResult();
 
         return array(
             'entities' => $entities,
