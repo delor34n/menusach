@@ -1,16 +1,20 @@
-<h1>Categoria creation</h1>
+{% extends 'MenUSACHBaseBundle:Admin:index.html.twig' %}
 
-<form action="{{ path('categoria_create') }}" method="post" {{ form_enctype(form) }}>
+{% block body%}
+{% block titulo %}
+<h2>Crear Nueva Categoría</h2>
+{% endblock %}
+
+<form class="form-horizontal" action="{{ path('categoria_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
     <p>
-        <button type="submit">Create</button>
+        <button class="btn btn-primary" type="submit">Crear</button>
     </p>
 </form>
 
 <ul class="record_actions">
     <li>
-        <a href="{{ path('categoria') }}">
-            Back to the list
-        </a>
+        <a href="{{ path('categoria') }}">Volver</a>
     </li>
 </ul>
+{% endblock %}

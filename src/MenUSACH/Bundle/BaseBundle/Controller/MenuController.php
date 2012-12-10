@@ -187,8 +187,13 @@ class MenuController extends Controller
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Menu entity.');
             }
-
-            $em->remove($entity);
+            
+            if ($entity->getMenActivo() === TRUE)    
+                $entity->setMenActivo(FALSE);
+            else
+                $entity->setMenActivo(TRUE);
+            
+            $em->persist($entity);
             $em->flush();
  //       }
 

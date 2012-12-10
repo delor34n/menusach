@@ -93,7 +93,7 @@ class CategoriaController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('categoria_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('categoria'));
         }
 
         return array(
@@ -153,7 +153,7 @@ class CategoriaController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('categoria_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('categoria'));
         }
 
         return array(
@@ -167,14 +167,13 @@ class CategoriaController extends Controller
      * Deletes a Categoria entity.
      *
      * @Route("/{id}/delete", name="categoria_delete")
-     * @Method("POST")
      */
     public function deleteAction(Request $request, $id)
     {
         $form = $this->createDeleteForm($id);
         $form->bind($request);
 
-        if ($form->isValid()) {
+        //if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('MenUSACHBaseBundle:Categoria')->find($id);
 
@@ -184,7 +183,7 @@ class CategoriaController extends Controller
 
             $em->remove($entity);
             $em->flush();
-        }
+        //}
 
         return $this->redirect($this->generateUrl('categoria'));
     }
