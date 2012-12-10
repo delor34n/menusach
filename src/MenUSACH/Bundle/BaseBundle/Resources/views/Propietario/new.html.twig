@@ -1,4 +1,10 @@
-<h1>Propietario creation</h1>
+{% extends 'MenUSACHBaseBundle:Admin:index.html.twig' %}
+
+{% block titulo %}
+<h2>Propietario creation</h2>
+{% endblock %}
+{% block body%}
+
 
 <form action="{{ path('admin_prop_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
@@ -10,7 +16,8 @@
 <ul class="record_actions">
     <li>
         <a href="{{ path('admin_prop') }}">
-            Back to the list
+            Volver
         </a>
     </li>
 </ul>
+{% endblock %}
