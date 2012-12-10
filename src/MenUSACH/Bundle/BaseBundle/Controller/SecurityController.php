@@ -52,7 +52,4 @@ class SecurityController extends Controller
         $this->get("session")->setFlash('message.success', true);
         return $this->redirect($this->generateUrl('IndexMenUSACH'));
     }
-    
-
-        
 }

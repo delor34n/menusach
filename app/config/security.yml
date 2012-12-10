@@ -6,8 +6,20 @@ security:
             iterations: 10
 
     providers:
+        chain_provider:
+            chain:
+                providers: [ in_memory, user_db ]
+
+        in_memory:
+            memory:
+                users:
+                    admin: { password: menusach, roles: [ 'ROLE ADMIN' ] }
+
         user_db:
             entity: { class: MenUSACH\Bundle\BaseBundle\Entity\Persona, property: username }
+
+    encoders:
+            Symfony\Component\Security\Core\User\User: plaintext
 
     firewalls:
         dev:
@@ -40,15 +52,18 @@ security:
             form_login:
                 login_path: /admin/login
                 check_path: /admin/login_check
-            logout:
-                path: /admin/logout
-                target: /
+            logout: true
+#                path: /admin/logout
+#                target: /
 
     access_control:
       - { path: ^/prop/login_check, role: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/prop/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
-      - { path: ^/prop, roles: ROLE_PROP }
-      - { path: ^/admin, roles: ROLE_ADMIN }
+      - { path: ^/admin/login_check, role: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/admin/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#      - { path: ^/prop, roles: ROLE_PROP }
+#      - { path: ^/admin, roles: ROLE_ADMIN }
+
 #jms_security_extra:
 #    secure_all_services: false
 #    expressions: true
@@ -92,6 +107,6 @@ security:
 #    access_control:
 #        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
 #        #- { path: ^/_internal/secure, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
-#                users:
-#                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-#                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+#    users:
+#        user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+#        admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
