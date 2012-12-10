@@ -17,7 +17,7 @@ class MenuType extends AbstractType
             ->add('men_frecuencia')
             ->add('men_fecha_inicio')
             ->add('men_fecha_termino')
-            ->add('local')
+            ->add('local', 'entity', array('class'=>'MenUSACH\Bundle\BaseBundle\Entity\Local', 'property'=>'loc_nombre'))
             ->add('ingredientes','entity',array('class'=>'MenUSACH\Bundle\BaseBundle\Entity\Ingrediente', 'property'=>'ing_nombre'));
         ;
     }

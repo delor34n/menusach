@@ -39,16 +39,22 @@ LoginProp:
     pattern: /prop/login
     defaults: { _controller: MenUSACHBaseBundle:Security:login }
 
+ContactoMenUSACH:
+    pattern: /prop/contacto
+    defaults: { _controller: MenUSACHBaseBundle:Contacto:index}
+    requirements:
+        _method:  GET|POST
+
 LoginAdmin:
     pattern: /admin/login
     defaults: { _controller: MenUSACHBaseBundle:Security:adminlogin }
 
 login_check:
     pattern: /prop/login_check
-    
+
 login_check_admin:
     pattern: /admin/login_check
-    
+
 user_logout:
     pattern: /prop/logout
     defaults: { _controller: MenUSACHBaseBundle:Security:logout }

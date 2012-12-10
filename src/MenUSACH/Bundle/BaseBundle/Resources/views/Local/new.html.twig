@@ -1,9 +1,9 @@
-{% extends '::base.html.twig' %}
+{% extends 'MenUSACHBaseBundle:Admin:index.html.twig' %}
 
 {% block body %}
 <form class="form-horizontal" action="{{ path('local_create') }}"
       method="post" {{ form_enctype(form) }}>
-    <legend>Crear nuevo Propietario</legend>
+    <legend>Crear nuevo Local</legend>
     <div class="control-group">
         <div class="control-label">
             {{ form_label(form.loc_nombre) }}
@@ -46,8 +46,8 @@
 
 <ul class="record_actions">
     <li>
-        <a href="{{ path('propietario') }}">
-            Volver a la lista de propietarios
+        <a href="{{ path('local') }}">
+            Volver a la lista de locales
         </a>
     </li>
 </ul>
