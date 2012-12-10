@@ -8,11 +8,11 @@ IndexMenUSACH:
     defaults: { _controller: MenUSACHBaseBundle:Default:index}
 
 AdminMenUSACH:
-    pattern: /admin
+    pattern: /admin/
     defaults: { _controller: MenUSACHBaseBundle:Admin:index}
 
 PropMenUSACH:
-    pattern: /prop
+    pattern: /prop/
     defaults: { _controller: MenUSACHBaseBundle:Prop:index}
 
 ClienteMenUSACH:
@@ -61,4 +61,8 @@ login_check_admin:
 
 user_logout:
     pattern: /prop/logout
+    defaults: { _controller: MenUSACHBaseBundle:Security:logout }
+
+admin_logout:
+    pattern: /admin/logout
     defaults: { _controller: MenUSACHBaseBundle:Security:logout }
