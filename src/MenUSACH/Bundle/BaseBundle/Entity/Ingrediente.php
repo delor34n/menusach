@@ -120,4 +120,34 @@ class Ingrediente
     {
         return $this->categorias;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->categorias = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add categorias
+     *
+     * @param \MenUSACH\Bundle\BaseBundle\Entity\Categoria $categorias
+     * @return Ingrediente
+     */
+    public function addCategoria(\MenUSACH\Bundle\BaseBundle\Entity\Categoria $categorias)
+    {
+        $this->categorias[] = $categorias;
+    
+        return $this;
+    }
+
+    /**
+     * Remove categorias
+     *
+     * @param \MenUSACH\Bundle\BaseBundle\Entity\Categoria $categorias
+     */
+    public function removeCategoria(\MenUSACH\Bundle\BaseBundle\Entity\Categoria $categorias)
+    {
+        $this->categorias->removeElement($categorias);
+    }
 }

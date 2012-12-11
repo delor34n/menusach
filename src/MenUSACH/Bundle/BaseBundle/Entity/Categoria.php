@@ -39,10 +39,12 @@ class Categoria
     }
 
     /**
-     *
-     * @ORM\ManyToOne(targetEntity="Ingrediente", inversedBy="categorias")
-     * @ORM\JoinColumn(name="ingrediente_id", referencedColumnName="id")
-     *
+     * 
+     * @ORM\ManyToMany(targetEntity="Ingrediente")
+     * @ORM\JoinTable(name="categoria_ingrediente",
+     *     joinColumns={@ORM\JoinColumn(name="categoria_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="ingrediente_id", referencedColumnName="id")}
+     * )
      */
     private $ingredientes;
 
@@ -67,6 +69,11 @@ class Categoria
     public function getCatDes()
     {
         return $this->cat_des;
+    }
+
+    public function __toString()
+    {
+        return strval($this->id);
     }
     /**
      * Constructor
@@ -107,10 +114,5 @@ class Categoria
     public function getIngredientes()
     {
         return $this->ingredientes;
-    }
-
-    public function __toString()
-    {
-        return strval($this->id);
     }
 }
