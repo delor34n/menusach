@@ -42,7 +42,7 @@ class MenuType extends AbstractType
         $builder->add('local', 'entity', array(
             'label' => 'Local:',
             'class'=>'MenUSACH\Bundle\BaseBundle\Entity\Local',
-            'property'=>'loc_nombre',
+            'property'=>'loc_nombre'
             ));
         $builder->add('ingredientes','entity', array(
             'label' => 'Ingredientes:',
