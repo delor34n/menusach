@@ -59,7 +59,7 @@ class Menu
     /**
      * @var \DateTime $men_fecha
      *
-     * @ORM\Column(name="men_fecha", type="date")
+     * @ORM\Column(name="men_fecha", type="date", nullable=true)
      */
     private $men_fecha;
 
@@ -76,7 +76,6 @@ class Menu
 	 * inverseJoinColumns={@ORM\JoinColumn(name="ingrediente_id", referencedColumnName="id")}
 	 * )
      */
-
     protected $ingredientes;
     /**
      * Constructor

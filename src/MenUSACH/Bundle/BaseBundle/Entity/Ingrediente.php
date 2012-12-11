@@ -35,12 +35,12 @@ class Ingrediente
      */
     private $ing_categoria;
 
-     /**
-     * @ORM\ManyToOne(targetEntity="Categoria", inversedBy="Ingredientes")
-     * @ORM\JoinColumn(name="categoria_id", referencedColumnName="id")
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Categoria", mappedBy="ingredientes")
+     *
      */
-
-     private $categorias; 
+    private $categorias; 
 
     /**
      * Get id
