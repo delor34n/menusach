@@ -51,6 +51,28 @@
             {{ form_errors(form.men_fecha) }}
         </div>
     </div>
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(form.local) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(form.local) }}
+            <span class="help-block">
+                {{ form_errors(form.local) }}
+            </span>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(form.ingredientes) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(form.ingredientes) }}
+            <span class="help-block">
+                {{ form_errors(form.ingredientes) }}
+            </span>
+        </div>
+    </div>
     
     <div class="controls">
         <input class="btn btn-primary" type="submit" value="Crear"/>

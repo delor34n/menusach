@@ -37,10 +37,13 @@ class Categoria
     {
         return $this->id;
     }
-     /**
-     * @ORM\OneToMany(targetEntity="Ingrediente", mappedBy="categorias")
-     */
 
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Ingrediente", inversedBy="categorias")
+     * @ORM\JoinColumn(name="ingrediente_id", referencedColumnName="id")
+     *
+     */
     private $ingredientes;
 
     /**
