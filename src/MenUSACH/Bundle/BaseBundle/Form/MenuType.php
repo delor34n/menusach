@@ -11,27 +11,27 @@ class MenuType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('men_nombre', 'text' , array(
-            'label' => 'Nombre:',
+            'label' => 'Nombre',
             'attr' => array(
                 'class' => 'span3',
                 'placeholder' => 'Nombre'
             )));
         $builder->add('men_precio', 'number', array(
-            'label' => 'Precio:',
+            'label' => 'Precio',
             'attr' => array(
                 'prepend_input' => '$',
                 'class' => 'span2',
-                'placeholder' => 'Precio',
+                'placeholder' => 'Precio'
             )));
         $builder->add('men_frecuencia', 'choice', array(
-            'label' => 'Frecuencia:',
+            'label' => 'Frecuencia',
             'choices' => array('0' => 'Permanente', '1' => 'Día fijo'),
             'attr' => array(
                 'class' => 'span3'
             )));
         $builder->add('men_fecha', 'date', array(
             'widget' => 'single_text',
-            'label' => 'Fecha:',
+            'label' => 'Fecha',
             //'widget' => 'single_text',
             'format' => 'MM/dd/yyyy',
             'attr' => array(
@@ -40,12 +40,12 @@ class MenuType extends AbstractType
             'required' => false
             ));
         $builder->add('local', 'entity', array(
-            'label' => 'Local:',
+            'label' => 'Local',
             'class'=>'MenUSACH\Bundle\BaseBundle\Entity\Local',
             'property'=>'loc_nombre'
             ));
         $builder->add('ingredientes','entity', array(
-            'label' => 'Ingredientes:',
+            //'label' => 'Ingredientes:',    //si descomentas esta linea no se ven los ingredientes adecuado            
             'class'=>'MenUSACH\Bundle\BaseBundle\Entity\Ingrediente',
             'property'=>'ing_nombre',
             'expanded' => true,

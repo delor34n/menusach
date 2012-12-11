@@ -104,11 +104,7 @@
     </script>
 </form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('menu') }}">
-            Volver a la lista de menús
-        </a>
-    </li>
-</ul>  
+<div class="record_actions">
+    <a href="{{ path('menu') }}">{{ '.icon-arrow-left Volver'|parse_icons }}</a>
+</div>  
 {% endblock %}
