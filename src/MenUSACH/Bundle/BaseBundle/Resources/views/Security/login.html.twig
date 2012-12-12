@@ -33,7 +33,8 @@
            En el INPUT de tipo "hidden" se redirige a la ubicación que corresponde. 
         #}
         <div class="controls">
-            <input type="hidden" name="_target_path" value="/prop" />
+            <input type="hidden" name="_target_path"
+                   value="{% block redirect %}/prop{% endblock %}" />
             <button class="btn btn-primary" type="submit">Ingresar</button>
         </div>
         
