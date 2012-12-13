@@ -3,7 +3,7 @@
 {% block body %}
 <form class="form-horizontal" action="{{ path('tipopago_create') }}"
       method="post" {{ form_enctype(form) }}>
-    <legend>Crear nuevo Local</legend>
+    <legend>Crear Nuevo Tipo de Pago</legend>
     <div class="control-group">
         <div class="control-label">
             {{ form_label(form.tp_descripcion) }}
@@ -21,11 +21,8 @@
     </div>
 </form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('tipopago') }}">
-            Volver a la lista de tipos de pago
-        </a>
-    </li>
-</ul>
+<div class="record_actions">
+    <a href="{{ path('tipopago') }}">{{ '.icon-arrow-left Volver a Administración de Tipos de Pago'|parse_icons }}</a>
+</div> 
+
 {% endblock %}

@@ -41,9 +41,8 @@
     </tbody>
 </table>
 
-<ul>
-    <li>
-        <a href="{{ path('admin_prop_new') }}">Crear un nuevo Propietario</a>
-    </li>
-</ul>
+<div class="record_actions">
+    <a href="{{ path('admin_prop_new') }}">{{ '.icon-plus Crear nuevo Propietario'|parse_icons }}</a>
+</div>
+
 {% endblock %}

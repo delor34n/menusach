@@ -1,8 +1,11 @@
 {% extends 'MenUSACHBaseBundle:Admin:index.html.twig' %}
 
 {% block body %}
+{% block titulo %}
+<h2>Administración de Locales</h2>
+{% endblock %}
 <table class="table">
-    <caption><h1>Locales ingresados</h1></caption>
+   
     <thead>
         <tr>
             <th>Nombre</th>
@@ -29,11 +32,8 @@
     </tbody>
 </table>
 
-<ul>
-    <li>
-        <a href="{{ path('local_new') }}">
-            Crear nuevo local
-        </a>
-    </li>
-</ul>
+<div class="record_actions">
+    <a href="{{ path('local_new') }}">{{ '.icon-plus Crear nuevo local'|parse_icons }}</a>
+</div>
+
 {% endblock %}
