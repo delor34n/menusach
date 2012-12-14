@@ -70,6 +70,12 @@ class Menu
      protected $local;
 
     /**
+     * @ORM\OneToMany(targetEntity="Comentario", mappedBy="menu")
+     */
+     protected $comentarios;
+
+
+    /**
      * @ORM\ManyToMany(targetEntity="Ingrediente")
 	 * @ORM\JoinTable(name="MenuIngrediente",
 	 * joinColumns={@ORM\JoinColumn(name="menu_id", referencedColumnName="id")},
@@ -310,5 +316,38 @@ class Menu
     public function getMenFecha()
     {
         return $this->men_fecha;
+    }
+
+    /**
+     * Add comentarios
+     *
+     * @param \MenUSACH\Bundle\BaseBundle\Entity\Comentario $comentarios
+     * @return Menu
+     */
+    public function addComentario(\MenUSACH\Bundle\BaseBundle\Entity\Comentario $comentarios)
+    {
+        $this->comentarios[] = $comentarios;
+    
+        return $this;
+    }
+
+    /**
+     * Remove comentarios
+     *
+     * @param \MenUSACH\Bundle\BaseBundle\Entity\Comentario $comentarios
+     */
+    public function removeComentario(\MenUSACH\Bundle\BaseBundle\Entity\Comentario $comentarios)
+    {
+        $this->comentarios->removeElement($comentarios);
+    }
+
+    /**
+     * Get comentarios
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComentarios()
+    {
+        return $this->comentarios;
     }
 }
