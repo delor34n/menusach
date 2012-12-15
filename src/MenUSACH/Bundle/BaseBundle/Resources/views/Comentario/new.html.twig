@@ -1,7 +1,28 @@
-<h1>Comentario creation</h1>
+<h1>Comentarios</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Comentario</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for comment in comments %}
+        <tr>
+            <td>{{ comment.comnombre }}</td>
+            <td>{{ comment.comdescripcion }}</td>
+            <td>{% if comment.comfecha %}{{ comment.comfecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
 
 <form action="{{ path('comentario_create', {'id': id}) }}" method="post" {{ form_enctype(form) }}>
+
     {{ form_widget(form) }}
+
     <p>
         <button type="submit">Create</button>
     </p>
@@ -9,8 +30,8 @@
 
 <ul class="record_actions">
     <li>
-        <a href="{{ path('comentario') }}">
-            Back to the list
+        <a href="{{ path('IndexMenUSACH') }}">
+            Volver
         </a>
     </li>
 </ul>

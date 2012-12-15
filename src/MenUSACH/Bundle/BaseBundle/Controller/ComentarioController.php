@@ -18,23 +18,6 @@ use MenUSACH\Bundle\BaseBundle\Form\ComentarioType;
 class ComentarioController extends Controller
 {
     /**
-     * Lists all Comentario entities.
-     *
-     * @Route("/", name="comentario")
-     * @Template()
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('MenUSACHBaseBundle:Comentario')->findAll();
-
-        return array(
-            'entities' => $entities,
-        );
-    }
-
-    /**
      * Displays a form to create a new Comentario entity.
      *
      * @Route(name="comentario_new")
@@ -45,8 +28,12 @@ class ComentarioController extends Controller
         $entity = new Comentario();
         $form   = $this->createForm(new ComentarioType($id), $entity);
 
+        $em = $this->getDoctrine()->getManager();
+        $previousComments = $em->getRepository('MenUSACHBaseBundle:Comentario')->findBy(array('menu' => $id));
+
         return array(
             'entity' => $entity,
+            'comments' => $previousComments,
             'id' => $id,
             'form'   => $form->createView(),
         );

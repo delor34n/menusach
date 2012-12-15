@@ -3,30 +3,17 @@
 <table class="records_list">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Com_nombre</th>
             <th>Com_descripcion</th>
             <th>Com_fecha</th>
-            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('comentario_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.comnombre }}</td>
             <td>{{ entity.comdescripcion }}</td>
             <td>{% if entity.comfecha %}{{ entity.comfecha|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('comentario_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('comentario_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-            </td>
         </tr>
     {% endfor %}
     </tbody>
