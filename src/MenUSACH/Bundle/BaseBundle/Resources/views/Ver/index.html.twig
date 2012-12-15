@@ -9,6 +9,7 @@
             <th>Precio</th>
             <th>Local</th>
             <th>Ubicación</th>
+            <th>Comentar</th>
         </tr>
     </thead>
     <tbody>
@@ -19,6 +20,7 @@
             <td>${{ entity.men_precio }}</td>
             <td>{{ entity.loc_nombre }}</td>
             <td>{{ entity.loc_ubicacion }}</td>
+            <td><a href="{{ path('CommentMenUSACH', {'id': entity.id}) }}">Aquí</a></td>
         </tr>
         {% endif %}
     {% endfor %}

@@ -24,6 +24,13 @@ class Comentario
     /**
      * @var string
      *
+     * @ORM\Column(name="com_nombre", type="string", length=255)
+     */
+    private $com_nombre;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="com_descripcion", type="string", length=255)
      */
     private $com_descripcion;
@@ -44,7 +51,7 @@ class Comentario
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -60,14 +67,14 @@ class Comentario
     public function setComDescripcion($comDescripcion)
     {
         $this->com_descripcion = $comDescripcion;
-    
+
         return $this;
     }
 
     /**
      * Get com_descripcion
      *
-     * @return string 
+     * @return string
      */
     public function getComDescripcion()
     {
@@ -83,14 +90,14 @@ class Comentario
     public function setComFecha($comFecha)
     {
         $this->com_fecha = $comFecha;
-    
+
         return $this;
     }
 
     /**
      * Get com_fecha
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getComFecha()
     {
@@ -106,17 +113,40 @@ class Comentario
     public function setMenu(\MenUSACH\Bundle\BaseBundle\Entity\Menu $menu = null)
     {
         $this->menu = $menu;
-    
+
         return $this;
     }
 
     /**
      * Get menu
      *
-     * @return \MenUSACH\Bundle\BaseBundle\Entity\Menu 
+     * @return \MenUSACH\Bundle\BaseBundle\Entity\Menu
      */
     public function getMenu()
     {
         return $this->menu;
+    }
+
+    /**
+     * Set com_nombre
+     *
+     * @param string $comNombre
+     * @return Comentario
+     */
+    public function setComNombre($comNombre)
+    {
+        $this->com_nombre = $comNombre;
+    
+        return $this;
+    }
+
+    /**
+     * Get com_nombre
+     *
+     * @return string 
+     */
+    public function getComNombre()
+    {
+        return $this->com_nombre;
     }
 }

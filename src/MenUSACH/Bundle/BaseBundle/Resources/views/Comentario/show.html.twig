@@ -1,0 +1,41 @@
+<h1>Comentario</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Com_nombre</th>
+            <td>{{ entity.comnombre }}</td>
+        </tr>
+        <tr>
+            <th>Com_descripcion</th>
+            <td>{{ entity.comdescripcion }}</td>
+        </tr>
+        <tr>
+            <th>Com_fecha</th>
+            <td>{{ entity.comfecha|date('Y-m-d H:i:s') }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('comentario') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('comentario_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('comentario_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
