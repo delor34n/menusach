@@ -34,6 +34,12 @@
 </form>
 
 <br />
+{% if app.session.hasFlash('commentStatus') %}
+    <div class="alert alert-success">
+        {{ app.session.flash('commentStatus') }}
+    </div>
+<br />
+{% endif %}
     {% for comment in comments %}
         <div class="well well-small">
             <p><strong>{{ comment.comnombre }}</strong>

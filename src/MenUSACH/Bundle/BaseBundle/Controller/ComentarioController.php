@@ -62,8 +62,9 @@ class ComentarioController extends Controller
 
             $em->persist($entity);
             $em->flush();
+            $this->get('session')->setFlash('commentStatus', '¡Su comentario ha sido publicado exitosamente!');
 
-            return $this->redirect($this->generateUrl('IndexMenUSACH'));
+            return $this->redirect($this->generateUrl('CommentMenUSACH', array('id' => $id)));
  //       }
 
         return array(
