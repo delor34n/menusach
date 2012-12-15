@@ -29,12 +29,12 @@ class ComentarioController extends Controller
         $form   = $this->createForm(new ComentarioType($id), $entity);
 
         $em = $this->getDoctrine()->getManager();
-        $previousComments = $em->getRepository('MenUSACHBaseBundle:Comentario')->findBy(array('menu' => $id));
+        $previousComments = $em->getRepository('MenUSACHBaseBundle:Comentario')->findBy(array('menu' => $id), array('com_fecha' => 'DESC'));
 
         return array(
             'entity' => $entity,
-            'comments' => $previousComments,
             'id' => $id,
+            'comments' => $previousComments,
             'form'   => $form->createView(),
         );
     }
@@ -44,7 +44,7 @@ class ComentarioController extends Controller
      *
      * @Route("/create/{id}", name="comentario_create")
      * @Method("POST")
-     * @Template("MenUSACHBaseBundle:Comentario:new.html.twig")
+     * @Template()
      */
     public function createAction(Request $request, $id)
     {
@@ -52,10 +52,10 @@ class ComentarioController extends Controller
         $form = $this->createForm(new ComentarioType(), $entity);
         $form->bind($request);
 
-        if ($form->isValid()) {
+//        if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            $entity->setComFecha(new \DateTime(date("F j, Y, g:i a")));
+            $entity->setComFecha(new \DateTime(date('Y-m-d H:i:s')));
             $menu = $this->getDoctrine()->getRepository('MenUSACHBaseBundle:Menu')->find($id);
             //Se puede capturar si falla.
             $entity->setMenu($menu);
@@ -64,7 +64,7 @@ class ComentarioController extends Controller
             $em->flush();
 
             return $this->redirect($this->generateUrl('IndexMenUSACH'));
-        }
+ //       }
 
         return array(
             'entity' => $entity,

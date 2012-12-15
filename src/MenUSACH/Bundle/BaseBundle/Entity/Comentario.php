@@ -38,7 +38,7 @@ class Comentario
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="com_fecha", type="date")
+     * @ORM\Column(name="com_fecha", type="datetime")
      */
     private $com_fecha;
 
