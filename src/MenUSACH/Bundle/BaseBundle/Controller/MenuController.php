@@ -29,7 +29,10 @@ class MenuController extends Controller
 
         #$entities = $em->getRepository('MenUSACHBaseBundle:Menu')->findAll();
         $query = $em->createQuery(
-            'SELECT m.id, m.men_nombre, m.men_precio, m.men_activo, m.men_frecuencia, m.men_fecha, l.loc_ubicacion FROM MenUSACHBaseBundle:Menu m, MenUSACHBaseBundle:Local l WHERE m.local = l.id'
+            'SELECT m.id, m.men_nombre, m.men_precio, m.men_activo, m.men_frecuencia, m.men_fecha, l.loc_ubicacion
+             FROM MenUSACHBaseBundle:Menu m, MenUSACHBaseBundle:Local l
+             WHERE m.local = l.id
+             ORDER BY m.men_fecha ASC'
         );
 
         $entities = $query->getResult();
@@ -95,9 +98,19 @@ class MenuController extends Controller
 
 //        if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity->setMenActivo(TRUE);
+            $now = new \DateTime();
+            if ($entity->getMenFrecuencia() != 0) {
+                if ($entity->getMenFecha()->diff($now)->days == 0)
+                    $entity->setMenActivo(TRUE);
+                else
+                    $entity->setMenActivo(FALSE);
+            }
+            else {
+                $entity->setMenActivo(TRUE);
+            }
             $em->persist($entity);
             $em->flush();
+
 
             return $this->redirect($this->generateUrl('menu'));
  //       }
@@ -156,6 +169,18 @@ class MenuController extends Controller
         $editForm->bind($request);
 
 //        if ($editForm->isValid()) {
+            if ($entity->getMenFrecuencia() != 0) {
+                $now = new \DateTime('now');
+                if ($entity->getMenFecha()->format('mdY') == $now->format('mdY')) {
+                    $entity->setMenActivo(TRUE);
+                }
+                else {
+                    $entity->setMenActivo(FALSE);
+                }
+            }
+            else {
+                $entity->setMenActivo(TRUE);
+            }
             $em->persist($entity);
             $em->flush();
 

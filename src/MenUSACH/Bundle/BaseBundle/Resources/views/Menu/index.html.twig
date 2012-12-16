@@ -22,7 +22,7 @@
             <td>{{ entity.loc_ubicacion }}</td>
             <td>{% if entity.men_activo == 1 %} Vigente {% else %} No vigente {% endif %}</td>
             <td>{% if entity.men_frecuencia == 1 %} Específica {% else %} Permanente {% endif %}</td>
-            <td>{% if entity.men_fecha %}{{ entity.men_fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if entity.men_fecha %}{{ entity.men_fecha|date('d-m-Y') }}{% endif %}</td>
             <td><a class="btn btn-link" href="{{
                 path('menu_edit', { 'id': entity.id }) }}">
                     {{ '.icon-edit Editar'|parse_icons }}</a></td>
