@@ -188,52 +188,6 @@ class Menu
     }
 
     /**
-     * Set men_fecha_inicio
-     *
-     * @param \DateTime $menFechaInicio
-     * @return Menu
-     */
-    public function setMenFechaInicio($menFechaInicio)
-    {
-        $this->men_fecha_inicio = $menFechaInicio;
-    
-        return $this;
-    }
-
-    /**
-     * Get men_fecha_inicio
-     *
-     * @return \DateTime 
-     */
-    public function getMenFechaInicio()
-    {
-        return $this->men_fecha_inicio;
-    }
-
-    /**
-     * Set men_fecha_termino
-     *
-     * @param \DateTime $menFechaTermino
-     * @return Menu
-     */
-    public function setMenFechaTermino($menFechaTermino)
-    {
-        $this->men_fecha_termino = $menFechaTermino;
-    
-        return $this;
-    }
-
-    /**
-     * Get men_fecha_termino
-     *
-     * @return \DateTime 
-     */
-    public function getMenFechaTermino()
-    {
-        return $this->men_fecha_termino;
-    }
-
-    /**
      * Set local
      *
      * @param \MenUSACH\Bundle\BaseBundle\Entity\Local $local
