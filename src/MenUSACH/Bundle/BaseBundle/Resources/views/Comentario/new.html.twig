@@ -1,0 +1,58 @@
+{% extends 'MenUSACHBaseBundle:Default:index.html.twig' %}
+{% block body %}
+<h1>Comentarios</h1>
+
+<form action="{{ path('comentario_create', {'id': id}) }}" method="post" {{ form_enctype(form) }}>
+
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(form.com_nombre, 'Nombre') }}
+        </div>
+        <div class="controls">
+            {{ form_widget(form.com_nombre) }}
+            <span class="help-block">
+                {{ form_errors(form.com_nombre) }}
+            </span>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(form.com_descripcion, 'Mensaje') }}
+        </div>
+        </div>
+        <div class="controls">
+            {{ form_widget(form.com_descripcion) }}
+            <span class="help-block">
+                {{ form_errors(form.com_descripcion) }}
+            </span>
+        </div>
+    </div>
+
+    <div class="controls">
+        <input class="btn btn-primary" type="submit" value="Enviar"/>
+    </div>
+</form>
+
+<br />
+{% if app.session.hasFlash('commentStatus') %}
+    <div class="alert alert-success">
+        {{ app.session.flash('commentStatus') }}
+    </div>
+<br />
+{% endif %}
+    {% for comment in comments %}
+        <div class="well well-small">
+            <p><strong>{{ comment.comnombre }}</strong>
+            <i>{% if comment.comfecha %}{{ comment.comfecha|date('Y-m-d H:i:s') }}{% endif %}</i></p><br />
+            <p>{{ comment.comdescripcion }}</p>
+        </div>
+    {% endfor %}
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('IndexMenUSACH') }}">
+            Volver
+        </a>
+    </li>
+</ul>
+{% endblock %}

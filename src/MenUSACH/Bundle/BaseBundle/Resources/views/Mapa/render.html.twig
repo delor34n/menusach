@@ -1,0 +1,20 @@
+{% extends '::base.html.twig' %}
+{% block CRFHead %}
+<script type="text/javascript">
+
+function Ready() {
+
+	var svgTag = document.getElementById("usach");
+	var svgDoc = null;
+	svgDoc = svgTag.getSVGDocument();
+	var edificioResaltado = svgDoc.getElementById("{{ hl }}");
+
+	edificioResaltado.style.setProperty("fill","#f15a25", "");
+
+};
+</script>
+{% endblock %}
+
+{% block body %}
+<object id='usach' onload="Ready();" data='{{ asset('bundles/menusachbase/img/usach.svg') }}' type='image/svg+xml' />
+{% endblock %}
