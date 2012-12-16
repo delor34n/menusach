@@ -1,3 +1,7 @@
+men_usach_api:
+    resource: "@MenUSACHApiBundle/Resources/config/routing.yml"
+    prefix:   /
+
 men_usach_base:
     resource: "@MenUSACHBaseBundle/Resources/config/routing.yml"
     prefix:   /
