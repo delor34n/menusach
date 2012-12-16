@@ -1,20 +1,16 @@
 {% extends 'MenUSACHBaseBundle:Admin:index.html.twig' %}
 
 {% block body%}
-{% block titulo %}
-<h2>Editar Propietario</h2>
-{% endblock %}
 <form class="form-horizontal" action="{{ path('admin_prop_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    <legend>Editar Propietario</legend>
     {{ form_widget(edit_form) }}
-    <p>
-        <button class="btn btn-primary" type="submit">Editar</button>
-    </p>
+    <div class="controls">
+        <input class="btn btn-primary" type="submit" value="Guardar Cambios"/>
+    </div>
 </form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('admin_prop') }}">Volver</a>
-    </li>
-</ul>
+<div class="record_actions">
+    <a href="{{ path('admin_prop') }}">{{ '.icon-arrow-left Volver a Administración de Propietarios'|parse_icons }}</a>
+</div> 
     
 {% endblock %}

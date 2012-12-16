@@ -1,7 +1,9 @@
 {% extends 'MenUSACHBaseBundle:Prop:index.html.twig' %}
 {% block body %}
+{% block titulo %}
+<h1>Menús ingresados</h1>
+{% endblock %}
 <table class="table">
-    <caption><h1>Menús ingresados</h1></caption>
     <thead>
         <tr>
             <th>Nombre</th>
@@ -31,5 +33,7 @@
     {% endfor %}
     </tbody>
 </table>
+<div class="record_actions">
 <a href="{{ path('menu_new') }}">{{ '.icon-plus Crear nuevo menú'|parse_icons }}</a>
+</div>
 {% endblock %}

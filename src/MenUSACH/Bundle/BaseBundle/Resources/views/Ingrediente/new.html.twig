@@ -1,20 +1,18 @@
 {% extends 'MenUSACHBaseBundle:Admin:index.html.twig' %}
 
 {% block body%}
-{% block titulo %}
-<h2>Crear Nuevo Ingrediente</h2>
-{% endblock %}
-
 <form action="{{ path('ingrediente_create') }}" method="post" {{ form_enctype(form) }}>
+    <legend>Crear Nuevo Ingrediente</legend>
     {{ form_widget(form) }}
-    <p>
-        <button class="btn btn-primary" type="submit">Crear</button>
-    </p>
+    
+    <div class="controls">
+        <input class="btn btn-primary" type="submit" value="Crear"/>
+    </div>
+    
 </form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('ingrediente') }}">Volver</a>
-    </li>
-</ul>
+<div class="record_actions">
+    <a href="{{ path('ingrediente') }}">{{ '.icon-arrow-left Volver a Administración de Ingredientes'|parse_icons }}</a>
+</div> 
+
 {% endblock %}

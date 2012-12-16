@@ -1,8 +1,10 @@
 {% extends 'MenUSACHBaseBundle:Admin:index.html.twig' %}
 
 {% block body %}
+{% block titulo %}
+<h2>Administración de Ingredientes</h2>
+{% endblock %}
 <table class="table">
-    <caption><h1>Ingredientes ingresados</h1></caption>
     <thead>
         <tr>
             <th>Nombre</th>
@@ -25,11 +27,8 @@
     </tbody>
 </table>
 
-<ul>
-    <li>
-        <a href="{{ path('ingrediente_new') }}">
-            Crear nuevo ingrediente
-        </a>
-    </li>
-</ul>
+<div class="record_actions">
+    <a href="{{ path('ingrediente_new') }}">{{ '.icon-plus Crear nuevo ingrediente'|parse_icons }}</a>
+</div>
+
 {% endblock %}

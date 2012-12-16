@@ -11,9 +11,8 @@
     </div>
 </form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('categoria') }}">Volver</a>
-    </li>
-</ul>
+<div class="record_actions">
+    <a href="{{ path('categoria') }}">{{ '.icon-arrow-left Volver a Administración de Categorías'|parse_icons }}</a>
+</div> 
+
 {% endblock %}

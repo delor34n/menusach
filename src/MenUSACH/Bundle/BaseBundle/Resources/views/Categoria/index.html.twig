@@ -2,7 +2,7 @@
 
 {% block body%}
 {% block titulo %}
-<h2>Categorias Ingresadas</h2>
+<h2>Administración de Categorías</h2>
 {% endblock %}
 
 <table class="table">
@@ -26,11 +26,8 @@
     </tbody>
 </table>
 
-<ul>
-    <li>
-        <a href="{{ path('categoria_new') }}">
-            Crear Nueva Categoría
-        </a>
-    </li>
-</ul>
+<div class="record_actions">
+    <a href="{{ path('categoria_new') }}">{{ '.icon-plus Crear nueva Categoría'|parse_icons }}</a>
+</div>
+
 {% endblock %}                
