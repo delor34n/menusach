@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
+    {% block head %}
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}MenUSACH - Tu comida a tiempo{% endblock %}</title>
         {% stylesheets '@MenUSACHBaseBundle/Resources/public/less/*' filter='less,?yui_css' %}
-   
+
         <!-- Bootstrap CSS -->
         {% include 'BraincraftedBootstrapBundle::_stylesheets.html.twig' %}
         {% endstylesheets %}
@@ -17,9 +18,12 @@
             $( "#menusach_bundle_basebundle_menutype_men_fecha" ).datepicker();
         });
         </script>
+        {% block CRFHead %}
+		{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <script src="{{asset('js/jquery-1.8.3.min.js')}}" ></script>
     </head>
+    {% endblock %}
 
     <body>
     <div id="wrap">
@@ -75,8 +79,8 @@
 </div><!-- footer -->
 
         <!-- Bootstrap JS -->
-        {% include 'BraincraftedBootstrapBundle::_javascripts.html.twig' %}
         {% block javascripts %}
+        {% include 'BraincraftedBootstrapBundle::_javascripts.html.twig' %}
         {% endblock %}
     </body>
 </html>

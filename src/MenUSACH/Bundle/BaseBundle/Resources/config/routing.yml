@@ -13,6 +13,10 @@ CommentMenUSACH:
     requirements:
         page:  \d+
 
+RenderMap:
+    pattern: /{id}/render
+    defaults: { _controller: MenUSACHBaseBundle:Mapa:index}
+
 AdminMenUSACH:
     pattern: /admin/
     defaults: { _controller: MenUSACHBaseBundle:Admin:index}

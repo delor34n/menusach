@@ -19,7 +19,7 @@
             <td>{{ entity.men_nombre }}</td>
             <td>${{ entity.men_precio }}</td>
             <td>{{ entity.loc_nombre }}</td>
-            <td>{{ entity.loc_ubicacion }}</td>
+            <td><a href="{{ path('RenderMap', {'id': entity.loc_ubicacion}) }}">Aquí</a></td>
             <td><a href="{{ path('CommentMenUSACH', {'id': entity.id}) }}">Aquí</a></td>
         </tr>
         {% endif %}
