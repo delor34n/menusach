@@ -1,6 +1,7 @@
 {% extends 'MenUSACHBaseBundle:Prop:index.html.twig' %}
 
 {% block body %}
+{% if locales %}
 <form class="form-horizontal" action="{{ path('menu_create') }}" 
       method="post" {{ form_enctype(form) }}>
     <legend>Crear nuevo Menú</legend>
@@ -107,6 +108,12 @@ $(document).ready(function(){
     });
 });
 </script>
+{% else %}
+<div class="alert alert-error">
+    Lo sentimos, para crear un nuevo menú debe tener asociado un local.
+    Por favor contacte al <strong>Administrador</strong>.
+</div>
+{% endif %}
 <div class="record_actions">
     <a href="{{ path('menu') }}">{{ '.icon-arrow-left Volver a la lista de menús'|parse_icons }}</a>
 </div>  
