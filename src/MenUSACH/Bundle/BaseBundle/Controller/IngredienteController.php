@@ -13,7 +13,7 @@ use MenUSACH\Bundle\BaseBundle\Form\IngredienteType;
 /**
  * Ingrediente controller.
  *
- * @Route("/ingrediente")
+ * @Route("/admin/ingrediente")
  */
 class IngredienteController extends Controller
 {
@@ -27,7 +27,12 @@ class IngredienteController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('MenUSACHBaseBundle:Ingrediente')->findAll();
+        #$entities = $em->getRepository('MenUSACHBaseBundle:Ingrediente')->findAll();
+	$query = $em->createQuery(
+	    'SELECT i.id, i.ing_nombre, c.cat_des FROM MenUSACHBaseBundle:Ingrediente i, MenUSACHBaseBundle:Categoria c WHERE i.ing_categoria = c.id'
+	);
+
+	$entities = $query->getResult();
 
         return array(
             'entities' => $entities,
@@ -93,7 +98,7 @@ class IngredienteController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('ingrediente_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('ingrediente'));
         }
 
         return array(
@@ -153,7 +158,7 @@ class IngredienteController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('ingrediente_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('ingrediente'));
         }
 
         return array(
@@ -167,14 +172,13 @@ class IngredienteController extends Controller
      * Deletes a Ingrediente entity.
      *
      * @Route("/{id}/delete", name="ingrediente_delete")
-     * @Method("POST")
      */
     public function deleteAction(Request $request, $id)
     {
         $form = $this->createDeleteForm($id);
         $form->bind($request);
 
-        if ($form->isValid()) {
+        //if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('MenUSACHBaseBundle:Ingrediente')->find($id);
 
@@ -184,7 +188,7 @@ class IngredienteController extends Controller
 
             $em->remove($entity);
             $em->flush();
-        }
+        //}
 
         return $this->redirect($this->generateUrl('ingrediente'));
     }

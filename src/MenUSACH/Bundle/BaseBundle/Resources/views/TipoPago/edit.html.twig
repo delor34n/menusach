@@ -20,16 +20,13 @@
     </div>
 
     <div class="controls">
-        <input class="btn btn-primary" type="submit" value="Guardar cambios"/>
+        <input class="btn btn-primary" type="submit" value="Guardar Cambios"/>
     </div>
 
 </form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('tipopago') }}">
-            Volver a la lista de tipos de pago
-        </a>
-    </li>
-</ul>
+<div class="record_actions">
+    <a href="{{ path('tipopago') }}">{{ '.icon-arrow-left Volver a Administración de Tipos de Pago'|parse_icons }}</a>
+</div> 
+
 {% endblock %}

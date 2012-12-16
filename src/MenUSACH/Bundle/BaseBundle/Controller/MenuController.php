@@ -27,7 +27,12 @@ class MenuController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('MenUSACHBaseBundle:Menu')->findAll();
+        #$entities = $em->getRepository('MenUSACHBaseBundle:Menu')->findAll();
+        $query = $em->createQuery(
+            'SELECT m.id, m.men_nombre, m.men_precio, m.men_activo, m.men_frecuencia, m.men_fecha, l.loc_ubicacion FROM MenUSACHBaseBundle:Menu m, MenUSACHBaseBundle:Local l WHERE m.local = l.id'
+        );
+
+        $entities = $query->getResult();
 
         return array(
             'entities' => $entities,
@@ -182,8 +187,13 @@ class MenuController extends Controller
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Menu entity.');
             }
-
-            $em->remove($entity);
+            
+            if ($entity->getMenActivo() === TRUE)    
+                $entity->setMenActivo(FALSE);
+            else
+                $entity->setMenActivo(TRUE);
+            
+            $em->persist($entity);
             $em->flush();
  //       }
 

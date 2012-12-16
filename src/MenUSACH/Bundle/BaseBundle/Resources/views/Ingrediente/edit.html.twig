@@ -1,22 +1,16 @@
-<h1>Ingrediente edit</h1>
+{% extends 'MenUSACHBaseBundle:Admin:index.html.twig' %}
 
-<form action="{{ path('ingrediente_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+{% block body%}
+<form class="form-horizontal" action="{{ path('ingrediente_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    <legend>Editar Ingrediente</legend>
     {{ form_widget(edit_form) }}
-    <p>
-        <button type="submit">Edit</button>
-    </p>
+    <div class="controls">
+        <input class="btn btn-primary" type="submit" value="Guardar Cambios"/>
+    </div>
 </form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('ingrediente') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('ingrediente_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+<div class="record_actions">
+    <a href="{{ path('ingrediente') }}">{{ '.icon-arrow-left Volver a Administración de Ingredientes'|parse_icons }}</a>
+</div> 
+
+{% endblock %}

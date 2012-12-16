@@ -1,16 +1,17 @@
-<h1>Propietario creation</h1>
+{% extends 'MenUSACHBaseBundle:Admin:index.html.twig' %}
 
-<form action="{{ path('admin_prop_create') }}" method="post" {{ form_enctype(form) }}>
+{% block body%}
+
+<form class="form-horizontal" action="{{ path('admin_prop_create') }}" method="post" {{ form_enctype(form) }}>
+    <legend>Crear Nuevo Propietario</legend>
     {{ form_widget(form) }}
-    <p>
-        <button type="submit">Create</button>
-    </p>
+    <div class="controls">
+        <input class="btn btn-primary" type="submit" value="Crear"/>
+    </div>
 </form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('admin_prop') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+<div class="record_actions">
+    <a href="{{ path('admin_prop') }}">{{ '.icon-arrow-left Volver a Administración de Propietarios'|parse_icons }}</a>
+</div> 
+
+{% endblock %}

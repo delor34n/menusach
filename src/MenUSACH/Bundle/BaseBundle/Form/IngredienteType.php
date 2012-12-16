@@ -12,7 +12,9 @@ class IngredienteType extends AbstractType
     {
         $builder
             ->add('ing_nombre')
-            ->add('ing_categoria')
+            ->add('ing_categoria',
+                  'entity', array('class' => 'MenUSACH\Bundle\BaseBundle\Entity\Categoria',
+                  'property' => 'cat_des'))
         ;
     }
 

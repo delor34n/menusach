@@ -54,18 +54,14 @@
             </span>
         </div>
     </div>
-
+    
     <div class="controls">
-        <input class="btn btn-primary" type="submit" value="Guardar cambios"/>
+        <input class="btn btn-primary" type="submit" value="Guardar Cambios"/>
     </div>
-
 </form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('local') }}">
-            Volver a la lista de local
-        </a>
-    </li>
-</ul>
+<div class="record_actions">
+    <a href="{{ path('local') }}">{{ '.icon-arrow-left Volver a Administración de Locales'|parse_icons }}</a>
+</div> 
+
 {% endblock %}

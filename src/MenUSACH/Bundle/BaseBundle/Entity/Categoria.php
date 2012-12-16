@@ -37,10 +37,15 @@ class Categoria
     {
         return $this->id;
     }
-     /**
-     * @ORM\OneToMany(targetEntity="Ingrediente", mappedBy="categorias")
-     */
 
+    /**
+     * 
+     * @ORM\ManyToMany(targetEntity="Ingrediente")
+     * @ORM\JoinTable(name="categoria_ingrediente",
+     *     joinColumns={@ORM\JoinColumn(name="categoria_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="ingrediente_id", referencedColumnName="id")}
+     * )
+     */
     private $ingredientes;
 
     /**
@@ -64,5 +69,50 @@ class Categoria
     public function getCatDes()
     {
         return $this->cat_des;
+    }
+
+    public function __toString()
+    {
+        return strval($this->id);
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->ingredientes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add ingredientes
+     *
+     * @param \MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes
+     * @return Categoria
+     */
+    public function addIngrediente(\MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes)
+    {
+        $this->ingredientes[] = $ingredientes;
+    
+        return $this;
+    }
+
+    /**
+     * Remove ingredientes
+     *
+     * @param \MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes
+     */
+    public function removeIngrediente(\MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes)
+    {
+        $this->ingredientes->removeElement($ingredientes);
+    }
+
+    /**
+     * Get ingredientes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIngredientes()
+    {
+        return $this->ingredientes;
     }
 }

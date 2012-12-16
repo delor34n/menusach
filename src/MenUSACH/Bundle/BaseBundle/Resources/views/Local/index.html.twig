@@ -1,21 +1,26 @@
 {% extends 'MenUSACHBaseBundle:Admin:index.html.twig' %}
 
 {% block body %}
+{% block titulo %}
+<h2>Administración de Locales</h2>
+{% endblock %}
 <table class="table">
-    <caption><h1>Locales ingresados</h1></caption>
+   
     <thead>
         <tr>
             <th>Nombre</th>
             <th>Ubicacion</th>
             <th>Ranking</th>
+            <th>Propietario</th>
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td>{{ entity.locnombre }}</td>
-            <td>{{ entity.locubicacion }}</td>
-            <td>{{ entity.locranking }}</td>
+            <td>{{ entity.loc_nombre }}</td>
+            <td>{{ entity.loc_ubicacion }}</td>
+            <td>{{ entity.loc_ranking }}</td>
+            <td>{{ entity.per_nombre }} {{ entity.per_apellido_paterno }} {{ entity.per_apellido_materno }}</td>
             <td><a class="btn btn-link" href="{{
                 path('local_edit', { 'id': entity.id }) }}">
                     {{ '.icon-edit Editar'|parse_icons }}</a></td>
@@ -27,11 +32,8 @@
     </tbody>
 </table>
 
-<ul>
-    <li>
-        <a href="{{ path('local_new') }}">
-            Crear nuevo local
-        </a>
-    </li>
-</ul>
+<div class="record_actions">
+    <a href="{{ path('local_new') }}">{{ '.icon-plus Crear nuevo local'|parse_icons }}</a>
+</div>
+
 {% endblock %}

@@ -1,8 +1,10 @@
-{% extends '::base.html.twig' %}
+{% extends 'MenUSACHBaseBundle:Admin:index.html.twig' %}
 
 {% block body %}
+{% block titulo %}
+<h2>Administración de Ingredientes</h2>
+{% endblock %}
 <table class="table">
-    <caption><h1>Ingredientes ingresados</h1></caption>
     <thead>
         <tr>
             <th>Nombre</th>
@@ -12,8 +14,8 @@
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td>{{ entity.ingnombre }}</td>
-            <td>{{ entity.ingcategoria }}</td>
+            <td>{{ entity.ing_nombre }}</td>
+            <td>{{ entity.cat_des }}</td>
             <td><a class="btn btn-link" href="{{
                 path('ingrediente_edit', { 'id': entity.id }) }}">
                     {{ '.icon-edit Editar'|parse_icons }}</a></td>
@@ -25,11 +27,8 @@
     </tbody>
 </table>
 
-<ul>
-    <li>
-        <a href="{{ path('ingrediente_new') }}">
-            Crear nuevo ingrediente
-        </a>
-    </li>
-</ul>
+<div class="record_actions">
+    <a href="{{ path('ingrediente_new') }}">{{ '.icon-plus Crear nuevo ingrediente'|parse_icons }}</a>
+</div>
+
 {% endblock %}

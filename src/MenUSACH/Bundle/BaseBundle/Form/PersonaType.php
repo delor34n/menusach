@@ -14,9 +14,14 @@ class PersonaType extends AbstractType
             ->add('per_nombre')
             ->add('per_apellido_paterno')
             ->add('per_apellido_materno')
-            ->add('username')
-            ->add('password')
-            //->add('salt')
+            ->add('username');
+        $builder->add('password', 'text', array(
+            'label' => 'Contraseña:',
+            'attr' => array(
+                'class' => 'span2',
+                'type' => 'password'
+            )));
+        $builder
             ->add('per_email')
             ->add('isActive')
             ->add('persona_roles')

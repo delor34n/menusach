@@ -1,20 +1,24 @@
-{% extends '::base.html.twig' %}
+{% extends 'MenUSACHBaseBundle:Default:index.html.twig' %}
 
 {% block body %}
 <table class="table">
-    <caption><h1>Menús ingresados</h1></caption>
+    <caption><h1>Menús del día</h1></caption>
     <thead>
         <tr>
             <th>Nombre</th>
             <th>Precio</th>
+            <th>Local</th>
+            <th>Ubicación</th>
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
-        {% if entity.menactivo == TRUE %}
+        {% if entity.men_activo == TRUE %}
         <tr>
-            <td>{{ entity.mennombre }}</td>
-            <td>{{ entity.menprecio }}</td>
+            <td>{{ entity.men_nombre }}</td>
+            <td>${{ entity.men_precio }}</td>
+            <td>{{ entity.loc_nombre }}</td>
+            <td>{{ entity.loc_ubicacion }}</td>
         </tr>
         {% endif %}
     {% endfor %}
