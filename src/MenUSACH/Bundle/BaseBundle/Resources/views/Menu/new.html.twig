@@ -32,7 +32,7 @@
         </div>
         <div class="controls">
             {{ form_widget(form.men_frecuencia) }}
-            <span class="help-block">
+            <span class="help-block alert alert-info">
                 Ingrese la periodicidad del menú que venderá.
             </span>
         </div>
@@ -47,6 +47,9 @@
         <div id="options_2">
             <div class="controls">
                 {{ form_widget(form.men_fecha) }}
+                <span class="help-block alert alert-info">
+                    Nota: La fecha ingresada debe comenzar con el número del mes.
+                </span>
             </div>
             {{ form_errors(form.men_fecha) }}
         </div>
@@ -77,33 +80,33 @@
     <div class="controls">
         <input class="btn btn-primary" type="submit" value="Crear"/>
     </div>
-    <script type="text/javascript">
-    $('#control_div_1').hide();
-    $('#options_1').hide();
-    $('#options_2').hide();
-    $(document).ready(function(){
-        var clicknum = 0;
-        $("#menusach_bundle_basebundle_menutype_men_frecuencia").click(function(){
-            clicknum++;
-            if(clicknum == 1){
-                if ($(this).val() == 0) {
-                    $('#options_1').slideUp();
-                    $('#options_2').slideUp();
-                    $('#control_div_1').slideUp();
-                }
-                if ($(this).val() == 1) {
-                    $('#options_1').slideDown();
-                    $('#options_2').slideDown();
-                    $('#control_div_1').slideDown();   
-                }
-
-                clicknum = 0;
-            }
-        });
-    });
-    </script>
 </form>
+<script type="text/javascript">
+$('#control_div_1').hide();
+$('#options_1').hide();
+$('#options_2').hide();
+$(document).ready(function(){
+    var clicknum = 0;
+    $("#menusach_bundle_basebundle_menutype_men_frecuencia").click(function(){
+        clicknum++;
+        if(clicknum == 1){
+            if ($(this).val() == 0) {
+                $('#options_1').slideUp();
+                $('#options_2').slideUp();
+                $('#control_div_1').slideUp();
+                $('#menusach_bundle_basebundle_menutype_men_fecha').val('');
+            }
+            if ($(this).val() == 1) {
+                $('#options_1').slideDown();
+                $('#options_2').slideDown();
+                $('#control_div_1').slideDown();
+            }
 
+            clicknum = 0;
+        }
+    });
+});
+</script>
 <div class="record_actions">
     <a href="{{ path('menu') }}">{{ '.icon-arrow-left Volver a la lista de menús'|parse_icons }}</a>
 </div>  

@@ -32,7 +32,6 @@ class MenuType extends AbstractType
         $builder->add('men_fecha', 'date', array(
             'widget' => 'single_text',
             'label' => 'Fecha',
-            //'widget' => 'single_text',
             'format' => 'MM/dd/yyyy',
             'attr' => array(
                 'class' => 'span3'
@@ -45,7 +44,6 @@ class MenuType extends AbstractType
             'property'=>'loc_nombre'
             ));
         $builder->add('ingredientes','entity', array(
-            //'label' => 'Ingredientes:',    //si descomentas esta linea no se ven los ingredientes adecuado            
             'class'=>'MenUSACH\Bundle\BaseBundle\Entity\Ingrediente',
             'property'=>'ing_nombre',
             'expanded' => true,

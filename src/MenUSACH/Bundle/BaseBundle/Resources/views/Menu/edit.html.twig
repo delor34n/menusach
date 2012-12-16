@@ -4,24 +4,108 @@
 <form class="form-horizontal" action="{{ path('menu_update', { 'id': entity.id }) }}"
       method="post" {{ form_enctype(edit_form) }}>
     <legend>Editar Menú</legend>
-    {% for element in edit_form %}
-        {% if form_label(element) != form_label(edit_form._token) %}
         <div class="control-group">
+        <div class="control-label">
+            {{ form_label(edit_form.men_nombre) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(edit_form.men_nombre) }}
+            <span class="help-block">
+                {{ form_errors(edit_form.men_nombre) }}
+            </span>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(edit_form.men_precio) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(edit_form.men_precio) }}
+            <span class="help-block">
+                {{ form_errors(edit_form.men_precio) }}
+            </span>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(edit_form.men_frecuencia) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(edit_form.men_frecuencia) }}
+        </div>
+        {{ form_errors(edit_form.men_frecuencia) }}
+    </div>
+    <div class="control-group" id="control_div_1">
+        <div id="options_1">
             <div class="control-label">
-                {{ form_label(element) }}
-            </div>
-            <div class="controls">
-                {{ form_widget(element) }}
-                <span class="help-block">{{ form_errors(element) }}</span>
+                {{ form_label(edit_form.men_fecha, 'Fecha de venta:') }}
             </div>
         </div>
-        {% endif %}
-    {% endfor %}
+        <div id="options_2">
+            <div class="controls">
+                {{ form_widget(edit_form.men_fecha) }}
+                <span class="help-block alert alert-info">
+                    Nota: La fecha ingresada debe comenzar con el número del mes.
+                </span>
+            </div>
+            {{ form_errors(edit_form.men_fecha) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(edit_form.local) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(edit_form.local) }}
+            <span class="help-block">
+                {{ form_errors(edit_form.local) }}
+            </span>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(edit_form.ingredientes) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(edit_form.ingredientes) }}
+            <span class="help-block">
+                {{ form_errors(edit_form.ingredientes) }}
+            </span>
+        </div>
+    </div>
+    
     <div class="controls">
-        <input class="btn btn-primary" type="submit" value="Guardar cambios"/>
+        <input class="btn btn-primary" type="submit" value="Crear"/>
     </div>
 </form>
+<script type="text/javascript">
+if($('#menusach_bundle_basebundle_menutype_men_fecha').val() == '') {
+    $('#control_div_1').hide();
+    $('#options_1').hide();
+    $('#options_2').hide();
+}
+$(document).ready(function(){
+    var clicknum = 0;
+    $("#menusach_bundle_basebundle_menutype_men_frecuencia").click(function(){
+        clicknum++;
+        if(clicknum == 1){
+            if ($(this).val() == 0) {
+                $('#options_1').slideUp();
+                $('#options_2').slideUp();
+                $('#control_div_1').slideUp();
+                $('#menusach_bundle_basebundle_menutype_men_fecha').val('');
+            }
+            if ($(this).val() == 1) {
+                $('#options_1').slideDown();
+                $('#options_2').slideDown();
+                $('#control_div_1').slideDown();
+            }
 
+            clicknum = 0;
+        }
+    });
+});
+</script>
 <ul class="record_actions">
     <li>
         <a href="{{ path('menu') }}">
