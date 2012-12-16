@@ -6,8 +6,17 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use Doctrine\ORM\EntityRepository;
+
 class MenuType extends AbstractType
 {
+    private $usr;
+    
+    public function __construct($usr)
+    {
+        $this->usr = $usr;
+    }
+    
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('men_nombre', 'text' , array(
@@ -40,7 +49,14 @@ class MenuType extends AbstractType
             ));
         $builder->add('local', 'entity', array(
             'label' => 'Local',
-            'class'=>'MenUSACH\Bundle\BaseBundle\Entity\Local',
+            'class'=>'MenUSACHBaseBundle:Local',
+            "query_builder" => function(EntityRepository $er){
+                    return $er->createQueryBuilder('l')
+                            ->from('MenUSACHBaseBundle:Propietario', 'p')
+                            ->where("l.propietario = p.id AND p.username = :usr")
+                            ->setParameter('usr', $this->usr)
+                            ->orderBy('l.loc_nombre', 'ASC');
+                },
             'property'=>'loc_nombre'
             ));
         $builder->add('ingredientes','entity', array(

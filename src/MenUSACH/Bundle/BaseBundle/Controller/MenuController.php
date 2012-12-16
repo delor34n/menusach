@@ -25,16 +25,21 @@ class MenuController extends Controller
      */
     public function indexAction()
     {
+        $usr= $this->get('security.context')->getToken()->getUser();
+        $usr->getUsername();
+        
         $em = $this->getDoctrine()->getManager();
 
         #$entities = $em->getRepository('MenUSACHBaseBundle:Menu')->findAll();
         $query = $em->createQuery(
             'SELECT m.id, m.men_nombre, m.men_precio, m.men_activo, m.men_frecuencia, m.men_fecha, l.loc_ubicacion
-             FROM MenUSACHBaseBundle:Menu m, MenUSACHBaseBundle:Local l
-             WHERE m.local = l.id
-             ORDER BY m.men_fecha ASC'
+            FROM MenUSACHBaseBundle:Menu m, MenUSACHBaseBundle:Local l, MenUSACHBaseBundle:Propietario p
+            WHERE m.local = l.id
+            AND l.propietario = p.id
+            AND p.username = :user
+            ORDER BY m.men_fecha ASC'
         );
-
+        $query->setParameter('user', $usr->getUsername());
         $entities = $query->getResult();
 
         return array(
@@ -74,12 +79,28 @@ class MenuController extends Controller
      */
     public function newAction()
     {
+        $usr = $this->get('security.context')->getToken()->getUser();
+        
         $entity = new Menu();
-        $form   = $this->createForm(new MenuType(), $entity);
+        
+        $em = $this->getDoctrine()->getManager();
+
+        #$entities = $em->getRepository('MenUSACHBaseBundle:Menu')->findAll();
+        $query = $em->createQuery(
+            'SELECT l
+            FROM MenUSACHBaseBundle:Local l, MenUSACHBaseBundle:Propietario p
+            WHERE l.propietario = p.id
+            AND p.username = :user'
+        );
+        $query->setParameter('user', $usr->getUsername());
+        $locales = $query->getResult();
+        
+        $form   = $this->createForm(new MenuType($usr->getUsername()), $entity);
 
         return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+            'entity'    => $entity,
+            'form'      => $form->createView(),
+            'locales'   => $locales
         );
     }
 
@@ -98,16 +119,19 @@ class MenuController extends Controller
 
 //        if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $now = new \DateTime();
             if ($entity->getMenFrecuencia() != 0) {
-                if ($entity->getMenFecha()->diff($now)->days == 0)
+                $now = new \DateTime('now');
+                if ($entity->getMenFecha()->format('mdY') == $now->format('mdY')) {
                     $entity->setMenActivo(TRUE);
-                else
+                }
+                else {
                     $entity->setMenActivo(FALSE);
+                }
             }
             else {
                 $entity->setMenActivo(TRUE);
             }
+            
             $em->persist($entity);
             $em->flush();
 
@@ -129,6 +153,8 @@ class MenuController extends Controller
      */
     public function editAction($id)
     {
+        $usr = $this->get('security.context')->getToken()->getUser();
+        
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('MenUSACHBaseBundle:Menu')->find($id);
@@ -137,7 +163,7 @@ class MenuController extends Controller
             throw $this->createNotFoundException('Unable to find Menu entity.');
         }
 
-        $editForm = $this->createForm(new MenuType(), $entity);
+        $editForm = $this->createForm(new MenuType($usr->getUsername()), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
