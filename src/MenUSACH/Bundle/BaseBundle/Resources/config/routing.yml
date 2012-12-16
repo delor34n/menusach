@@ -7,6 +7,16 @@ IndexMenUSACH:
     pattern: /
     defaults: { _controller: MenUSACHBaseBundle:Ver:index}
 
+CommentMenUSACH:
+    pattern: /{id}/comentar
+    defaults: { _controller: MenUSACHBaseBundle:Comentario:new}
+    requirements:
+        page:  \d+
+
+RenderMap:
+    pattern: /{id}/render
+    defaults: { _controller: MenUSACHBaseBundle:Mapa:index}
+
 AdminMenUSACH:
     pattern: /admin/
     defaults: { _controller: MenUSACHBaseBundle:Admin:index}
