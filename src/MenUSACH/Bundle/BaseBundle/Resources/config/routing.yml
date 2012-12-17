@@ -19,7 +19,7 @@ RenderMap:
 
 AdminMenUSACH:
     pattern: /admin/
-    defaults: { _controller: MenUSACHBaseBundle:Admin:index}
+    defaults: { _controller: MenUSACHBaseBundle:Admin:home}
 
 CategoriaMenUSACH:
     pattern: /admin/categoria
