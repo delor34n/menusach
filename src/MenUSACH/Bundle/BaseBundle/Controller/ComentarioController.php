@@ -37,6 +37,7 @@ class ComentarioController extends Controller
         return array(
             'entity' => $entity,
             'id' => $id,
+  //          'ingMenu' => $ingMenu,
             'menu' => $menu,
             'comments' => $previousComments,
             'form'   => $form->createView(),
@@ -61,6 +62,7 @@ class ComentarioController extends Controller
 
             $entity->setComFecha(new \DateTime(date('Y-m-d H:i:s')));
             $menu = $this->getDoctrine()->getRepository('MenUSACHBaseBundle:Menu')->find($id);
+
             //Se puede capturar si falla.
             $entity->setMenu($menu);
 

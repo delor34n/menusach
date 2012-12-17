@@ -21,8 +21,12 @@
             <td><a href="{{ path('local_show', {'id': menu.local.id}) }}"> {{ menu.local.locnombre }}</a></td>
 		</tr>
 		<tr>
-			<th></th>
-			<td></td>
+			<th>Ingredientes</th>
+			<td>
+			{% for ing in menu.ingredientes %}
+				{{ ing.ingnombre }}
+			{% endfor %}
+			</td>
 		</tr>
 	</tbody>
 </table>
