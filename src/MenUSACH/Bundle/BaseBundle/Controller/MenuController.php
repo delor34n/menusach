@@ -113,8 +113,9 @@ class MenuController extends Controller
      */
     public function createAction(Request $request)
     {
+        $usr = $this->get('security.context')->getToken()->getUser();
         $entity  = new Menu();
-        $form = $this->createForm(new MenuType(), $entity);
+        $form = $this->createForm(new MenuType($usr->getUsername()), $entity);
         $form->bind($request);
 
 //        if ($form->isValid()) {
@@ -182,6 +183,7 @@ class MenuController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
+        $usr = $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('MenUSACHBaseBundle:Menu')->find($id);
@@ -191,7 +193,7 @@ class MenuController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new MenuType(), $entity);
+        $editForm = $this->createForm(new MenuType($usr->getUsername()), $entity);
         $editForm->bind($request);
 
 //        if ($editForm->isValid()) {
