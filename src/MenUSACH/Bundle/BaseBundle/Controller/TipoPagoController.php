@@ -13,14 +13,14 @@ use MenUSACH\Bundle\BaseBundle\Form\TipoPagoType;
 /**
  * TipoPago controller.
  *
- * @Route("/tipopago")
+ * @Route("/")
  */
 class TipoPagoController extends Controller
 {
     /**
      * Lists all TipoPago entities.
      *
-     * @Route("/", name="tipopago")
+     * @Route("admin/tipopago", name="tipopago")
      * @Template()
      */
     public function indexAction()
@@ -37,7 +37,7 @@ class TipoPagoController extends Controller
     /**
      * Finds and displays a TipoPago entity.
      *
-     * @Route("/{id}/show", name="tipopago_show")
+     * @Route("admin/tipopago/{id}/show", name="tipopago_show")
      * @Template()
      */
     public function showAction($id)
@@ -61,7 +61,7 @@ class TipoPagoController extends Controller
     /**
      * Displays a form to create a new TipoPago entity.
      *
-     * @Route("/new", name="tipopago_new")
+     * @Route("admin/tipopago/new", name="tipopago_new")
      * @Template()
      */
     public function newAction()
@@ -78,7 +78,7 @@ class TipoPagoController extends Controller
     /**
      * Creates a new TipoPago entity.
      *
-     * @Route("/create", name="tipopago_create")
+     * @Route("admin/tipopago/create", name="tipopago_create")
      * @Method("POST")
      * @Template("MenUSACHBaseBundle:TipoPago:new.html.twig")
      */
@@ -105,7 +105,7 @@ class TipoPagoController extends Controller
     /**
      * Displays a form to edit an existing TipoPago entity.
      *
-     * @Route("/{id}/edit", name="tipopago_edit")
+     * @Route("admin/tipopago/{id}/edit", name="tipopago_edit")
      * @Template()
      */
     public function editAction($id)
@@ -131,7 +131,7 @@ class TipoPagoController extends Controller
     /**
      * Edits an existing TipoPago entity.
      *
-     * @Route("/{id}/update", name="tipopago_update")
+     * @Route("admin/tipopago/{id}/update", name="tipopago_update")
      * @Method("POST")
      * @Template("MenUSACHBaseBundle:TipoPago:edit.html.twig")
      */
@@ -166,7 +166,7 @@ class TipoPagoController extends Controller
     /**
      * Deletes a TipoPago entity.
      *
-     * @Route("/{id}/delete", name="tipopago_delete")
+     * @Route("admin/tipopago/{id}/delete", name="tipopago_delete")
      * @Method("GET")
      */
     public function deleteAction(Request $request, $id)

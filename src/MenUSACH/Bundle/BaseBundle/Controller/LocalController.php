@@ -29,7 +29,9 @@ class LocalController extends Controller
         $em = $this->getDoctrine()->getManager();
 
 	$query = $em->createQuery(
-            'SELECT l.id, l.loc_nombre, l.loc_ubicacion, l.loc_ranking, p.per_nombre, p.per_apellido_paterno, p.per_apellido_materno FROM MenUSACHBaseBundle:Local l, MenUSACHBaseBundle:Propietario p WHERE l.propietario = p.id'
+            'SELECT l.id, l.loc_nombre, l.loc_ubicacion, l.loc_ranking, p.per_nombre, p.per_apellido_paterno, p.per_apellido_materno
+             FROM MenUSACHBaseBundle:Local l, MenUSACHBaseBundle:Propietario p
+             WHERE l.propietario = p.id'
         );
 
 	$entities = $query->getResult();
@@ -48,17 +50,26 @@ class LocalController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('MenUSACHBaseBundle:Local')->find($id);
-
+        
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Local entity.');
-       }
+        }
 
+        $query = $em->createQuery(
+            "SELECT p
+            FROM MenUSACHBaseBundle:Propietario p, MenUSACHBaseBundle:Local l
+            WHERE l.propietario = p.id
+            AND l.id = :local"
+        );
+        $query->setParameter('local', $entity->getId());
+        $propietario= $query->getResult();
+        
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
             'entity'      => $entity,
+            'propietario' => $propietario,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -66,7 +77,7 @@ class LocalController extends Controller
     /**
      * Displays a form to create a new Local entity.
      *
-     * @Route("/admin/local/new", name="local_new")
+     * @Route("admin/local/new", name="local_new")
      * @Template()
      */
     public function newAction()
@@ -83,7 +94,7 @@ class LocalController extends Controller
     /**
      * Creates a new Local entity.
      *
-     * @Route("/admin/local/create", name="local_create")
+     * @Route("admin/local/create", name="local_create")
      * @Method("POST")
      * @Template("MenUSACHBaseBundle:Local:new.html.twig")
      */
@@ -113,7 +124,7 @@ class LocalController extends Controller
     /**
      * Displays a form to edit an existing Local entity.
      *
-     * @Route("/admin/local/{id}/edit", name="local_edit")
+     * @Route("admin/local/{id}/edit", name="local_edit")
      * @Template()
      */
     public function editAction($id)
@@ -139,7 +150,7 @@ class LocalController extends Controller
     /**
      * Edits an existing Local entity.
      *
-     * @Route("/admin/local/{id}/update", name="local_update")
+     * @Route("admin/local/{id}/update", name="local_update")
      * @Method("POST")
      * @Template("MenUSACHBaseBundle:Local:edit.html.twig")
      */
@@ -174,7 +185,7 @@ class LocalController extends Controller
     /**
      * Deletes a Local entity.
      *
-     * @Route("/admin/local/{id}/delete", name="local_delete")
+     * @Route("admin/local/{id}/delete", name="local_delete")
      * @Method("GET")
      */
     public function deleteAction(Request $request, $id)

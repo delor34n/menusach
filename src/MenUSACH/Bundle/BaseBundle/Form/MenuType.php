@@ -61,6 +61,10 @@ class MenuType extends AbstractType
             ));
         $builder->add('ingredientes','entity', array(
             'class'=>'MenUSACH\Bundle\BaseBundle\Entity\Ingrediente',
+            "query_builder" => function(EntityRepository $er){
+                    return $er->createQueryBuilder('i')
+                            ->orderBy('i.ing_nombre', 'ASC');
+                },
             'property'=>'ing_nombre',
             'expanded' => true,
             'multiple' => true

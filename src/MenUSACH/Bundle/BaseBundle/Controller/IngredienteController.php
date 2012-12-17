@@ -13,14 +13,14 @@ use MenUSACH\Bundle\BaseBundle\Form\IngredienteType;
 /**
  * Ingrediente controller.
  *
- * @Route("/ingrediente")
+ * @Route("/")
  */
 class IngredienteController extends Controller
 {
     /**
      * Lists all Ingrediente entities.
      *
-     * @Route("/", name="ingrediente")
+     * @Route("admin/ingrediente", name="ingrediente")
      * @Template()
      */
     public function indexAction()
@@ -68,7 +68,7 @@ class IngredienteController extends Controller
     /**
      * Displays a form to create a new Ingrediente entity.
      *
-     * @Route("/new", name="ingrediente_new")
+     * @Route("admin/ingrediente/new", name="ingrediente_new")
      * @Template()
      */
     public function newAction()
@@ -85,7 +85,7 @@ class IngredienteController extends Controller
     /**
      * Creates a new Ingrediente entity.
      *
-     * @Route("/create", name="ingrediente_create")
+     * @Route("admin/ingrediente/create", name="ingrediente_create")
      * @Method("POST")
      * @Template("MenUSACHBaseBundle:Ingrediente:new.html.twig")
      */
@@ -110,7 +110,7 @@ class IngredienteController extends Controller
     /**
      * Displays a form to edit an existing Ingrediente entity.
      *
-     * @Route("/{id}/edit", name="ingrediente_edit")
+     * @Route("admin/ingrediente/{id}/edit", name="ingrediente_edit")
      * @Template()
      */
     public function editAction($id)
@@ -136,7 +136,7 @@ class IngredienteController extends Controller
     /**
      * Edits an existing Ingrediente entity.
      *
-     * @Route("/{id}/update", name="ingrediente_update")
+     * @Route("admin/ingrediente/{id}/update", name="ingrediente_update")
      * @Method("POST")
      * @Template("MenUSACHBaseBundle:Ingrediente:edit.html.twig")
      */
@@ -171,7 +171,7 @@ class IngredienteController extends Controller
     /**
      * Deletes a Ingrediente entity.
      *
-     * @Route("/{id}/delete", name="ingrediente_delete")
+     * @Route("admin/ingrediente/{id}/delete", name="ingrediente_delete")
      * @Method("GET")
      */
     public function deleteAction(Request $request, $id)

@@ -26,11 +26,9 @@ class MenuController extends Controller
     public function indexAction()
     {
         $usr= $this->get('security.context')->getToken()->getUser();
-        $usr->getUsername();
         
         $em = $this->getDoctrine()->getManager();
 
-        #$entities = $em->getRepository('MenUSACHBaseBundle:Menu')->findAll();
         $query = $em->createQuery(
             'SELECT m.id, m.men_nombre, m.men_precio, m.men_activo, m.men_frecuencia, m.men_fecha, l.loc_ubicacion
             FROM MenUSACHBaseBundle:Menu m, MenUSACHBaseBundle:Local l, MenUSACHBaseBundle:Propietario p
@@ -85,7 +83,6 @@ class MenuController extends Controller
         
         $em = $this->getDoctrine()->getManager();
 
-        #$entities = $em->getRepository('MenUSACHBaseBundle:Menu')->findAll();
         $query = $em->createQuery(
             'SELECT l
             FROM MenUSACHBaseBundle:Local l, MenUSACHBaseBundle:Propietario p
