@@ -43,7 +43,7 @@ IngredienteMenUSACH:
 LocalMenUSACH:
     pattern: /admin/local
     defaults: { _controller: MenUSACHBaseBundle:Local:index}
-
+    
 PagoMenUSACH:
     pattern: /admin/tipopago
     defaults: { _controller: MenUSACHBaseBundle:TipoPago:index}
