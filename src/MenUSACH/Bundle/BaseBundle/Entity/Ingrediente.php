@@ -35,6 +35,7 @@ class Ingrediente
 
     private $categorias; 
 
+
     /**
      * Get id
      *
@@ -69,29 +70,6 @@ class Ingrediente
     }
 
     /**
-     * Set ing_categoria
-     *
-     * @param string $ingCategoria
-     * @return Ingrediente
-     */
-    public function setIngCategoria($ingCategoria)
-    {
-        $this->ing_categoria = $ingCategoria;
-    
-        return $this;
-    }
-
-    /**
-     * Get ing_categoria
-     *
-     * @return string 
-     */
-    public function getIngCategoria()
-    {
-        return $this->ing_categoria;
-    }
-
-    /**
      * Set categorias
      *
      * @param \MenUSACH\Bundle\BaseBundle\Entity\Categoria $categorias
@@ -112,35 +90,5 @@ class Ingrediente
     public function getCategorias()
     {
         return $this->categorias;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->categorias = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
-    /**
-     * Add categorias
-     *
-     * @param \MenUSACH\Bundle\BaseBundle\Entity\Categoria $categorias
-     * @return Ingrediente
-     */
-    public function addCategoria(\MenUSACH\Bundle\BaseBundle\Entity\Categoria $categorias)
-    {
-        $this->categorias[] = $categorias;
-    
-        return $this;
-    }
-
-    /**
-     * Remove categorias
-     *
-     * @param \MenUSACH\Bundle\BaseBundle\Entity\Categoria $categorias
-     */
-    public function removeCategoria(\MenUSACH\Bundle\BaseBundle\Entity\Categoria $categorias)
-    {
-        $this->categorias->removeElement($categorias);
     }
 }

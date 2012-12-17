@@ -1,14 +1,15 @@
 {% extends 'MenUSACHBaseBundle:Admin:index.html.twig' %}
-
-{% block body %}
+{% block body%}
 {% block titulo %}
 <h2>Administración de Ingredientes</h2>
 {% endblock %}
+
 <table class="table">
     <thead>
         <tr>
             <th>Nombre</th>
-            <th>Categoria</th>
+            <th>Categoría</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -21,14 +22,14 @@
                     {{ '.icon-edit Editar'|parse_icons }}</a></td>
             <td><a class="btn btn-link" href="{{
                 path('ingrediente_delete', { 'id': entity.id }) }}">
-                    {{ '.icon-remove Eliminar'|parse_icons }}</a></td>
+                    {{ '.icon-edit Eliminar'|parse_icons }}</a></td>
         </tr>
     {% endfor %}
     </tbody>
 </table>
 
 <div class="record_actions">
-    <a href="{{ path('ingrediente_new') }}">{{ '.icon-plus Crear nuevo ingrediente'|parse_icons }}</a>
+    <a href="{{ path('ingrediente_new') }}">{{ '.icon-plus Crear nuevo Ingrediente'|parse_icons }}</a>
 </div>
 
 {% endblock %}
