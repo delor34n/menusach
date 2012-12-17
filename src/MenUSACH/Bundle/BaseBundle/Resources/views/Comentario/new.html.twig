@@ -10,12 +10,6 @@
 			<th>Precio</th>
 			<td>{{ menu.menprecio }}</td>
 		</tr>
-		{% if menu.menfrecuencia %}
-		<tr>
-			<th>Fecha de Venta</th>
-			<td>{{ menu.menfecha | date('M-d-Y') }}</td>
-		</tr>
-		{% endif %}
 		<tr>
 			<th>Local</th>
             <td><a href="{{ path('local_show', {'id': menu.local.id}) }}"> {{ menu.local.locnombre }}</a></td>
