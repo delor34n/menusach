@@ -29,11 +29,15 @@ class ComentarioController extends Controller
         $form   = $this->createForm(new ComentarioType($id), $entity);
 
         $em = $this->getDoctrine()->getManager();
+
         $previousComments = $em->getRepository('MenUSACHBaseBundle:Comentario')->findBy(array('menu' => $id), array('com_fecha' => 'DESC'));
+
+        $menu = $em->getRepository('MenUSACHBaseBundle:Menu')->find($id);
 
         return array(
             'entity' => $entity,
             'id' => $id,
+            'menu' => $menu,
             'comments' => $previousComments,
             'form'   => $form->createView(),
         );
