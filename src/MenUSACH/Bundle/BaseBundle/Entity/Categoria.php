@@ -38,14 +38,12 @@ class Categoria
         return $this->id;
     }
 
-    /**
-     * 
-     * @ORM\ManyToMany(targetEntity="Ingrediente")
-     * @ORM\JoinTable(name="categoria_ingrediente",
-     *     joinColumns={@ORM\JoinColumn(name="categoria_id", referencedColumnName="id")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="ingrediente_id", referencedColumnName="id")}
-     * )
+    /** 
+     *
+     * @ORM\OneToMany(targetEntity="Ingrediente", mappedBy="categorias")
+     *
      */
+
     private $ingredientes;
 
     /**
@@ -114,5 +112,18 @@ class Categoria
     public function getIngredientes()
     {
         return $this->ingredientes;
+    }
+
+    /**
+     * Set ingredientes
+     *
+     * @param \MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes
+     * @return Categoria
+     */
+    public function setIngredientes(\MenUSACH\Bundle\BaseBundle\Entity\Ingrediente $ingredientes = null)
+    {
+        $this->ingredientes = $ingredientes;
+    
+        return $this;
     }
 }

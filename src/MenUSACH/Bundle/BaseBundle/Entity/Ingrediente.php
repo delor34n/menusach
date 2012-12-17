@@ -28,18 +28,11 @@ class Ingrediente
      */
     private $ing_nombre;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="ing_categoria", type="string", length=15)
+     /** 
+     * @ORM\ManyToOne(targetEntity="Categoria")
+     * @ORM\JoinColumn(name="categoria_id", referencedColumnName="id")
      */
-    private $ing_categoria;
 
-    /**
-     *
-     * @ORM\OneToMany(targetEntity="Categoria", mappedBy="ingredientes")
-     *
-     */
     private $categorias; 
 
     /**
