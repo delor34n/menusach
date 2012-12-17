@@ -1,16 +1,17 @@
-{% extends 'MenUSACHBaseBundle:Admin:index.html.twig' %}
+{% extends '::base.html.twig' %}
 
 {% block body %}
 {% block titulo %}
-<h2>Local: {{ entity.locnombre }}</h2>
+<h1>Perfil de Local:</h1>
+<h2>{{ entity.locnombre }}</h2>
 {% endblock %}
 {% set urlimage = 'bundles/menusachbase/img/'~ entity.id ~'.jpg' %}
-<img title="Image" width="200px" src="{{ asset( urlimage) }}"> </img> 
+<img title="Image" width="230px" src="{{ asset( urlimage) }} "> </img> 
 <table class="table">
     <tbody>
         <tr>
             <th>Ubicación</th>  
-            <td><a href="{{ path('RenderMap', {'id': entity.locubicacion}) }}">{{ entity.locubicacion }} [Ver Mapa]</a></td>
+            <td><a href="{{ path('RenderMap', {'id': entity.locubicacion}) }}">{{ '.icon-screenshot  [Ver Mapa]'|parse_icons }}</a></td>
         </tr>
         <tr>
             <th>Ranking</th>
