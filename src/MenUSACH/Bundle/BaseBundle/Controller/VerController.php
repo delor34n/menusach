@@ -35,10 +35,17 @@ class VerController extends Controller
             WHERE m.local = l.id'
         );
 
+		$query_ingredientes = $em->createQuery ( 
+			'SELECT i.id, i.ing_nombre
+			 FROM MenUSACHBaseBundle:Ingrediente i'
+		);
+
         $entities = $query->getResult();
+        $entities_ing = $query_ingredientes->getResult();
 
         return array(
             'entities' => $entities,
+            'entities_ing' => $entities_ing,
         );
     }
 
