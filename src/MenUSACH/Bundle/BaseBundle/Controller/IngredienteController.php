@@ -28,8 +28,11 @@ class IngredienteController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->createQuery(
-                 'SELECT i.id, i.ing_nombre, c.cat_des FROM MenUSACHBaseBundle:Ingrediente i, MenUSACHBaseBundle:Categoria c WHERE i.id= c.id'
-                 )->getResult();
+                 'SELECT i.id, i.ing_nombre, c.cat_des 
+				  FROM MenUSACHBaseBundle:Ingrediente i, MenUSACHBaseBundle:Categoria c 
+				  WHERE i.categorias = c.id'
+
+        )->getResult();
 
         //$entities = $em->getRepository('MenUSACHBaseBundle:Ingrediente')->findAll();
 
@@ -92,13 +95,11 @@ class IngredienteController extends Controller
         $form = $this->createForm(new IngredienteType(), $entity);
         $form->bind($request);
 
-        if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
             return $this->redirect($this->generateUrl('ingrediente'));
-        }
 
         return array(
             'entity' => $entity,
@@ -153,12 +154,12 @@ class IngredienteController extends Controller
         $editForm = $this->createForm(new IngredienteType(), $entity);
         $editForm->bind($request);
 
-        if ($editForm->isValid()) {
+        //if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
 
             return $this->redirect($this->generateUrl('ingrediente'));
-        }
+        //}
 
         return array(
             'entity'      => $entity,

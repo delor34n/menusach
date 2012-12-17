@@ -88,13 +88,13 @@ class CategoriaController extends Controller
         $form = $this->createForm(new CategoriaType(), $entity);
         $form->bind($request);
 
-        if ($form->isValid()) {
+       // if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
             return $this->redirect($this->generateUrl('categoria'));
-        }
+       // }
 
         return array(
             'entity' => $entity,
@@ -149,12 +149,12 @@ class CategoriaController extends Controller
         $editForm = $this->createForm(new CategoriaType(), $entity);
         $editForm->bind($request);
 
-        if ($editForm->isValid()) {
+        //if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
 
             return $this->redirect($this->generateUrl('categoria'));
-        }
+        //}
 
         return array(
             'entity'      => $entity,
