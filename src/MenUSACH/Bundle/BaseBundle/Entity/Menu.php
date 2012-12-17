@@ -41,6 +41,22 @@ class Menu
      */
     private $men_precio;
 
+   /**
+     * @var integer $men_like
+     *
+     * @ORM\Column(name="men_like", type="integer")
+     *
+     */
+    private $men_like;
+
+   /**
+     * @var integer $men_dislike
+     *
+     * @ORM\Column(name="men_dislike", type="integer")
+     *
+     */
+    private $men_dislike;
+
     /**
      * @var boolean $men_activo
      *
@@ -88,7 +104,9 @@ class Menu
      */
     public function __construct()
     {
-        $this->ingredientes = new \Doctrine\Common\Collections\ArrayCollection();
+		$this->ingredientes = new \Doctrine\Common\Collections\ArrayCollection();
+		$this->men_like = 0;
+		$this->men_dislike = 0;
     }
     
     /**
@@ -303,5 +321,51 @@ class Menu
     public function getComentarios()
     {
         return $this->comentarios;
+    }
+
+    /**
+     * Set men_like
+     *
+     * @param integer $menLike
+     * @return Menu
+     */
+    public function setMenLike($menLike)
+    {
+        $this->men_like = $menLike;
+    
+        return $this;
+    }
+
+    /**
+     * Get men_like
+     *
+     * @return integer 
+     */
+    public function getMenLike()
+    {
+        return $this->men_like;
+    }
+
+    /**
+     * Set men_dislike
+     *
+     * @param integer $menDislike
+     * @return Menu
+     */
+    public function setMenDislike($menDislike)
+    {
+        $this->men_dislike = $menDislike;
+    
+        return $this;
+    }
+
+    /**
+     * Get men_dislike
+     *
+     * @return integer 
+     */
+    public function getMenDislike()
+    {
+        return $this->men_dislike;
     }
 }

@@ -22,11 +22,21 @@
             {% endfor %}
             </td>
         </tr>
+		<tr>
+			<th>Me gusta</th>
+			<td>{{ menu.menlike }}</td>
+		</tr>
+		<tr>
+			<th>No me gusta</th>
+			<td>{{ menu.mendislike }}</td>
+		</tr>
     </tbody>
 </table>
-
+<legend>Rankea este menú</legend>
+<a class="icon-thumbs-up" href="{{ path('menu_like', {'id': menu.id}) }}"></a> <a class="icon-thumbs-down" href="{{ path('menu_dislike', {'id': menu.id}) }}"></a>
+<br />
 <form action="{{ path('comentario_create', {'id': id}) }}" method="post" {{ form_enctype(form) }}>
-    <legend>Ingrese un comentario para el Menú</legend>
+    <legend>Ingresa un comentario para el Menú</legend>
     <div class="control-group">
         <div class="control-label">
             {{ form_label(form.com_nombre, 'Nombre') }}

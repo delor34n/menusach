@@ -13,20 +13,19 @@ use MenUSACH\Bundle\BaseBundle\Form\MenuType;
 /**
  * Menu controller.
  *
- * @Route("/prop/menu")
+ * @Route("/")
  */
 class MenuController extends Controller
 {
     /**
      * Lists all Menu entities.
      *
-     * @Route("/", name="menu")
+     * @Route("prop/menu", name="menu")
      * @Template()
      */
     public function indexAction()
     {
         $usr= $this->get('security.context')->getToken()->getUser();
-        
         $em = $this->getDoctrine()->getManager();
 
         $query = $em->createQuery(
@@ -48,7 +47,7 @@ class MenuController extends Controller
     /**
      * Finds and displays a Menu entity.
      *
-     * @Route("/{id}/show", name="menu_show")
+     * @Route("prop/menu/{id}/show", name="menu_show")
      * @Template()
      */
     public function showAction($id)
@@ -72,7 +71,7 @@ class MenuController extends Controller
     /**
      * Displays a form to create a new Menu entity.
      *
-     * @Route("/new", name="menu_new")
+     * @Route("prop/menu/new", name="menu_new")
      * @Template()
      */
     public function newAction()
@@ -104,7 +103,7 @@ class MenuController extends Controller
     /**
      * Creates a new Menu entity.
      *
-     * @Route("/create", name="menu_create")
+     * @Route("prop/menu/create", name="menu_create")
      * @Method("POST")
      * @Template("MenUSACHBaseBundle:Menu:new.html.twig")
      */
@@ -146,7 +145,7 @@ class MenuController extends Controller
     /**
      * Displays a form to edit an existing Menu entity.
      *
-     * @Route("/{id}/edit", name="menu_edit")
+     * @Route("prop/menu/{id}/edit", name="menu_edit")
      * @Template()
      */
     public function editAction($id)
@@ -174,7 +173,7 @@ class MenuController extends Controller
     /**
      * Edits an existing Menu entity.
      *
-     * @Route("/{id}/update", name="menu_update")
+     * @Route("prop/menu/{id}/update", name="menu_update")
      * @Method("POST")
      * @Template("MenUSACHBaseBundle:Menu:edit.html.twig")
      */
@@ -222,7 +221,7 @@ class MenuController extends Controller
     /**
      * Deletes a Menu entity.
      *
-     * @Route("/{id}/delete", name="menu_delete")
+     * @Route("prop/menu/{id}/delete", name="menu_delete")
      * @Method("GET")
      */
     public function deleteAction(Request $request, $id)
@@ -256,5 +255,53 @@ class MenuController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
+	}
+    /**
+     * Updates likes.
+     *
+     * @Route("/{id}/like", name="menu_like")
+     * @Method("GET")
+     *
+     */
+    public function likeAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('MenUSACHBaseBundle:Menu')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Menu entity.');
+        }
+
+        $entity->setMenLike($entity->getMenLike()+1);
+
+        $em->persist($entity);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('CommentMenUSACH', array('id' => $id)));
+    }
+   /**
+     * Updates dislikes.
+     *
+     * @Route("/{id}/dislike", name="menu_dislike")
+     * @Method("GET")
+     *
+     */
+    public function dislikeAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('MenUSACHBaseBundle:Menu')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Menu entity.');
+        }
+
+        $entity->setMenDislike($entity->getMenDislike()+1);
+
+        $em->persist($entity);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('CommentMenUSACH', array('id' => $id)));
     }
 }

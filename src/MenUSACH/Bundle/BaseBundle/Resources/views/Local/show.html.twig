@@ -10,11 +10,11 @@
 <table class="table">
     <tbody>
         <tr>
-            <th>Encargado</th>  
+            <th>Encargado</th>
             <td>{% for elemento in propietario%}{{ elemento.pernombre }} {{ elemento.perapellidopaterno }} {{ elemento.perapellidomaterno }}{% endfor %}</td>
         </tr>
         <tr>
-            <th>Ubicación</th>  
+            <th>Ubicación</th>
             <td><a href="{{ path('RenderMap', {'id': entity.locubicacion}) }}">{{ '.icon-screenshot  [Ver Mapa]'|parse_icons }}</a></td>
         </tr>
         <tr>
@@ -26,7 +26,6 @@
             <td>
             </td>
         </tr>
-          
     </tbody>
 </table>
 <div class="record_actions">
