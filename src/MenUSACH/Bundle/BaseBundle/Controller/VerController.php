@@ -29,23 +29,59 @@ class VerController extends Controller
 
         #$entities = $em->getRepository('MenUSACHBaseBundle:Menu')->findAll();
 
-        $query = $em->createQuery(
-            'SELECT m.id as menuid, m.men_nombre, m.men_precio, m.men_activo, l.loc_nombre, l.loc_ubicacion, l.id as localid
-            FROM MenUSACHBaseBundle:Menu m, MenUSACHBaseBundle:Local l 
-            WHERE m.local = l.id'
-        );
+		if ( isset ($_POST['filter'] )) { 
 
-		$query_ingredientes = $em->createQuery ( 
+			$test = $_POST['filter'];
+
+			if ( $test > 0 ) {
+
+				$test = $_POST['filter'];
+			
+				$query = $em->createQuery(
+        	    	"SELECT m.id as menuid, m.men_nombre, m.men_precio, m.men_activo, l.loc_nombre, l.loc_ubicacion, l.id as localid, i.ing_nombre  
+        	    	FROM MenUSACHBaseBundle:Menu m JOIN m.ingredientes i, MenUSACHBaseBundle:Local l  
+        	    	WHERE m.local = l.id 
+					AND   i.id = '$test'"
+		    	);
+
+        		$entities = $query->getResult();
+
+			} else {
+
+				$query = $em->createQuery(
+                	'SELECT m.id as menuid, m.men_nombre, m.men_precio, m.men_activo, l.loc_nombre, l.loc_ubicacion, l.id as localid  
+                	FROM MenUSACHBaseBundle:Menu m , MenUSACHBaseBundle:Local l  
+                	WHERE m.local = l.id'
+            	);  
+
+        		$entities = $query->getResult();
+			}
+
+		} else {
+
+			$test = -1;
+
+			$query = $em->createQuery(
+           		'SELECT m.id as menuid, m.men_nombre, m.men_precio, m.men_activo, l.loc_nombre, l.loc_ubicacion, l.id as localid  
+           		FROM MenUSACHBaseBundle:Menu m , MenUSACHBaseBundle:Local l  
+           		WHERE m.local = l.id '
+			);
+
+        	$entities = $query->getResult();
+		}
+
+    	$query_ingredientes = $em->createQuery ( 
 			'SELECT i.id, i.ing_nombre
-			 FROM MenUSACHBaseBundle:Ingrediente i'
+			FROM MenUSACHBaseBundle:Ingrediente i'
 		);
 
-        $entities = $query->getResult();
+
         $entities_ing = $query_ingredientes->getResult();
 
         return array(
             'entities' => $entities,
             'entities_ing' => $entities_ing,
+            'test' => $test,
         );
     }
 

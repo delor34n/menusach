@@ -1,14 +1,24 @@
 {% extends 'MenUSACHBaseBundle:Default:index.html.twig' %}
 
 {% block body %}
-<select>
 
-	{% for entity in entities_ing %}
+<form action="" id="filterForm" method="post">
 
-		<option value="{{entity.id }}"> {{ entity.ing_nombre }} </option>
+	<select name="filter">
 
-	{% endfor %}
-</select>
+		<option selected value="0"> Seleccione el Ingrediente </option>
+		{% for entity in entities_ing %}
+
+			<option value="{{entity.id }}"> {{ entity.ing_nombre }} </option>
+
+		{% endfor %}
+
+	</select>
+
+	<input type="submit" name="submit" id="submit" value="Buscar"/>
+
+</form>
+
 <table class="table">
     <caption><h2>Menús del día {{ "now"|date("d/m/Y") }}</h2></caption>
     <thead>
