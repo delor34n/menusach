@@ -85,5 +85,5 @@ hwi_oauth:
     connect: ~
 
 services:
-    hwi_auth.oauth_user_provider:
+    hwi_oauth.user.provider.entity:
         class: HWI\Bundle\OAuthBundle\Security\Core\User\OAuthUserProvider

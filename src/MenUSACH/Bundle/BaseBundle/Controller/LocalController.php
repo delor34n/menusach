@@ -9,18 +9,19 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use MenUSACH\Bundle\BaseBundle\Entity\Local;
 use MenUSACH\Bundle\BaseBundle\Form\LocalType;
+//use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Local controller.
  *
- * @Route("/local")
+ * @Route("/")
  */
 class LocalController extends Controller
 {
     /**
      * Lists all Local entities.
      *
-     * @Route("/", name="local")
+     * @Route("admin/local", name="local")
      * @Template()
      */
     public function indexAction()
@@ -41,7 +42,7 @@ class LocalController extends Controller
     /**
      * Finds and displays a Local entity.
      *
-     * @Route("/{id}/show", name="local_show")
+     * @Route("/local/{id}/show", name="local_show")
      * @Template()
      */
     public function showAction($id)
@@ -65,7 +66,7 @@ class LocalController extends Controller
     /**
      * Displays a form to create a new Local entity.
      *
-     * @Route("/new", name="local_new")
+     * @Route("/admin/local/new", name="local_new")
      * @Template()
      */
     public function newAction()
@@ -82,7 +83,7 @@ class LocalController extends Controller
     /**
      * Creates a new Local entity.
      *
-     * @Route("/create", name="local_create")
+     * @Route("/admin/local/create", name="local_create")
      * @Method("POST")
      * @Template("MenUSACHBaseBundle:Local:new.html.twig")
      */
@@ -112,7 +113,7 @@ class LocalController extends Controller
     /**
      * Displays a form to edit an existing Local entity.
      *
-     * @Route("/{id}/edit", name="local_edit")
+     * @Route("/admin/local/{id}/edit", name="local_edit")
      * @Template()
      */
     public function editAction($id)
@@ -138,7 +139,7 @@ class LocalController extends Controller
     /**
      * Edits an existing Local entity.
      *
-     * @Route("/{id}/update", name="local_update")
+     * @Route("/admin/local/{id}/update", name="local_update")
      * @Method("POST")
      * @Template("MenUSACHBaseBundle:Local:edit.html.twig")
      */
@@ -173,7 +174,7 @@ class LocalController extends Controller
     /**
      * Deletes a Local entity.
      *
-     * @Route("/{id}/delete", name="local_delete")
+     * @Route("/admin/local/{id}/delete", name="local_delete")
      * @Method("GET")
      */
     public function deleteAction(Request $request, $id)

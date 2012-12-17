@@ -24,4 +24,4 @@ hwi_oauth_security:
     prefix: /google/login
 
 google_login:
-    pattern: /login/check-google
+    pattern: /google/login/check

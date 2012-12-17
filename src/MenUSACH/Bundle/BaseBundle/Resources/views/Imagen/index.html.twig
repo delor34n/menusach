@@ -1,0 +1,8 @@
+{% extends 'MenUSACHBaseBundle:Prop:index.html.twig' %} 
+
+{% block body%}
+<form action="upload" method="post" {{ form_enctype(form) }}>
+{{ form_widget(form) }}
+<input type="submit" class="submit" id="form_submit" value="Subir" />
+</form>
+{% endblock %}

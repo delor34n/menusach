@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorColumn(name="per_tipo", type="integer")
  * @ORM\DiscriminatorMap({"1" = "Propietario", "2" = "Cliente", "3" = "Administrador"})
  */
-class Persona //implements UserInterface
+class Persona
 {
     /**
      * @var integer

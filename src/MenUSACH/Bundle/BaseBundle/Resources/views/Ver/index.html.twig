@@ -26,7 +26,6 @@
             <th>Nombre</th>
             <th>Precio</th>
             <th>Local</th>
-            <th>Ubicación</th>
         </tr>
     </thead>
     <tbody>
@@ -36,7 +35,6 @@
             <td><a href="{{ path('CommentMenUSACH', {'id': entity.menuid}) }}">{{ entity.men_nombre }}</a></td>
             <td>${{ entity.men_precio }}</td>
             <td><a href="{{ path('local_show', {'id': entity.localid}) }}"> {{ entity.loc_nombre }}</a></td>
-            <td><a href="{{ path('RenderMap', {'id': entity.loc_ubicacion}) }}">Aquí</a></td>
         </tr>
         {% endif %}
     {% endfor %}

@@ -1,73 +1,73 @@
 security:
-    encoders:
-        MenUSACH\Bundle\BaseBundle\Entity\Propietario:
-            algorithm: sha512
-            encode-as-base64: true
-            iterations: 10
-        Symfony\Component\Security\Core\User\User:  plaintext
+  encoders:
+      MenUSACH\Bundle\BaseBundle\Entity\Propietario:
+          algorithm: sha512
+          encode-as-base64: true
+          iterations: 10
+      Symfony\Component\Security\Core\User\User:  plaintext
 
-    providers:
-        chain_provider:
-            chain:
-                providers: [ in_memory, user_db ]
+  providers:
+      chain_provider:
+          chain:
+              providers: [ in_memory, user_db ]
 
-        in_memory:
-            memory:
-                users:
-                    admin: { password: menusach, roles: [ 'ROLE_ADMIN' ] }
+      in_memory:
+          memory:
+              users:
+                  admin: { password: menusach, roles: [ 'ROLE_ADMIN' ] }
 
-        user_db:
-            entity: { class: MenUSACH\Bundle\BaseBundle\Entity\Persona, property: username }
+      user_db:
+          entity: { class: MenUSACH\Bundle\BaseBundle\Entity\Persona, property: username }
 
-    firewalls:
-        dev:
-            pattern:  ^/(_(profiler|wdt)|css|images|js)/
-            security: false
+  firewalls:
+      dev:
+          pattern:  ^/(_(profiler|wdt)|css|images|js)/
+          security: false
 
-        LoginProp:
-            pattern:  ^/prop/login$
-            security: false
-            
-        Prop_area:
-            pattern:    ^/prop/
-            form_login:
-                login_path: /prop/login
-                check_path: /prop/login_check
-            logout:
-                path: /prop/logout
-                target: /
+      LoginProp:
+          pattern:  ^/prop/login$
+          security: false
 
-        LoginAdmin:
-            pattern:  ^/admin/login$
-            security: false
-            
-        Admin_area:
-            pattern:    ^/admin/
-            form_login:
-                login_path: /admin/login
-                check_path: /admin/login_check
-            logout:
-                path: /admin/logout
-                target: /
+      Prop_area:
+          pattern:    ^/prop/
+          form_login:
+              login_path: /prop/login
+              check_path: /prop/login_check
+          logout:
+              path: /prop/logout
+              target: /
 
-        secured_area:
-          pattern: ^/google/
-          logout: true
-          anonymous: true
-          oauth:
-            resource_owners:
-              google:         "/login/check-google"
-            login_path:       /google/login
-            failure_path:     /google/login
+      LoginAdmin:
+          pattern:  ^/admin/login$
+          security: false
 
-            oauth_user_provider:
-              service: hwi_auth.oauth_user_provider
+      Admin_area:
+          pattern:    ^/admin/
+          form_login:
+              login_path: /admin/login
+              check_path: /admin/login_check
+          logout:
+              path: /admin/logout
+              target: /
 
-    access_control:
-      - { path: ^/prop/login_check, role: IS_AUTHENTICATED_ANONYMOUSLY }
-      - { path: ^/prop/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
-      - { path: ^/admin/login_check, role: IS_AUTHENTICATED_ANONYMOUSLY }
-      - { path: ^/admin/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
-      - { path: ^/google/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
-      - { path: ^/admin, role: ROLE_ADMIN }
-      - { path: ^/prop, role: ROLE_PROP }
+      secured_area:
+        pattern: ^/google/
+        logout: true
+        anonymous: true
+        oauth:
+          resource_owners:
+            google:         "/google/login/check"
+          login_path:       /google/login
+          failure_path:     /google/login
+
+          oauth_user_provider:
+            service: hwi_oauth.user.provider.entity
+
+  access_control:
+    - { path: ^/prop/login_check, role: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/prop/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/admin/login_check, role: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/admin/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/google/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/admin, role: ROLE_ADMIN }
+    - { path: ^/prop, role: ROLE_PROP }
