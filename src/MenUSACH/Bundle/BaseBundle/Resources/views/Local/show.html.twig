@@ -1,41 +1,23 @@
-<h1>Local</h1>
+{% extends 'MenUSACHBaseBundle:Admin:index.html.twig' %}
 
-<table class="record_properties">
+{% block body %}
+{% block titulo %}
+<h2>Local: {{ entity.locnombre }}</h2>
+{% endblock %}
+
+<table class="table">
     <tbody>
         <tr>
-            <th>Id</th>
-            <td>{{ entity.id }}</td>
+            <th>Ubicacion</th>  
+            <td><a href="{{ path('RenderMap', {'id': entity.locubicacion}) }}">{{ entity.locubicacion }}</a></td>
         </tr>
         <tr>
-            <th>Loc_nombre</th>
-            <td>{{ entity.locnombre }}</td>
-        </tr>
-        <tr>
-            <th>Loc_ubicacion</th>
-            <td>{{ entity.locubicacion }}</td>
-        </tr>
-        <tr>
-            <th>Loc_ranking</th>
+            <th>Ranking</th>
             <td>{{ entity.locranking }}</td>
         </tr>
     </tbody>
 </table>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('local') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('local_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('local_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+<div class="record_actions">
+    <a href="{{ path('IndexMenUSACH') }}">{{ '.icon-arrow-left Volver al Menú Principal'|parse_icons }}</a>
+</div>
+{% endblock %}

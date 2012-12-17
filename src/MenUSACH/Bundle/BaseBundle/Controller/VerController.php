@@ -30,7 +30,9 @@ class VerController extends Controller
         #$entities = $em->getRepository('MenUSACHBaseBundle:Menu')->findAll();
 
         $query = $em->createQuery(
-            'SELECT m.id, m.men_nombre, m.men_precio, m.men_activo, l.loc_nombre, l.loc_ubicacion FROM MenUSACHBaseBundle:Menu m, MenUSACHBaseBundle:Local l WHERE m.local = l.id'
+            'SELECT m.id, m.men_nombre, m.men_precio, m.men_activo, l.loc_nombre, l.loc_ubicacion, l.id 
+            FROM MenUSACHBaseBundle:Menu m, MenUSACHBaseBundle:Local l 
+            WHERE m.local = l.id'
         );
 
         $entities = $query->getResult();
