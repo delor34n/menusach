@@ -1,4 +1,7 @@
 {% extends '::base.html.twig' %}
+{% block linkIMG %}
+<a class="brand" href="{{ path('AdminMenUSACH') }}">
+{% endblock %}
 {% block MenuRol %}
 <li><a href="{{ path('PropietarioMenUSACH') }}">Propietario</a></li>
 <li><a href="{{ path('LocalMenUSACH') }}">Local</a></li>

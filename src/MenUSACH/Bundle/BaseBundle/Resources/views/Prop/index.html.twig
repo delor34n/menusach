@@ -1,4 +1,7 @@
 {% extends '::base.html.twig' %}
+{% block linkIMG %}
+<a class="brand" href="{{ path('PropMenUSACH') }}">
+{% endblock %}
 {% block MenuRol %}
 <li><a href="{{ path('MenuMenUSACH') }}">Administrar Menús</a></li>
 <li><a href="{{ path('proplocal')}}">Mi Local</a></li>
@@ -14,5 +17,3 @@
 {% block titulo %}
 <h2>Panel de Propietario MenUSACH</h2>
 {% endblock %}
-
-
