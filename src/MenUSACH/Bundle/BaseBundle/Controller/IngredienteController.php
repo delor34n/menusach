@@ -154,12 +154,12 @@ class IngredienteController extends Controller
         $editForm = $this->createForm(new IngredienteType(), $entity);
         $editForm->bind($request);
 
-        if ($editForm->isValid()) {
+        //if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
 
             return $this->redirect($this->generateUrl('ingrediente'));
-        }
+        //}
 
         return array(
             'entity'      => $entity,
