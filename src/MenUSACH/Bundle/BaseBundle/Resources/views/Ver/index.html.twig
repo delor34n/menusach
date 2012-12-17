@@ -4,7 +4,7 @@
 
 <form class="form-search" action="" id="filterForm" method="post">
 	<select name="filter">
-		<option selected value="0"> Seleccione el Ingrediente </option>
+		<option selected value="0"> Seleccione el ingrediente </option>
 		{% for entity in entities_ing %}
                     <option value="{{entity.id }}"> {{ entity.ing_nombre }} </option>    
 		{% endfor %}
