@@ -2,26 +2,62 @@
 {% block title %}Contacto{% endblock%}
 
 {% block body %}
-    <header>
-        <h1>Contacto Administrador</h1>
-    </header>
-
 {% if app.session.hasFlash('blogger-notice') %}
     <div class="alert alert-success">
         {{ app.session.flash('blogger-notice') }}
     </div>
 
 {% endif %}
-    <form action="{{ path('ContactoMenUSACH') }}" method="post" {{ form_enctype(form) }} class="blogger">
-
-        {{ form_row(form.Nombre) }}
-        {{ form_row(form.Email) }}
-        {{ form_row(form.Asunto) }}
-        {{ form_row(form.Comentario) }}
+    <form class="form-horizontal" action="{{ path('ContactoMenUSACH') }}" method="post" {{ form_enctype(form) }} class="blogger">
+        <legend>Contacto Administrador</legend>
+        <div class="control-group">
+            <div class="control-label">
+                {{ form_label(form.Nombre) }}
+            </div>
+            <div class="controls">
+                {{ form_widget(form.Nombre) }}
+                <span class="help-block">
+                    {{ form_errors(form.Nombre) }}
+                </span>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="control-label">
+                {{ form_label(form.Email) }}
+            </div>
+            <div class="controls">
+                {{ form_widget(form.Email) }}
+                <span class="help-block">
+                    {{ form_errors(form.Email) }}
+                </span>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="control-label">
+                {{ form_label(form.Asunto) }}
+            </div>
+            <div class="controls">
+                {{ form_widget(form.Asunto) }}
+                <span class="help-block">
+                    {{ form_errors(form.Asunto) }}
+                </span>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="control-label">
+                {{ form_label(form.Comentario) }}
+            </div>
+            <div class="controls">
+                {{ form_widget(form.Comentario) }}
+                <span class="help-block">
+                    {{ form_errors(form.Comentario) }}
+                </span>
+            </div>
+        </div>
         {{ form_rest(form) }}
 
-        <div>
-            <input type="submit" class="btn btn-primary" value="Enviar" />
+        <div class="controls">
+            <input class="btn btn-primary" type="submit" value="Crear"/>
         </div>
     </form>
 {% endblock %}

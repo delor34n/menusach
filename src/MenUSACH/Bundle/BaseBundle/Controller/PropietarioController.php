@@ -118,7 +118,9 @@ class PropietarioController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Propietario entity.');
         }
-
+        
+        $entity->setPassword($entity->getPassword());
+        
         $editForm = $this->createForm(new PropietarioType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
