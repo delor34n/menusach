@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new MenUSACH\Bundle\BaseBundle\MenUSACHBaseBundle(),
             new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
             new MenUSACH\Bundle\ApiBundle\MenUSACHApiBundle(),
+            new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
