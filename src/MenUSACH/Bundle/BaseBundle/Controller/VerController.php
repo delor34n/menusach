@@ -41,7 +41,8 @@ class VerController extends Controller
         	    	"SELECT m.id as menuid, m.men_nombre, m.men_precio, m.men_activo, l.loc_nombre, l.loc_ubicacion, l.id as localid, i.ing_nombre  
         	    	FROM MenUSACHBaseBundle:Menu m JOIN m.ingredientes i, MenUSACHBaseBundle:Local l  
         	    	WHERE m.local = l.id 
-					AND   i.id = '$test'"
+			AND   i.id = '$test'
+                        AND m.men_activo=1"
 		    	);
 
         		$entities = $query->getResult();
@@ -51,7 +52,8 @@ class VerController extends Controller
 				$query = $em->createQuery(
                 	'SELECT m.id as menuid, m.men_nombre, m.men_precio, m.men_activo, l.loc_nombre, l.loc_ubicacion, l.id as localid  
                 	FROM MenUSACHBaseBundle:Menu m , MenUSACHBaseBundle:Local l  
-                	WHERE m.local = l.id'
+                	WHERE m.local = l.id
+                        AND m.men_activo=1'
             	);  
 
         		$entities = $query->getResult();
@@ -64,7 +66,8 @@ class VerController extends Controller
 			$query = $em->createQuery(
            		'SELECT m.id as menuid, m.men_nombre, m.men_precio, m.men_activo, l.loc_nombre, l.loc_ubicacion, l.id as localid  
            		FROM MenUSACHBaseBundle:Menu m , MenUSACHBaseBundle:Local l  
-           		WHERE m.local = l.id '
+           		WHERE m.local = l.id 
+                        AND m.men_activo=1'
 			);
 
         	$entities = $query->getResult();
