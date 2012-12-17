@@ -21,8 +21,6 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Braincrafted\BootstrapBundle\BraincraftedBootstrapBundle(),
             new MenUSACH\Bundle\BaseBundle\MenUSACHBaseBundle(),
-            new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
-            new MenUSACH\Bundle\ApiBundle\MenUSACHApiBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
         );
 

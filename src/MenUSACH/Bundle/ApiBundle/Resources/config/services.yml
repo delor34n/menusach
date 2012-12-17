@@ -1,7 +1,0 @@
-parameters:
-#    men_usach_api.example.class: MenUSACH\Bundle\ApiBundle\Example
-
-services:
-#    men_usach_api.example:
-#        class: %men_usach_api.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

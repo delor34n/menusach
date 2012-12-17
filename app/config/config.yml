@@ -67,13 +67,6 @@ swiftmailer:
     password:  %mailer_password%
     spool:     { type: memory }
 
-fos_oauth_server:
-    db_driver: orm       # Driver availables: orm, mongodb, or propel
-    client_class:        Acme\ApiBundle\Entity\Client
-    access_token_class:  Acme\ApiBundle\Entity\AccessToken
-    refresh_token_class: Acme\ApiBundle\Entity\RefreshToken
-    auth_code_class:     Acme\ApiBundle\Entity\AuthCode
-
 hwi_oauth:
     resource_owners:
         google:
@@ -85,5 +78,5 @@ hwi_oauth:
     connect: ~
 
 services:
-    hwi_oauth.user.provider.entity:
+    hwi_auth.oauth_user_provider:
         class: HWI\Bundle\OAuthBundle\Security\Core\User\OAuthUserProvider

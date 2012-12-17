@@ -51,17 +51,16 @@ security:
               target: /
 
       secured_area:
-        pattern: ^/google/
-        logout: true
-        anonymous: true
-        oauth:
-          resource_owners:
-            google:         "/google/login/check"
-          login_path:       /google/login
-          failure_path:     /google/login
-
-          oauth_user_provider:
-            service: hwi_oauth.user.provider.entity
+          pattern: ^/google/
+          logout:     true
+          anonymous:  true
+          oauth:
+            resource_owners:
+              google:         "/google/login/check"
+            login_path:       /google/login
+            failure_path:     /google/login
+            oauth_user_provider:
+              service: hwi_auth.oauth_user_provider
 
   access_control:
     - { path: ^/prop/login_check, role: IS_AUTHENTICATED_ANONYMOUSLY }
