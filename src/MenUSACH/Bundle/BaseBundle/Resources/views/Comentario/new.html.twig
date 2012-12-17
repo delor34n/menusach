@@ -13,7 +13,7 @@
 		{% if menu.menfrecuencia %}
 		<tr>
 			<th>Fecha de Venta</th>
-			<td>{{ menu.menfecha  }}</td>
+			<td>{{ menu.menfecha | date('M-d-Y') }}</td>
 		</tr>
 		{% endif %}
 		<tr>
