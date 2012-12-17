@@ -5,7 +5,26 @@
 <form class="form-horizontal" action="{{ path('ingrediente_create') }}" method="post" {{ form_enctype(form) }}>
     <legend>Crear nuevo ingrediente</legend>
     <div class="control-group">
-        {{ form_widget(form) }}
+        <div class="control-label">
+            {{ form_label(form.ing_nombre) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(form.ing_nombre) }}
+            <span class="help-block">
+                {{ form_errors(form.ing_nombre) }}
+            </span>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="control-label">
+                {{ form_label(form.categorias) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(form.categorias) }}
+            <span class="help-block">
+                {{ form_errors(form.categorias) }}
+            </span>
+        </div>
     </div>
     <div class="controls">
         <input class="btn btn-primary" type="submit" value="Crear"/>
