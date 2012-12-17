@@ -2,21 +2,14 @@
 
 {% block body %}
 
-<form action="" id="filterForm" method="post">
-
+<form class="form-search" action="" id="filterForm" method="post">
 	<select name="filter">
-
 		<option selected value="0"> Seleccione el Ingrediente </option>
 		{% for entity in entities_ing %}
-
-			<option value="{{entity.id }}"> {{ entity.ing_nombre }} </option>
-
+                    <option value="{{entity.id }}"> {{ entity.ing_nombre }} </option>    
 		{% endfor %}
-
 	</select>
-
-	<input type="submit" name="submit" id="submit" value="Buscar"/>
-
+	<input class="btn" type="submit" name="submit" id="submit" value="Buscar"/>
 </form>
 
 <table class="table">

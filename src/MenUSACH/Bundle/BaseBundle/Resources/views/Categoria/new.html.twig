@@ -4,7 +4,15 @@
 <form class="form-horizontal" action="{{ path('categoria_create') }}" method="post" {{ form_enctype(form) }}>
     <legend>Crear nueva categoría</legend>
     <div class="control-group">
-        {{ form_widget(form) }}
+        <div class="control-label">
+            {{ form_label(form.cat_des) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(form.cat_des) }}
+            <span class="help-block">
+                {{ form_errors(form.cat_des) }}
+            </span>
+        </div>
     </div>
     <div class="controls">
         <input class="btn btn-primary" type="submit" value="Crear"/>

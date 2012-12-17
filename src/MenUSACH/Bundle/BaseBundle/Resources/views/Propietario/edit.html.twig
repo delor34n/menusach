@@ -1,11 +1,101 @@
 {% extends 'MenUSACHBaseBundle:Admin:index.html.twig' %}
 
 {% block body%}
-<form class="form-horizontal" action="{{ path('admin_prop_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+<form class="form-horizontal"
+      action="{{ path('admin_prop_update', { 'id': entity.id }) }}"
+      method="post" {{ form_enctype(edit_form) }}>
     <legend>Editar Propietario</legend>
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(edit_form.per_nombre) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(edit_form.per_nombre) }}
+            <span class="help-block">
+                {{ form_errors(edit_form.per_nombre) }}
+            </span>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(edit_form.per_apellido_paterno) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(edit_form.per_apellido_paterno) }}
+            <span class="help-block">
+                {{ form_errors(edit_form.per_apellido_paterno) }}
+            </span>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(edit_form.per_apellido_materno) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(edit_form.per_apellido_materno) }}
+            <span class="help-block">
+                {{ form_errors(edit_form.per_apellido_materno) }}
+            </span>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(edit_form.username) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(edit_form.username) }}
+            <span class="help-block">
+                {{ form_errors(edit_form.username) }}
+            </span>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(edit_form.password) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(edit_form.password) }}
+            <span class="help-block">
+                {{ form_errors(edit_form.password) }}
+            </span>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(edit_form.per_email) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(edit_form.per_email) }}
+            <span class="help-block">
+                {{ form_errors(edit_form.per_email) }}
+            </span>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(edit_form.pro_fono) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(edit_form.pro_fono) }}
+            <span class="help-block">
+                {{ form_errors(edit_form.pro_fono) }}
+            </span>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(edit_form.propietario_roles) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(edit_form.propietario_roles) }}
+            <span class="help-block">
+                {{ form_errors(edit_form.per_apellido_paterno) }}
+            </span>
+        </div>
+    </div>
     {{ form_widget(edit_form) }}
     <div class="controls">
-        <input class="btn btn-primary" type="submit" value="Guardar Cambios"/>
+        <input class="btn btn-primary" type="submit" value="Guardar"/>
     </div>
 </form>
 

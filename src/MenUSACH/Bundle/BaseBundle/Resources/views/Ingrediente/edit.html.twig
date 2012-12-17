@@ -4,7 +4,28 @@
 
 <form class="form-horizontal" action="{{ path('ingrediente_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
     <legend>Editar Ingrediente</legend>
-    {{ form_widget(edit_form) }}
+    <div class="control-group">
+        <div class="control-label">
+            {{ form_label(edit_form.ing_nombre) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(edit_form.ing_nombre) }}
+            <span class="help-block">
+                {{ form_errors(edit_form.ing_nombre) }}
+            </span>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="control-label">
+                {{ form_label(edit_form.categorias) }}
+        </div>
+        <div class="controls">
+            {{ form_widget(edit_form.categorias) }}
+            <span class="help-block">
+                {{ form_errors(edit_form.categorias) }}
+            </span>
+        </div>
+    </div>
     <div class="controls">
         <input class="btn btn-primary" type="submit" value="Guardar Cambios"/>
     </div>
