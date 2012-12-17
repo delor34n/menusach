@@ -2,7 +2,8 @@
 
 {% block body %}
 {% block titulo %}
-<h3>Perfil de local {{ entity.locnombre }}</h3>
+<h3>Perfil de local</h3>
+<h2>{{ entity.locnombre }}</h2>
 {% endblock %}
 {% set urlimage = 'bundles/menusachbase/img/'~ entity.id ~'.jpg' %}
 <img title="Image" width="230px" src="{{ asset( urlimage) }} "> </img> 
