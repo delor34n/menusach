@@ -1,7 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: @MenUSACHBaseBundle/Resources/config/config.yml }
+    - { resource: '@MenUSACHBaseBundle/Resources/config/config.yml' }
 
 framework:
     #esi:             ~
@@ -73,3 +73,17 @@ fos_oauth_server:
     access_token_class:  Acme\ApiBundle\Entity\AccessToken
     refresh_token_class: Acme\ApiBundle\Entity\RefreshToken
     auth_code_class:     Acme\ApiBundle\Entity\AuthCode
+
+hwi_oauth:
+    resource_owners:
+        google:
+            type:           google
+            client_id:      495139421555.apps.googleusercontent.com
+            client_secret:  mcwvsNhWgGV_DRynUza4HNcE
+            scope:          "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+    firewall_name: secured_area
+    connect: ~
+
+services:
+    hwi_auth.oauth_user_provider:
+        class: HWI\Bundle\OAuthBundle\Security\Core\User\OAuthUserProvider

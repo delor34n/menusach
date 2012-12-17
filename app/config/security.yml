@@ -50,10 +50,24 @@ security:
                 path: /admin/logout
                 target: /
 
+        secured_area:
+          pattern: ^/google/
+          logout: true
+          anonymous: true
+          oauth:
+            resource_owners:
+              google:         "/login/check-google"
+            login_path:       /google/login
+            failure_path:     /google/login
+
+            oauth_user_provider:
+              service: hwi_auth.oauth_user_provider
+
     access_control:
       - { path: ^/prop/login_check, role: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/prop/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/admin/login_check, role: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/admin/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/google/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/admin, role: ROLE_ADMIN }
       - { path: ^/prop, role: ROLE_PROP }
