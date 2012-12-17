@@ -1,0 +1,124 @@
+{% extends '::base.html.twig' %}
+
+{% block graficosMenusach %}
+
+	<script src="{{ asset('bundles/menusachbase/js/highcharts.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('bundles/menusachbase/js/grid.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('bundles/menusachbase/js/exporting.js') }}" type="text/javascript"></script>
+{% block jquery %}
+	<script src="{{ asset('bundles/menusachbase/js/jquery-1.4.2.min.js') }}" type="text/javascript"></script>
+{% endblock %}
+
+	<script type="text/javascript">
+ 
+            var chart;
+            $(document).ready(function() {
+                chart = new Highcharts.Chart({
+                    chart: {
+                        renderTo: 'graficoMenusach',
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false
+                    },
+                    title: {
+                        text: 'Ingredientes más utilizados en los Menús, 2012'
+                    },
+                    tooltip: {
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ this.y +' %';
+                        }
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: false
+                            },
+                            showInLegend: true
+                        }
+                    },
+                    series: [{
+                        type: 'pie',
+                        name: 'Browser share',
+                        data: [
+
+							{% for ingrediente in entities_ing %}
+								[ '{{ ingrediente.ing_nombre }}', {{ ingrediente.ing_perc }} ],
+							{% endfor %}
+                        ]
+                    }]
+                });
+            });
+ 
+        </script>
+
+		<script type="text/javascript">
+ 
+            var chart;
+            $(document).ready(function() {
+                chart = new Highcharts.Chart({
+                    chart: {
+                        renderTo: 'graficoMenusach2',
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false
+                    },
+                    title: {
+                        text: 'Menús más comentados, 2012'
+                    },
+                    tooltip: {
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ this.y +' %';
+                        }
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: false
+                            },
+                            showInLegend: true
+                        }
+                    },
+                    series: [{
+                        type: 'pie',
+                        name: 'Browser share',
+                        data: [
+
+							{% for menu in entities_menu %}
+								[ '{{ menu.men_nombre }}', {{ menu.men_com }} ],
+							{% endfor %}
+                        ]
+                    }]
+                });
+            });
+ 
+        </script>
+{% endblock %}
+
+{% block MenuRol %}
+<li><a href="{{ path('PropietarioMenUSACH') }}">Propietario</a></li>
+<li><a href="{{ path('LocalMenUSACH') }}">Local</a></li>
+<li><a href="{{ path('CategoriaMenUSACH') }}">Categoría</a></li>
+<li><a href="{{ path('IngredienteMenUSACH') }}">Ingrediente</a></li>
+<li><a href="{{ path('PagoMenUSACH') }}">Tipo de Pago</a></li>
+<div class="btn-group">
+    <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> {{ app.user.username }}</a>
+    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret icon-white"></span></a>
+    <ul class="dropdown-menu">
+        <li><a href="{{ path('admin_logout') }}"><i class="icon-ban-circle"></i> Cerrar sesión</a></li>
+    </ul>
+</div>
+{% endblock %}
+{% block titulo %}
+<h2>Panel de Administración MenUSACH</h2>
+{% endblock %}
+{% block graficos %} 
+
+	<div id="graficoMenusach" style="width: 800px; height: 400px; margin: 0 auto"></div>
+	</br>
+	<div id="graficoMenusach2" style="width: 800px; height: 400px; margin: 0 auto"></div> 
+
+{% endblock %}

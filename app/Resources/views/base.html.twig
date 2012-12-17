@@ -9,8 +9,15 @@
         <!-- Bootstrap CSS -->
         {% include 'BraincraftedBootstrapBundle::_stylesheets.html.twig' %}
         {% endstylesheets %}
+
+		{% block jquery %}
         <script src="{{ asset('bundles/menusachbase/js/jquery.js') }}" type="text/javascript"></script>
         <script src="{{ asset('bundles/menusachbase/js/jquery-ui.js') }}" type="text/javascript"></script>
+		{% endblock %}
+		
+		{% block graficosMenusach %}
+		{% endblock %}
+
         <script type="text/javascript">
         $(function() {
             $( "#menusach_bundle_basebundle_menutype_men_fecha" ).datepicker();
@@ -62,6 +69,7 @@
 						{% endblock %}
 						<h4><i>Tu comida a tiempo</i></h4>
 						</br>
+						{% block graficos %} {% endblock %}	
 					</div> <!-- hero-unit -->
 				</div> <!-- tab-pane active -->
 		      		{% endblock %}
