@@ -18,9 +18,9 @@
         <tr>
             <td>{{ entity.men_nombre }}</td>
             <td>${{ entity.men_precio }}</td>
-            <td><a href="{{ path('local_show', {'id': entity.id}) }}"> {{ entity.loc_nombre }}</a></td>
+            <td><a href="{{ path('local_show', {'id': entity.localid}) }}"> {{ entity.loc_nombre }}</a></td>
             <td><a href="{{ path('RenderMap', {'id': entity.loc_ubicacion}) }}">Aquí</a></td>
-            <td><a href="{{ path('CommentMenUSACH', {'id': entity.id}) }}">Aquí</a></td>
+            <td><a href="{{ path('CommentMenUSACH', {'id': entity.menuid}) }}">Aquí</a></td>
         </tr>
         {% endif %}
     {% endfor %}
