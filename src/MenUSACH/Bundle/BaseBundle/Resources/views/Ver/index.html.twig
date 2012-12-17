@@ -1,14 +1,24 @@
 {% extends 'MenUSACHBaseBundle:Default:index.html.twig' %}
 
 {% block body %}
-<select>
 
-	{% for entity in entities_ing %}
+<form action="" id="filterForm" method="post">
 
-		<option value="{{entity.id }}"> {{ entity.ing_nombre }} </option>
+	<select name="filter">
 
-	{% endfor %}
-</select>
+		<option selected value="0"> Seleccione el Ingrediente </option>
+		{% for entity in entities_ing %}
+
+			<option value="{{entity.id }}"> {{ entity.ing_nombre }} </option>
+
+		{% endfor %}
+
+	</select>
+
+	<input type="submit" name="submit" id="submit" value="Buscar"/>
+
+</form>
+
 <table class="table">
     <caption><h2>Menús del día {{ "now"|date("d/m/Y") }}</h2></caption>
     <thead>
@@ -16,19 +26,15 @@
             <th>Nombre</th>
             <th>Precio</th>
             <th>Local</th>
-            <th>Ubicación</th>
-            <th>Comentar</th>
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
         {% if entity.men_activo == TRUE %}
         <tr>
-            <td>{{ entity.men_nombre }}</td>
+            <td><a href="{{ path('CommentMenUSACH', {'id': entity.menuid}) }}">{{ entity.men_nombre }}</a></td>
             <td>${{ entity.men_precio }}</td>
             <td><a href="{{ path('local_show', {'id': entity.localid}) }}"> {{ entity.loc_nombre }}</a></td>
-            <td><a href="{{ path('RenderMap', {'id': entity.loc_ubicacion}) }}">Aquí</a></td>
-            <td><a href="{{ path('CommentMenUSACH', {'id': entity.menuid}) }}">Aquí</a></td>
         </tr>
         {% endif %}
     {% endfor %}

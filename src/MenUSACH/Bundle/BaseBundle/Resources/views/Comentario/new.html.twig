@@ -1,6 +1,29 @@
 {% extends 'MenUSACHBaseBundle:Default:index.html.twig' %}
 {% block body %}
-<h1>Comentarios</h1>
+<h1>Perfil de Menú</h1>
+
+<h2>{{ menu.mennombre }}</h2>
+
+<table class="table">
+	<tbody>
+		<tr>
+			<th>Precio</th>
+			<td>{{ menu.menprecio }}</td>
+		</tr>
+		<tr>
+			<th>Local</th>
+            <td><a href="{{ path('local_show', {'id': menu.local.id}) }}"> {{ menu.local.locnombre }}</a></td>
+		</tr>
+		<tr>
+			<th>Ingredientes</th>
+			<td>
+			{% for ing in menu.ingredientes %}
+				{{ ing.ingnombre }}
+			{% endfor %}
+			</td>
+		</tr>
+	</tbody>
+</table>
 
 <form action="{{ path('comentario_create', {'id': id}) }}" method="post" {{ form_enctype(form) }}>
 

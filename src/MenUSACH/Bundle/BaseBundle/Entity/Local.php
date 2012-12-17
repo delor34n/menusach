@@ -41,6 +41,7 @@ class Local
      * @ORM\Column(name="loc_ranking", type="float")
      */
     private $loc_ranking;
+    
 
     /**
      * @ORM\OneToMany(targetEntity="Menu", mappedBy="local")

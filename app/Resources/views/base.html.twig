@@ -17,6 +17,9 @@
             $( "#menusach_bundle_basebundle_menutype_men_fecha" ).datepicker( "option", "dateFormat", "mm/dd/yy" );
         });
         </script>
+
+		{% block menuFilter %} {% endblock %}
+
         {% block CRFHead %}
 		{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
